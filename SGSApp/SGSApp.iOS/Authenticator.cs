@@ -48,18 +48,14 @@ namespace SGSApp.iOS
                 {
                     if (authContext.TokenCache.ReadItems().Any())
                         authContext =
-                            new AuthenticationContext(authContext.TokenCache.ReadItems().First().Authority);
+                             new AuthenticationContext(authContext.TokenCache.ReadItems().FirstOrDefault()?.Authority);
+
                     var authResult = await authContext.AcquireTokenAsync(graphResourceUri, applicationId,
                         new Uri(returnUri),
                         new PlatformParameters(UIApplication.SharedApplication.KeyWindow.RootViewController));
 
                     GlobalVariables.grabarTokenOffice365(authResult.AccessToken);
 
-                    var authResult1 = await AuthenticationHelper.GetAccessToken(AuthenticationHelper.SharePointURL,
-                        new PlatformParameters(UIApplication.SharedApplication.KeyWindow.RootViewController));
-                    var authResult3 = await AuthenticationHelper.GetAccessToken(AuthenticationHelper.AcumenURL,
-                        new PlatformParameters(UIApplication.SharedApplication.KeyWindow.RootViewController));
-                    GlobalVariables.grabarTokenSharepoint(authResult1.AccessToken);
                     authResult2 = authResult;
                 }
                 else
