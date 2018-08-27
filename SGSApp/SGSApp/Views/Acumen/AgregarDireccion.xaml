@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SGSApp.Views.Acumen.AgregarDireccion"
+             Title="Dirección grupo familiar"
+             xmlns:ms="clr-namespace:SGSApp.Controls">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout
+                Padding="10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="Ciudad (*):"
+                        VerticalOptions="Center" />
+
+                    <StackLayout Grid.Column="1"
+                                 Grid.Row="0">
+                        <ms:CustomPicker HorizontalOptions="FillAndExpand"
+                                         WidthRequest="250"
+                                         SelectedIndexChanged="PickerCiudades_SelectedIndexChanged"
+                                         Image="ic_arrow_drop_down.png"
+                                         Title="Seleccione..." x:Name="PickerCiudades" />
+                    </StackLayout>
+
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Text="Dirección (*):"
+                        VerticalOptions="Center" />
+                    <Entry x:Name="EntDireccion"
+                           Grid.Column="1"
+                           Grid.Row="1"
+                           Placeholder="Ingrese la dirección..." />
+
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        Text="Barrio (*):"
+                        VerticalOptions="Center" />
+                    <Entry x:Name="EntBarrio"
+                           Grid.Column="1"
+                           Grid.Row="2"
+                           Placeholder="Ingrese el barrio..." />
+
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="3"
+                        Text="Teléfono (*):"
+                        VerticalOptions="Center" />
+                    <Entry x:Name="EntTelefono"
+                           Grid.Column="1"
+                           Grid.Row="3"
+                           Keyboard="Telephone"
+                           Placeholder="Ingrese el teléfono..." />
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="4"
+                        Text="Descripción (*):"
+                        VerticalOptions="Center" />
+                    <Entry x:Name="entDescripcion"
+                           Grid.Column="1"
+                           Grid.Row="4"
+                           Placeholder="Ingrese una descripción..." />
+
+                </Grid>
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning, Mode=TwoWay}"
+                    VerticalOptions="CenterAndExpand" />
+                <Button x:Name="BtnGuardarDireccion"
+                        BackgroundColor="Navy"
+                        BorderRadius="23"
+                        FontAttributes="Bold"
+                        HeightRequest="46"
+                        Margin="50,0"
+                        Text="Guardar"
+                        TextColor="White"
+                        VerticalOptions="EndAndExpand"
+                        Clicked="BtnGuardarDireccion_Clicked" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

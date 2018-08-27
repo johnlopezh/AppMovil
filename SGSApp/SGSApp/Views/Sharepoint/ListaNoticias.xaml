@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SGSApp.Views.Sharepoint.ListaNoticias"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             NavigationPage.HasNavigationBar="True"
+             Title="Noticias SGS"
+             IsBusy="{Binding IsBusy}"
+             BackgroundColor="#eeeeee"
+             BindingContext="{Binding Menu, Source={StaticResource Locator}}">
+
+    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+        <Label Text="" x:Name="LblUsername" VerticalOptions="Center" HorizontalOptions="Center" />
+
+        <!--<ListView x:Uid="ListNot" x:Name="listNoticias" ItemsSource="{Binding Items}" ItemSelected="listNoticias_ItemSelected" 
+              CachingStrategy="RecycleElement"
+              RowHeight="60">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell x:Name="ImagenNoticia" Text="{Binding TituloNoticia}" TextColor="Purple" Detail="{Binding Resumen}" DetailColor="Maroon" ImageSource = "{Binding ImageURL}"   />
+                      
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>-->
+
+        <ListView x:Name="listView"
+                  CachingStrategy="RecycleElement"
+                  ItemSelected="listNoticias_ItemSelected"
+                  ItemsSource="{Binding FeedItems}"
+                  HasUnevenRows="True"
+                  SeparatorVisibility="None"
+                  IsPullToRefreshEnabled="True"
+                  IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                  RefreshCommand="{Binding LoadItemsCommand}"
+                  AbsoluteLayout.LayoutFlags="All"
+                  AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ContentView Padding="3">
+                            <Frame OutlineColor="White" Padding="5">
+                                <Grid BackgroundColor="White">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="80" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout
+                                        Grid.Column="1"
+                                        VerticalOptions="Center">
+                                        <Label Text="{Binding TituloNoticia}" TextColor="#25357a" FontSize="Small"
+                                               LineBreakMode="WordWrap" />
+                                        <Label Text="{Binding Resumen}" FontSize="Small" LineBreakMode="WordWrap" />
+                                    </StackLayout>
+                                    <Image Source="{Binding ImageURL}" />
+                                </Grid>
+                            </Frame>
+                        </ContentView>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </AbsoluteLayout>
+</ContentPage>

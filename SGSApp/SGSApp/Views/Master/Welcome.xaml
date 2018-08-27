@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SGSApp.Views.Master.Welcome"
+
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+                <Image
+                    x:Name="ic_escudosgscolor_fondo_transparente"
+                    HeightRequest="150"
+                    Source="ic_escudosgscolor_fondo_transparente"
+                    WidthRequest="150" />
+                <Grid HorizontalOptions="Center" Padding="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Text="Iniciar Sesión"
+                        Clicked="Button_Clicked"
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        WidthRequest="150" />
+                </Grid>
+            </StackLayout>
+            <StackLayout VerticalOptions="End">
+                <Label
+                    FontSize="11"
+                    HorizontalTextAlignment="Center"
+                    Text="Tel: +(57)1-4324000 - Dirección: Calle 92 # 158 - 36 " />
+                <Label
+                    HorizontalTextAlignment="Center"
+                    FontSize="11"
+                    Text="Términos y Condiciones de Uso"
+                    TextColor="{DynamicResource GrayFont}" />
+                <Button
+                    x:Name="TerminosConidicones"
+                    FontSize="11"
+                    Clicked="TerminosConidicones_Clicked"
+                    Text="Politica de Tratamiento de Datos Personales"
+                    TextColor="{DynamicResource GrayFont}"
+                    BackgroundColor="Transparent"
+                    BorderColor="Transparent" />
+            </StackLayout>
+        </StackLayout>
+
+    </ContentPage.Content>
+    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <StackLayout x:Name="Stack" IsVisible="True" BackgroundColor="#80000000" Padding="12"
+                     AbsoluteLayout.LayoutFlags="PositionProportional"
+                     AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
+            <ActivityIndicator x:Name="Ind" IsRunning="True" Color="White" />
+            <Label IsVisible="True" Text="Iniciando sesión..." HorizontalOptions="Center" TextColor="White" />
+        </StackLayout>
+    </AbsoluteLayout>
+</ContentPage>

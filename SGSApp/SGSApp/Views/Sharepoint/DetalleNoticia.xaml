@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SGSApp.Views.Sharepoint.DetalleNoticia"
+             Title="Noticia"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <ScrollView>
+            <Frame Padding="5">
+                <StackLayout>
+                    <Label x:Name="Titulo"
+                           FontSize="Medium"
+                           TextColor="{StaticResource Black}"
+                           LineBreakMode="WordWrap"
+                           VerticalOptions="Start" />
+                    <Image x:Name="Imagen"
+                           HorizontalOptions="FillAndExpand" />
+
+                    <WebView VerticalOptions="FillAndExpand">
+                        <WebView.Source>
+                            <HtmlWebViewSource x:Name="Descrip" Html="{Binding Html}" />
+                        </WebView.Source>
+                    </WebView>
+                </StackLayout>
+            </Frame>
+
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

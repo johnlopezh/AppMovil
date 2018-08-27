@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "652253724720",
+    "firebase_url": "https://sgsapp-250eb.firebaseio.com",
+    "project_id": "sgsapp-250eb",
+    "storage_bucket": "sgsapp-250eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:652253724720:android:3e8f6d888f8176af",
+        "android_client_info": {
+          "package_name": "com.SGSApp.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "652253724720-vp6d2uo4o723kgbjohtlbjhhdmksnmgp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0qRH2r9ZZh_uZRbxhK1-kzGqdEq0QMHs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SGSApp.Views.Master.Loading">
+    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+        <!--<StackLayout>
+            <ActivityIndicator HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" x:Name="ActInd" Color="Blue" IsRunning="True"/>
+            <Label x:Name="lblTitle" Text="Cargando..." HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+        </StackLayout>-->
+
+        <StackLayout x:Name="Stack" IsVisible="True" BackgroundColor="#80000000" Padding="12"
+                     AbsoluteLayout.LayoutFlags="PositionProportional"
+                     AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
+            <ActivityIndicator x:Name="Ind" IsRunning="True" Color="White" />
+            <Label IsVisible="True" Text="Cargando..." HorizontalOptions="Center" TextColor="White" />
+        </StackLayout>
+    </AbsoluteLayout>
+</ContentPage>

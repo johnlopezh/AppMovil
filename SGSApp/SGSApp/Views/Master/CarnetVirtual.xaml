@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SGSApp.Views.Master.CarnetVirtual"
+             BindingContext="{Binding Menu, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <StackLayout x:Name="qrcode" Padding="50,10">
+            <Label HorizontalOptions="Center" VerticalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Identificación Virtual" FontAttributes="Bold" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
