@@ -17,62 +17,14 @@ namespace SGSApp.iOS
         public async Task<AuthenticationResult> Authenticate(string tenantUrl, string graphResourceUri,
             string applicationId, string returnUri, string evento)
         {
-            try
-            {
-                AuthenticationResult authResult2;
-                var authContext = new AuthenticationContext(tenantUrl);
-                if (authContext.TokenCache.ReadItems().Any())
-                {
-                    authContext =
-                        new AuthenticationContext(authContext.TokenCache.ReadItems().FirstOrDefault()?.Authority);
-                    var authResult = await authContext.AcquireTokenAsync(graphResourceUri, applicationId,
-                        new Uri(returnUri),
-                        new PlatformParameters(UIApplication.SharedApplication.KeyWindow.RootViewController));
-
-                    GlobalVariables.grabarTokenOffice365(authResult.AccessToken);
-
-                    var authResult1 = await AuthenticationHelper.GetAccessToken(AuthenticationHelper.SharePointURL,
-                        new PlatformParameters(UIApplication.SharedApplication.KeyWindow.RootViewController));
-                    GlobalVariables.grabarTokenSharepoint(authResult1.AccessToken);
-
-
-                    var authResult3 = await AuthenticationHelper.GetAccessToken(AuthenticationHelper.AcumenURL,
-                        new PlatformParameters(UIApplication.SharedApplication.KeyWindow.RootViewController));
-                    GlobalVariables.grabarTokenSharepoint(authResult1.AccessToken);
-
-                    GlobalVariables.grabarTokenAcumen(authResult3.AccessToken);
-
-                    authResult2 = authResult;
-                }
-                else if (evento == "click")
-                {
-                    if (authContext.TokenCache.ReadItems().Any())
-                        authContext =
-                            new AuthenticationContext(authContext.TokenCache.ReadItems().First().Authority);
-                    var authResult = await authContext.AcquireTokenAsync(graphResourceUri, applicationId,
-                        new Uri(returnUri),
-                        new PlatformParameters(UIApplication.SharedApplication.KeyWindow.RootViewController));
-
-                    GlobalVariables.grabarTokenOffice365(authResult.AccessToken);
-
-                    var authResult1 = await AuthenticationHelper.GetAccessToken(AuthenticationHelper.SharePointURL,
-                        new PlatformParameters(UIApplication.SharedApplication.KeyWindow.RootViewController));
-                    var authResult3 = await AuthenticationHelper.GetAccessToken(AuthenticationHelper.AcumenURL,
-                        new PlatformParameters(UIApplication.SharedApplication.KeyWindow.RootViewController));
-                    GlobalVariables.grabarTokenSharepoint(authResult1.AccessToken);
-                    authResult2 = authResult;
-                }
-                else
-                {
-                    authResult2 = null;
-                }
-
-                return authResult2;
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
+            var authContext = new AuthenticationContext(tenantUrl);
+            if (authContext.TokenCache.ReadItems().Any())
+                authContext = new AuthenticationContext(authContext.TokenCache.ReadItems().First().Authority);
+            var controller = UIApplication.SharedApplication.KeyWindow.RootViewController;
+            var uri = new Uri(returnUri);
+            var platformParams = new PlatformParameters(controller);
+            var authResult = await authContext.AcquireTokenAsync(graphResourceUri, applicationId, uri, platformParams);
+            return authResult;
         }
     }
 }
