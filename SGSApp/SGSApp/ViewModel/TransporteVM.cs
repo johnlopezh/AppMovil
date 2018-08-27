@@ -17,7 +17,7 @@ namespace SGSApp.ViewModel
     public class TransporteVM : BaseViewModel
     {
         private readonly Estudiante[] est = new Estudiante[1500];
-        private readonly TipoSolicitudTransporte[] st = new TipoSolicitudTransporte[8];
+        private readonly TipoSolicitudTransporte[] st = new TipoSolicitudTransporte[6];
         private string[] arr4 = new string[8];
 
         private ObservableCollection<Estudiante> estudianteItems = new ObservableCollection<Estudiante>();
