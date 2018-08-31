@@ -115,6 +115,7 @@
     <Compile Include="Views\Acumen\DashboardConsultaTransporte.xaml.cs">
       <DependentUpon>DashboardConsultaTransporte.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Helper\RoundedCornerView.cs" />
     <Compile Include="Views\Home\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

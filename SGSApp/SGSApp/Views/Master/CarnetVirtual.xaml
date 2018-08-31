@@ -2,29 +2,18 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:RoundedCornerViewDemo.ControlsToolkit.Custom;assembly=SGSApp"
              x:Class="SGSApp.Views.Master.CarnetVirtual"
-             BindingContext="{Binding Menu, Source={StaticResource Locator}}">
-    <ContentPage.Resources>
-        <Style x:Key="EstiloBoton" TargetType="Button">
-            <Style.Triggers>
-                <DataTrigger TargetType="Button" Binding="{Binding Text.Length, Source={x:Reference entry1}}" Value="0">
-                        <Setter Property="IsEnabled" Value="False" />  
-                    </DataTrigger>
-             </Style.Triggers>
-            </Style>
-    </ContentPage.Resources>
+             BackgroundColor="{StaticResource Gray}"
+             BindingContext="{Binding Menu}">
     <ContentPage.Content>
-        <StackLayout x:Name="qrcode" Padding="50,10">
-            <Label HorizontalOptions="Center" VerticalOptions="Center">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="Identificación Virtual" FontAttributes="Bold" />
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
-            <Entry x:Name= "entry1" Text=""/>
-            <Button TranslationX="100" Rotation="45" WidthRequest="200" HeightRequest="40" VerticalOptions="Center" Text="Botón" Style="{StaticResource EstiloBoton}" />
-            <Button WidthRequest="200" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="Center" Text="Botón" Clicked="OnClicked" x:Name="button1"/>
-        </StackLayout>
+            <StackLayout Padding="10">
+            <custom:RoundedCornerView BorderColor="{StaticResource Gray}" BorderWidth="3" BackgroundColor="Transparent" VerticalOptions="FillAndExpand" RoundedCornerRadius="8">
+                <StackLayout x:Name="qrcode" BackgroundColor="#fafafa"></StackLayout>
+                <Label HeightRequest="30"  Text="Identificación Virtual" HorizontalOptions="CenterAndExpand" FontSize="28" TextColor="{StaticResource GrayFont}"/>
+            </custom:RoundedCornerView>
+            </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>
+
