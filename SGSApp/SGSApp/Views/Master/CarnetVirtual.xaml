@@ -4,6 +4,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SGSApp.Views.Master.CarnetVirtual"
              BindingContext="{Binding Menu, Source={StaticResource Locator}}">
+    <ContentPage.Resources>
+        <Style x:Key="EstiloBoton" TargetType="Button">
+            <Style.Triggers>
+                <DataTrigger TargetType="Button" Binding="{Binding Text.Length, Source={x:Reference entry1}}" Value="0">
+                        <Setter Property="IsEnabled" Value="False" />  
+                    </DataTrigger>
+             </Style.Triggers>
+            </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout x:Name="qrcode" Padding="50,10">
             <Label HorizontalOptions="Center" VerticalOptions="Center">
@@ -13,6 +22,9 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
+            <Entry x:Name= "entry1" Text=""/>
+            <Button TranslationX="100" Rotation="45" WidthRequest="200" HeightRequest="40" VerticalOptions="Center" Text="Botón" Style="{StaticResource EstiloBoton}" />
+            <Button WidthRequest="200" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="Center" Text="Botón" Clicked="OnClicked" x:Name="button1"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

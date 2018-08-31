@@ -23,8 +23,8 @@ namespace SGSApp.Views.Home
             LblUsername.Text = GlobalVariables.Usuario;
             BindingContext = new MainPageMasterViewModel();
             if (Device.RuntimePlatform == Device.iOS) Icon = "hamburger-icon-menu.png";
-
             ListView = MenuItemsListView;
+
         }
 
         public ImageSource ImageURL { get; set; }

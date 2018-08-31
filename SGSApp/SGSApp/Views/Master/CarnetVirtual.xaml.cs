@@ -35,7 +35,10 @@ namespace SGSApp.Views.Master
             //this.Content = barcode;
             qrcode.Children.Add(barcode);
         }
+        public void OnClicked (object sender){
+            button1.ScaleTo(2, 2000, Easing.BounceOut);
 
+        }
         public async Task ConsultarInfoUsuario()
         {
             numeroIdentificacion = await obj.ConsultarInfoUsuario(GlobalVariables.Email);
