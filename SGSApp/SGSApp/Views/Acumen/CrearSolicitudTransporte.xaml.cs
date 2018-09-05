@@ -14,7 +14,7 @@ namespace SGSApp.Views.Acumen
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CrearSolicitudTransporte : ContentPage
     {
-        private readonly string[] arrDirecciones = new string[8];
+        private string[] arrDirecciones;
         /*************/
 
         private readonly int codigoFamiliar;
@@ -23,7 +23,7 @@ namespace SGSApp.Views.Acumen
         private readonly DateTime FechaSolicitud;
         private readonly string[] FechasSeleccionadas = new string[60];
         private readonly TimeSpan Hora;
-        private readonly int IdDireccion;
+        private readonly int? IdDireccion;
         private readonly string IdentificacionAutorizado;
         private readonly string IdentificacionSolicitante;
 
@@ -40,7 +40,7 @@ namespace SGSApp.Views.Acumen
         private readonly TransporteVM objTransporte = new TransporteVM();
         private readonly int PeriodoLectivo;
         private readonly bool? Permanente;
-        private readonly long Telefono;
+        private readonly long? Telefono;
         private readonly bool? Temporal;
         private readonly string TipoIdentSolicitante;
         private readonly string UsuarioLog;
@@ -48,6 +48,7 @@ namespace SGSApp.Views.Acumen
 
         private int clickTotal = 0;
         private Direccion[] direccionesGrupoFamiliar;
+        private Direccion dir;
         private bool enableMultiSelect;
         private Estudiante[] estudiantes;
         private CalendarioAcademico[] fechasCalendario;
@@ -73,19 +74,19 @@ namespace SGSApp.Views.Acumen
             Temporal = tp.Temporal;
             Permanente = tp.Permanente;
             Hora = TimePickerHora.Time;
-            IdDireccion = 1260; //IdDireccion;
+            IdDireccion = null; //IdDireccion;
             IdentificacionCompanero = "";
             TipoIdentCompanero = "";
             NombreAutorizado = "";
             IdentificacionAutorizado = "";
-            Telefono = Convert.ToInt64(TelefonoContactoEntry.Text);
+            Telefono = null;
             JornadaMananaHabilitada = tp.JornadaMananaHabilitada;
             JornadaTardeHabilitada = tp.JornadaTardeHabilitada;
             JornadaExtraHabilitada = tp.JornadaExtraHabilitada;
             JornadaExtenHabilitada = tp.JornadaExtenHabilitada;
             Observaciones = MotivoEntry.Text;
             EstadoSolicitud = "P";
-            UsuarioLog = GlobalVariables.Usuario;
+            UsuarioLog = GlobalVariables.Email;
             FechaSolicitud = FechaSolicitud;
             PeriodoLectivo = PeriodoLectivo;
             MotivoRechazo = MotivoRechazo;
@@ -113,7 +114,7 @@ namespace SGSApp.Views.Acumen
             if (tp.CampoHoraHabilitado == true)
             {
                 LblHora.IsVisible = true;
-                LblHora.Text = tp.CampoHora;
+                LblHora.Text = tp.CampoHora + " (*):";
                 TimePickerHora.IsVisible = true;
             }
             else
@@ -202,8 +203,8 @@ namespace SGSApp.Views.Acumen
                 {
                     FechasSeleccionadas[inc] = item.Data;
                     //FechasSeleccionadasEntry.Text = "2018-01-29, 2018-02-01,";
-                    FechasSeleccionadasEntry.Text = string.Concat(FechasSeleccionadasEntry.Text, item.Data, ",");
-
+                    FechasSeleccionadasEntry.Text =   string.Concat(FechasSeleccionadasEntry.Text, item.Data, ",");
+                    FechasSeleccionadasEntry.Text = FechasSeleccionadasEntry.Text.TrimEnd(',');
                     inc++;
                 }
             }
@@ -352,6 +353,7 @@ namespace SGSApp.Views.Acumen
             PickerDireccion.ItemsSource = pp;
             direccionesGrupoFamiliar = await objDireccion.ConsultarDireccionesGrupo(codigoFamiliar);
             inc = 0;
+            arrDirecciones = new string[direccionesGrupoFamiliar.Length];
             foreach (var item in direccionesGrupoFamiliar)
             {
                 armarDirecciones(item.DireccionGrupo);
@@ -371,12 +373,12 @@ namespace SGSApp.Views.Acumen
                 Temporal = Temporal,
                 Permanente = Permanente,
                 Hora = Hora,
-                IdDireccion = IdDireccion,
+                IdDireccion = dir.IdDireccion,
                 IdentificacionCompanero = null,
                 TipoIdentCompanero = null,
-                NombreAutorizado = NombreAutorizado,
-                IdentificacionAutorizado = IdentificacionAutorizado,
-                Telefono = Telefono,
+                NombreAutorizado = NombrePersonaAutorizadaEntry.Text,
+                IdentificacionAutorizado = IdentificacionPersonaAutorizadaEntry.Text,
+                Telefono = Convert.ToInt32(TelefonoContactoEntry.Text),
                 JornadaMananaHabilitada = JornadaMananaHabilitada,
                 JornadaTardeHabilitada = JornadaTardeHabilitada,
                 JornadaExtraHabilitada = JornadaExtraHabilitada,
@@ -385,27 +387,56 @@ namespace SGSApp.Views.Acumen
                 EstadoSolicitud = EstadoSolicitud,
                 UsuarioLog = UsuarioLog,
                 FechaSolicitud = DateTime.Now,
-                PeriodoLectivo = 12,
+                PeriodoLectivo = 13,
                 fechas = FechasSeleccionadasEntry.Text = FechasSeleccionadasEntry.Text.TrimEnd(','),
                 rol = 6
             };
             resultadoTransporte = await objTransporte.GuardarSolicitudTransporte(solicitudTranspote);
         }
 
-        private void GuardarBtn_Clicked(object sender, EventArgs e)
+        private async Task GuardarBtn_Clicked(object sender, EventArgs e)
         {
-            if (FechasSeleccionadasEntry.Text == "" || FechasSeleccionadasEntry.Text == null)
-                LblErrores.Text = "Por favor seleccione una fecha";
-            if (TelefonoContactoEntry.Text == "" || TelefonoContactoEntry.Text == null || MotivoEntry.Text == "" ||
-                MotivoEntry.Text == null)
+            if (await validarFormulario())
             {
-                LblErrores.Text = "Por favor ingrese los campos marcados con (*)";
-                LblErrores.IsVisible = true;
+                await GuardarSolicitud();
+                if (resultadoTransporte == 1)
+                    overlayConfirmacion.IsVisible = true;
             }
+        }
 
-            GuardarSolicitud();
-            if (resultadoTransporte == 1)
-                overlayConfirmacion.IsVisible = true;
+        private async Task<bool> validarFormulario()
+        {
+            //Valida si el valor en el Entry se encuentra vacio o es igual a Null
+            if (String.IsNullOrWhiteSpace(FechasSeleccionadasEntry.Text))
+            {
+                await this.DisplayAlert("Información incompleta.", "Los campos señalados con asterisco (*) son obligatorios.", "OK");
+                return false;
+            }
+            if (String.IsNullOrWhiteSpace(TimePickerHora.Time.ToString()) && Temporal == true)
+            {
+                await this.DisplayAlert("Información incompleta.", "Los campos señalados con asterisco (*) son obligatorios.", "OK");
+                return false;
+            }
+            if ((Convert.ToInt32(TimePickerHora.Time.ToString().Substring(0, 2)) < 7 || Convert.ToInt32(TimePickerHora.Time.ToString().Substring(0, 2)) > 19) && Temporal == true)
+            {
+                await this.DisplayAlert("Información incompleta.", "La hora permitida es de las 07:00 a.m hasta las 07:00 p.m", "OK");
+                return false;
+            } else if (Convert.ToInt32(TimePickerHora.Time.ToString().Substring(0, 2)) == 19 && Convert.ToInt32(TimePickerHora.Time.ToString().Substring(3, 2)) >= 01)
+            {
+                await this.DisplayAlert("Información incompleta.", "La hora permitida es de las 07:00 a.m hasta las 07:00 p.m", "OK");
+                return false;
+            } 
+            if ((String.IsNullOrWhiteSpace(NombrePersonaAutorizadaEntry.Text) || String.IsNullOrWhiteSpace(IdentificacionPersonaAutorizadaEntry.Text) )&& Temporal == true)
+            {
+                await this.DisplayAlert("Información incompleta.", "Los campos señalados con asterisco (*) son obligatorios.", "OK");
+                return false;
+            }
+            if ((String.IsNullOrWhiteSpace(MotivoEntry.Text)))
+            {
+                await this.DisplayAlert("Información incompleta.", "Los campos señalados con asterisco (*) son obligatorios.", "OK");
+                return false;
+            }
+            return true;
         }
 
         private void PickerFechas_SelectedIndexChanged(object sender, EventArgs e)
@@ -416,6 +447,7 @@ namespace SGSApp.Views.Acumen
             foreach (var item in arrFechas)
                 if (item == radio.SelectedItem)
                     FechasSeleccionadasEntry.Text = item;
+            FechasSeleccionadasEntry.Text = FechasSeleccionadasEntry.Text.TrimEnd(',');
         }
 
         private async Task NavigateAsyn()
@@ -427,6 +459,29 @@ namespace SGSApp.Views.Acumen
         {
             ConsultarDireccionesGrupo();
             EjecutaTareaAsincronaEstudiantes();
+        }
+
+        private void PickerDirecciones_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var radio = sender as CustomPicker;
+
+            if (radio.SelectedItem == null) return;
+            foreach (var item in direccionesGrupoFamiliar)
+                if (item.DireccionGrupo == radio.SelectedItem.ToString())
+                {
+                    dir = item;
+                    /*Mertodo que navega a la pagina de tipo de solicitud que se ha solcitada*/
+                }
+        }
+
+        private void LimpiarBtn_Clicked(object sender, EventArgs e)
+        {
+            FechasSeleccionadasEntry.Text = "";
+            IdentificacionPersonaAutorizadaEntry.Text = "";
+            MotivoEntry.Text = "";
+            NombrePersonaAutorizadaEntry.Text = "";
+            TelefonoContactoEntry.Text = "";
+            
         }
     }
 }

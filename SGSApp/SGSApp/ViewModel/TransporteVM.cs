@@ -17,7 +17,7 @@ namespace SGSApp.ViewModel
     public class TransporteVM : BaseViewModel
     {
         private readonly Estudiante[] est = new Estudiante[1500];
-        private readonly TipoSolicitudTransporte[] st = new TipoSolicitudTransporte[6];
+
         private string[] arr4 = new string[8];
 
         private ObservableCollection<Estudiante> estudianteItems = new ObservableCollection<Estudiante>();
@@ -30,6 +30,7 @@ namespace SGSApp.ViewModel
 
         private int selectedIndex;
         private Array tipoSolicitudTransporteItems;
+        private TipoSolicitudTransporte[] st;
 
         public TransporteVM()
         {
@@ -181,6 +182,7 @@ namespace SGSApp.ViewModel
 
         public async Task<TipoSolicitudTransporte[]> ConsultarTiposSolicitud(string tipoPaciente)
         {
+          
             try
             {
                 var rt = string.Empty;
@@ -194,25 +196,25 @@ namespace SGSApp.ViewModel
                 var response = client.GetAsync("/api/transporte?tipoPersona=" + tipoPaciente).Result;
                 var stringData = response.Content.ReadAsStringAsync().Result;
 
+
                 var data = JsonConvert.DeserializeObject<List<TipoSolicitudTransporte>>(
-                    await response.Content.ReadAsStringAsync());
+                            await response.Content.ReadAsStringAsync());
+
+                st = new TipoSolicitudTransporte[data.Count];
 
                 if (response.StatusCode == HttpStatusCode.OK)
 
-                    for (var i = 0; i < data.Count; i++)
+                    for (var i = 0; i < st.Length; i++)
                     {
-                        //-arr4[i] = data[i].NombreTipo + "sd";
                         var ent = new TipoSolicitudTransporte();
                         ent.NombreTipo = data[i].NombreTipo;
                         st[i] = data[i];
-                        //TipoSolicitudTransporteItems[i] = ent.NombreTipo;
                     }
             }
             catch (Exception ex)
             {
                 Error = true;
             }
-
             return st;
         }
 
@@ -268,7 +270,7 @@ namespace SGSApp.ViewModel
                 client.DefaultRequestHeaders.Authorization =
                     new AuthenticationHeaderValue("FedAuth", GlobalVariables.TokenAcumen);
 
-                var p = new person {name = "Sourav", surname = "Kayal"};
+                var p = new person { name = "Sourav", surname = "Kayal" };
                 var sc = new StringContent(JsonConvert.SerializeObject(solicitudTranspote), Encoding.UTF8,
                     "application/json");
                 var json = JsonConvert.SerializeObject(solicitudTranspote);

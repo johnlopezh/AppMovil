@@ -31,7 +31,7 @@ namespace SGSApp.ViewModel
 
         #region Variables
 
-        private readonly Direccion[] direccion = new Direccion[8];
+        private Direccion[] direccion;
         private int resultado;
 
         #endregion
@@ -52,7 +52,7 @@ namespace SGSApp.ViewModel
             var stringData = response.Content.ReadAsStringAsync().Result;
 
             var data = JsonConvert.DeserializeObject<List<Direccion>>(await response.Content.ReadAsStringAsync());
-
+            direccion = new Direccion[data.Count];
             if (response.StatusCode == HttpStatusCode.OK)
 
                 for (var i = 0; i < data.Count; i++)

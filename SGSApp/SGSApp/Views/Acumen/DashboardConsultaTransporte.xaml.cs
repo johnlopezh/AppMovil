@@ -14,7 +14,7 @@ namespace SGSApp.Views.Acumen
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DashboardConsultaTransporte : ContentPage
     {
-        private readonly string[] arr4 = new string[8];
+        private string[] arr4;
 
         private readonly TransporteVM obj = new TransporteVM();
         private Estudiante est;
@@ -92,8 +92,14 @@ namespace SGSApp.Views.Acumen
             if (item != null)
             {
                 est = item;
-                EjecutaTareaAsincrona1(item.TipoPaciente);
-                //Task.Delay(2000);
+                if (arr4 == null)
+                {
+                    EjecutaTareaAsincrona1(item.TipoPaciente);
+                    PickerSolicitudes.ItemsSource = arr4;
+                }
+                else { 
+                PickerSolicitudes.ItemsSource = arr4;
+                }
             }
 
             overlay.IsVisible = true;
@@ -107,15 +113,11 @@ namespace SGSApp.Views.Acumen
         {
             //bindableRadioGroupPaises.CheckedChanged += BindableRadioGroupPaises_CheckedChanged;
             TiposSol = await obj.ConsultarTiposSolicitud(tipoPaciente);
+            arr4 = new string[TiposSol.Length];
+
             foreach (var item in TiposSol)
-                //TipoSolicitudTransporte ent = new TipoSolicitudTransporte();
-                //ent.NombreTipo = item.NombreTipo;
-                //TiposSol.Add(ent);
                 armarTiposSol(item.NombreTipo);
-            PickerSolicitudes.ItemsSource = arr4;
-            //bindableRadioGroupPaises.ItemsSource = arr4;
             overlay.IsVisible = true;
-            //this.Inicializar();
         }
 
         private void armarTiposSol(string sol)

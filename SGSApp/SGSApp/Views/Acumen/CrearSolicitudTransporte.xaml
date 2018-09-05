@@ -54,7 +54,7 @@
                             <ViewCell x:Name="cHora">
                                 <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                     <StackLayout Orientation="Horizontal" Padding="20,0,20,0">
-                                        <Label x:Name="LblHora" VerticalOptions="Center" />
+                                        <Label x:Name="LblHora" Text="LblHoraEntry" VerticalOptions="Center" />
                                         <TimePicker Format="hh:mm tt" x:Name="TimePickerHora" WidthRequest="100" />
                                     </StackLayout>
                                 </AbsoluteLayout>
@@ -81,7 +81,8 @@
                                                          HorizontalOptions="FillAndExpand"
                                                          HeightRequest="50"
                                                          Image="ic_arrow_drop_down.png"
-                                                         Title="Seleccione..." x:Name="PickerDireccion" />
+                                                         Title="Seleccione..." x:Name="PickerDireccion"
+                                                         SelectedIndexChanged="PickerDirecciones_SelectedIndexChanged"/>
                                         <Button x:Name="AgregarDireccion" Text="Otra"
                                                 Command="{Binding NavigateCommand}" HorizontalOptions="End" />
                                     </StackLayout>
@@ -107,7 +108,7 @@
                                     <StackLayout Orientation="Horizontal" Padding="20,0,20,0">
                                         <Label Text="Nombres (*): " x:Name="LblNombres"
                                                HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
-                                        <Entry x:Name="NombresEntry">
+                                        <Entry x:Name="NombrePersonaAutorizadaEntry">
                                             <Entry.WidthRequest>
                                                 <OnPlatform x:TypeArguments="x:Double">
                                                     <On Platform="iOS">120</On>
@@ -123,7 +124,7 @@
                                     <StackLayout Orientation="Horizontal" Padding="20,0,20,0">
                                         <Label Text="Identificación (*):  " x:Name="LblIdentificacion"
                                                HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
-                                        <Entry x:Name="IdentificacionEntry">
+                                        <Entry x:Name="IdentificacionPersonaAutorizadaEntry">
                                             <Entry.WidthRequest>
                                                 <OnPlatform x:TypeArguments="x:Double">
                                                     <On Platform="iOS">120</On>
@@ -178,7 +179,7 @@
                                     <StackLayout Orientation="Horizontal" Padding="20,0,20,0">
                                         <Button x:Name="GuardarBtn" Text="Guardar" Clicked="GuardarBtn_Clicked"
                                                 HorizontalOptions="Center" />
-                                        <Button x:Name="LimpiarBtn" Text="Limpiar" HorizontalOptions="CenterAndExpand" />
+                                        <Button x:Name="LimpiarBtn" Text="Limpiar" HorizontalOptions="CenterAndExpand" Clicked="LimpiarBtn_Clicked"/>
                                         <Button x:Name="VolverBtn" Text="Volver" HorizontalOptions="EndAndExpand" />
                                     </StackLayout>
                                 </AbsoluteLayout>
