@@ -117,6 +117,7 @@
     <Compile Include="Helper\AuthenticationHelper.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="RoundedCornerViewRenderer.cs" />
     <Compile Include="Services\FileHelper.cs" />
     <None Include="app.config" />
     <BundleResource Include="Connected Services\Office365\ConnectedService.json" />

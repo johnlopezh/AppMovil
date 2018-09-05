@@ -23,8 +23,8 @@ namespace SGSApp.Views.Home
             LblUsername.Text = GlobalVariables.Usuario;
             BindingContext = new MainPageMasterViewModel();
             if (Device.RuntimePlatform == Device.iOS) Icon = "hamburger-icon-menu.png";
-
             ListView = MenuItemsListView;
+
         }
 
         public ImageSource ImageURL { get; set; }
@@ -51,13 +51,13 @@ namespace SGSApp.Views.Home
                     },
                     new MainPageMenuItem
                     {
-                        Id = 5, Icon = "ic_phonebook.png", Title = "Carnet Virtual",
+                        Id = 5, Icon = "ic_calendario.png", Title = "Carnet Virtual",
                         TargetType = typeof(CarnetVirtual)
                     },
                     new MainPageMenuItem
                         {Id = 5, Icon = "ic_intranet.png", Title = "SGS Members", TargetType = typeof(Intranet)},
-                    new MainPageMenuItem
-                        {Id = 6, Icon = "ic_intranet.png", Title = "Notificaciones", TargetType = typeof(Prueba)},
+                    /* new MainPageMenuItem
+                        {Id = 6, Icon = "ic_intranet.png", Title = "Notificaciones", TargetType = typeof(Prueba)}, */
                     //new MainPageMenuItem { Id = 7, Icon = "ic_intranet.png", Title = "Notificaciones-bd" , TargetType =  typeof(ListaNotificacionesView) },
                     new MainPageMenuItem
                         {Id = 8, Icon = "ic_vpn_key.png", Title = "Cerrar Sesión", TargetType = typeof(logout)}

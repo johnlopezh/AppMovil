@@ -26,9 +26,9 @@ namespace SGSApp.Views.Master
                 AutomationId = "zxingBarcodeImageView"
             };
             barcode.BarcodeFormat = BarcodeFormat.QR_CODE;
-            barcode.BarcodeOptions.Width = 300;
-            barcode.BarcodeOptions.Height = 300;
-            barcode.BarcodeOptions.Margin = 10;
+            barcode.BarcodeOptions.Width = 400;
+            barcode.BarcodeOptions.Height = 400;
+            barcode.BarcodeOptions.Margin = 6;
             ConsultarInfoUsuario();
             barcode.BarcodeValue = numeroIdentificacion;
 
