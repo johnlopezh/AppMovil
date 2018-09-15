@@ -13,12 +13,12 @@ namespace SGSApp.Views.Master
     {
         private readonly UserVM obj = new UserVM();
         private readonly ZXingBarcodeImageView barcode;
-
         private string numeroIdentificacion;
-
+        public ImageSource ImageURL { get; set; }
         public CarnetVirtual()
         {
             InitializeComponent();
+            nombreUsuario.Text = GlobalVariables.Usuario;
             barcode = new ZXingBarcodeImageView
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -26,9 +26,9 @@ namespace SGSApp.Views.Master
                 AutomationId = "zxingBarcodeImageView"
             };
             barcode.BarcodeFormat = BarcodeFormat.QR_CODE;
-            barcode.BarcodeOptions.Width = 400;
-            barcode.BarcodeOptions.Height = 400;
-            barcode.BarcodeOptions.Margin = 6;
+            barcode.BarcodeOptions.Width = 500;
+            barcode.BarcodeOptions.Height = 500;
+            barcode.BarcodeOptions.Margin = 2;
             ConsultarInfoUsuario();
             barcode.BarcodeValue = numeroIdentificacion;
 

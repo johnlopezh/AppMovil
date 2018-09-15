@@ -1,19 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:SGSApp"
-             xmlns:ms="clr-namespace:SGSApp.Controls"
-             x:Class="SGSApp.Views.Acumen.CrearSolicitudTransporte"
-             xmlns:autocomplete="clr-namespace:Syncfusion.SfAutoComplete.XForms;assembly=Syncfusion.SfAutoComplete.XForms"
-             BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Creación Solicitud Transporte">
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:SGSApp" xmlns:ms="clr-namespace:SGSApp.Controls" x:Class="SGSApp.Views.Acumen.CrearSolicitudTransporte" xmlns:autocomplete="clr-namespace:Syncfusion.SfAutoComplete.XForms;assembly=Syncfusion.SfAutoComplete.XForms" BindingContext="{Binding Main, Source={StaticResource Locator}}" Title="Creación Solicitud Transporte">
     <ContentPage.Content>
-
         <AbsoluteLayout HorizontalOptions="FillAndExpand">
             <StackLayout Padding="10,5,0,0">
-                <Label x:Name="LblNombreSolicitud" HorizontalTextAlignment="Center" FontSize="18" TextColor="Black"
-                       HorizontalOptions="Fill" Text="Creación Solicitud Transporte" />
+                <Label x:Name="LblNombreSolicitud" HorizontalTextAlignment="Center" FontSize="18" TextColor="Black" HorizontalOptions="Fill" Text="Creación Solicitud Transporte" />
             </StackLayout>
             <StackLayout Padding="0,30,0,0">
                 <TableView>
@@ -25,8 +15,7 @@
                                     <Label x:Name="NombreSolicitud" VerticalOptions="Center" HorizontalOptions="FillAndExpand"></Label>
                                     </StackLayout>-->
                                     <StackLayout Orientation="Horizontal" Padding="20,10,20,0">
-                                        <Label x:Name="NombreEstudiante" VerticalOptions="Center"
-                                               HorizontalOptions="Start" />
+                                        <Label x:Name="NombreEstudiante" VerticalOptions="Center" HorizontalOptions="Start" />
                                         <Label x:Name="NombreCurso" HorizontalOptions="FillAndExpand" />
                                     </StackLayout>
                                 </AbsoluteLayout>
@@ -35,8 +24,7 @@
                                 <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                     <StackLayout Orientation="Horizontal" Padding="20,0,20,0">
                                         <Label x:Name="FechaM" VerticalOptions="Center" />
-                                        <Editor IsEnabled="False" HorizontalOptions="Center"
-                                                x:Name="FechasSeleccionadasEntry">
+                                        <Editor IsEnabled="False" HorizontalOptions="Center" x:Name="FechasSeleccionadasEntry">
                                             <Editor.WidthRequest>
                                                 <OnPlatform x:TypeArguments="x:Double">
                                                     <On Platform="iOS">160</On>
@@ -44,10 +32,8 @@
                                                 </OnPlatform>
                                             </Editor.WidthRequest>
                                         </Editor>
-                                        <Button x:Name="FechaMultiple" Text="Seleccionar" Clicked="Button_Clicked"
-                                                HorizontalOptions="End" />
-                                        <Button x:Name="Fecha" Text="Seleccionar" Clicked="Button_Clicked_1"
-                                                HorizontalOptions="End" />
+                                        <Button x:Name="FechaMultiple" Text="Seleccionar" Clicked="Button_Clicked" HorizontalOptions="End" />
+                                        <Button x:Name="Fecha" Text="Seleccionar" Clicked="Button_Clicked_1" HorizontalOptions="End" />
                                     </StackLayout>
                                 </AbsoluteLayout>
                             </ViewCell>
@@ -64,11 +50,8 @@
                             <ViewCell x:Name="LugarEntregarDireccion">
                                 <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                     <StackLayout Orientation="Horizontal" Padding="20,0,20,0">
-                                        <Switch HorizontalOptions="LayoutOptions.Center"
-                                                VerticalOptions="LayoutOptions.CenterAndExpand"
-                                                Toggled="SwitchToggledDireccion" x:Name="SwitchDireccion" />
-                                        <Label Text="Dirección (*): " x:Name="LblDireccion"
-                                               HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
+                                        <Switch HorizontalOptions="LayoutOptions.Center" VerticalOptions="LayoutOptions.CenterAndExpand" Toggled="SwitchToggledDireccion" x:Name="SwitchDireccion" />
+                                        <Label Text="Dirección (*): " x:Name="LblDireccion" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
                                         <!--<Entry x:Name="DireccionEntry">
                                             <Entry.WidthRequest>
                                                 <OnPlatform x:TypeArguments="x:Double">
@@ -77,27 +60,17 @@
                                                 </OnPlatform>
                                             </Entry.WidthRequest>
                                         </Entry>-->
-                                        <ms:CustomPicker ItemsSource="{Binding Direcciones}"
-                                                         HorizontalOptions="FillAndExpand"
-                                                         HeightRequest="50"
-                                                         Image="ic_arrow_drop_down.png"
-                                                         Title="Seleccione..." x:Name="PickerDireccion"
-                                                         SelectedIndexChanged="PickerDirecciones_SelectedIndexChanged"/>
-                                        <Button x:Name="AgregarDireccion" Text="Otra"
-                                                Command="{Binding NavigateCommand}" HorizontalOptions="End" />
+                                        <ms:CustomPicker ItemsSource="{Binding Direcciones}" HorizontalOptions="FillAndExpand" HeightRequest="50" Image="ic_arrow_drop_down.png" Title="Seleccione..." x:Name="PickerDireccion" SelectedIndexChanged="PickerDirecciones_SelectedIndexChanged" />
+                                        <Button x:Name="AgregarDireccion" Text="Otra" Command="{Binding NavigateCommand}" HorizontalOptions="End" />
                                     </StackLayout>
                                 </AbsoluteLayout>
                             </ViewCell>
                             <ViewCell x:Name="LugarEntregarCompañero">
                                 <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                     <StackLayout Orientation="Horizontal" Padding="20,5,20,0">
-                                        <Switch HorizontalOptions="LayoutOptions.Center"
-                                                Toggled="SwitchToggledCompanero" x:Name="SwitchCompañero" />
-                                        <Label Text="Compañero (*): " x:Name="LblCompañero"
-                                               HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
-                                        <autocomplete:SfAutoComplete HeightRequest="30" WidthRequest="120"
-                                                                     x:Name="autocompleteCompañero"
-                                                                     SuggestionMode="Contains" />
+                                        <Switch HorizontalOptions="LayoutOptions.Center" Toggled="SwitchToggledCompanero" x:Name="SwitchCompañero" />
+                                        <Label Text="Compañero (*): " x:Name="LblCompañero" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
+                                        <autocomplete:SfAutoComplete HeightRequest="30" WidthRequest="120" x:Name="autocompleteCompañero" SuggestionMode="Contains" />
                                     </StackLayout>
                                 </AbsoluteLayout>
                             </ViewCell>
@@ -106,8 +79,7 @@
                             <ViewCell x:Name="NombrePersonaAutorizada">
                                 <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                     <StackLayout Orientation="Horizontal" Padding="20,0,20,0">
-                                        <Label Text="Nombres (*): " x:Name="LblNombres"
-                                               HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
+                                        <Label Text="Nombres (*): " x:Name="LblNombres" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
                                         <Entry x:Name="NombrePersonaAutorizadaEntry">
                                             <Entry.WidthRequest>
                                                 <OnPlatform x:TypeArguments="x:Double">
@@ -122,8 +94,7 @@
                             <ViewCell x:Name="IdentificacionPersonaAutorizada">
                                 <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                     <StackLayout Orientation="Horizontal" Padding="20,0,20,0">
-                                        <Label Text="Identificación (*):  " x:Name="LblIdentificacion"
-                                               HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
+                                        <Label Text="Identificación (*):  " x:Name="LblIdentificacion" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
                                         <Entry x:Name="IdentificacionPersonaAutorizadaEntry">
                                             <Entry.WidthRequest>
                                                 <OnPlatform x:TypeArguments="x:Double">
@@ -140,8 +111,7 @@
                             <ViewCell x:Name="TelefonoViewCell">
                                 <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                     <StackLayout Orientation="Horizontal" Padding="20,0,20,0">
-                                        <Label x:Name="TelefonoContactoLbl" HorizontalOptions="FillAndExpand"
-                                               VerticalOptions="CenterAndExpand" />
+                                        <Label x:Name="TelefonoContactoLbl" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
                                         <Entry Keyboard="Telephone" x:Name="TelefonoContactoEntry">
                                             <Entry.WidthRequest>
                                                 <OnPlatform x:TypeArguments="x:Double">
@@ -156,8 +126,7 @@
                             <ViewCell>
                                 <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                     <StackLayout Orientation="Horizontal" Padding="20,0,20,0">
-                                        <Label x:Name="MotivoLbl" HorizontalOptions="FillAndExpand"
-                                               VerticalOptions="CenterAndExpand" />
+                                        <Label x:Name="MotivoLbl" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
                                         <Entry x:Name="MotivoEntry">
                                             <Entry.WidthRequest>
                                                 <OnPlatform x:TypeArguments="x:Double">
@@ -177,9 +146,8 @@
                                 </AbsoluteLayout>
                                 <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                     <StackLayout Orientation="Horizontal" Padding="20,0,20,0">
-                                        <Button x:Name="GuardarBtn" Text="Guardar" Clicked="GuardarBtn_Clicked"
-                                                HorizontalOptions="Center" />
-                                        <Button x:Name="LimpiarBtn" Text="Limpiar" HorizontalOptions="CenterAndExpand" Clicked="LimpiarBtn_Clicked"/>
+                                        <Button x:Name="GuardarBtn" Text="Guardar" Clicked="GuardarBtn_Clicked" HorizontalOptions="Center" />
+                                        <Button x:Name="LimpiarBtn" Text="Limpiar" HorizontalOptions="CenterAndExpand" Clicked="LimpiarBtn_Clicked" />
                                         <Button x:Name="VolverBtn" Text="Volver" HorizontalOptions="EndAndExpand" />
                                     </StackLayout>
                                 </AbsoluteLayout>
@@ -187,148 +155,78 @@
                         </TableSection>
                     </TableRoot>
                 </TableView>
-
             </StackLayout>
             <!-- Overlay Multiples Fechas -->
-            <ContentView x:Name="overlayFechaM"
-                         AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
-                         AbsoluteLayout.LayoutFlags="All"
-                         IsVisible="False"
-                         BackgroundColor="#C0808080"
-                         Padding="10, 0">
-                <Frame
-                    BackgroundColor="White"
-                    HeightRequest="310"
-                    WidthRequest="300"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Start"
-                    Margin="0,30,0,0"
-                    Padding="0">
-                    <StackLayout Orientation="Vertical"
-                                 BackgroundColor="White"
-                                 HeightRequest="310"
-                                 WidthRequest="300"
-                                 HorizontalOptions="Center"
-                                 VerticalOptions="Start"
-                                 Margin="0,23,0,0">
+            <ContentView x:Name="overlayFechaM" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" IsVisible="False" BackgroundColor="#C0808080" Padding="10, 0">
+                <Frame BackgroundColor="White" HeightRequest="310" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,30,0,0" Padding="0">
+                    <StackLayout Orientation="Vertical" BackgroundColor="White" HeightRequest="310" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,23,0,0">
 
-                        <Label WidthRequest="300" BackgroundColor="{StaticResource Primary}" FontSize="18"
-                               TextColor="White" HorizontalOptions="CenterAndExpand" Text="Calendario Académico" />
-                        <StackLayout Orientation="Horizontal">
-                            <Label FontSize="15" TextColor="Black" HorizontalOptions="Fill"
-                                   Text="Seleccione las fechas que necesite:" />
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                            <ListView ItemsSource="{Binding Items}" ms:MultiSelectListView.IsMultiSelect="True"
-                                      Grid.Row="1" Grid.ColumnSpan="1">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <ms:SelectableViewCell>
-                                            <!--set the selected indicator (optional)-->
-                                            <ms:SelectableViewCell.CheckView>
-                                                <BoxView Color="GreenYellow" WidthRequest="12" HeightRequest="12" />
-                                            </ms:SelectableViewCell.CheckView>
-                                            <!--set the content (optional)-->
-                                            <ms:SelectableViewCell.DataView>
-                                                <Label Text="{Binding}" />
-                                            </ms:SelectableViewCell.DataView>
-                                        </ms:SelectableViewCell>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
-                        </StackLayout>
-
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                            <Button Text="Cancelar" FontSize="Large" VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="Center" Clicked="OnCancelFechaMButtonClicked" />
-                            <Button Text="Aceptar" FontSize="Large" VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="Center" Command="{Binding RemoveSelectedCommand}" />
-                        </StackLayout>
+                            
+                            <Label WidthRequest="300" BackgroundColor="{StaticResource Primary}" FontSize="18" TextColor="White" HorizontalOptions="CenterAndExpand" Text="Calendario Académico" />
+                            <StackLayout Orientation="Horizontal">
+                                <Label FontSize="15" TextColor="Black" HorizontalOptions="Fill" Text="Seleccione las fechas que necesite:" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                                <ListView ItemsSource="{Binding Items}" ms:MultiSelectListView.IsMultiSelect="True" Grid.Row="1" Grid.ColumnSpan="1">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ms:SelectableViewCell>
+                                                <!--set the selected indicator (optional)-->
+                                                <ms:SelectableViewCell.CheckView>
+                                                    <BoxView Color="GreenYellow" WidthRequest="12" HeightRequest="12" />
+                                                </ms:SelectableViewCell.CheckView>
+                                                <!--set the content (optional)-->
+                                                <ms:SelectableViewCell.DataView>
+                                                    <Label Text="{Binding}" />
+                                                </ms:SelectableViewCell.DataView>
+                                            </ms:SelectableViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                                <Button Text="Cancelar" FontSize="Large" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Clicked="OnCancelFechaMButtonClicked" />
+                                <Button Text="Aceptar" FontSize="Large" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Command="{Binding RemoveSelectedCommand}" />
+                            </StackLayout>
+      
                     </StackLayout>
                 </Frame>
             </ContentView>
-
             <!-- Overlay Fecha desde -->
-            <ContentView x:Name="overlayFecha"
-                         AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
-                         AbsoluteLayout.LayoutFlags="All"
-                         IsVisible="False"
-                         BackgroundColor="#C0808080"
-                         Padding="10, 0">
-                <Frame
-                    BackgroundColor="White"
-                    HeightRequest="240"
-                    WidthRequest="300"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Start"
-                    Margin="0,30,0,0"
-                    Padding="0">
-                    <StackLayout Orientation="Vertical"
-                                 BackgroundColor="White"
-                                 HeightRequest="240"
-                                 WidthRequest="300"
-                                 HorizontalOptions="Center"
-                                 VerticalOptions="Start"
-                                 Margin="0,30,0,0">
-
-                        <Label WidthRequest="300" BackgroundColor="{StaticResource Primary}" FontSize="18"
-                               TextColor="White" HorizontalOptions="CenterAndExpand" Text="Calendario Académico" />
+            <ContentView x:Name="overlayFecha" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" IsVisible="False" BackgroundColor="#C0808080" Padding="10, 0">
+                <Frame BackgroundColor="White" HeightRequest="240" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,30,0,0" Padding="0">
+                    <StackLayout Orientation="Vertical" BackgroundColor="White" HeightRequest="240" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,30,0,0">
+                        <Label WidthRequest="300" BackgroundColor="{StaticResource Primary}" FontSize="18" TextColor="White" HorizontalOptions="CenterAndExpand" Text="Calendario Académico" />
                         <StackLayout Orientation="Horizontal">
-                            <Label FontSize="15" TextColor="Black" HorizontalOptions="Fill"
-                                   Text="Seleccione la fecha desde que desea realizar el cambio:" />
+                            <Label FontSize="15" TextColor="Black" HorizontalOptions="Fill" Text="Seleccione la fecha desde que desea realizar el cambio:" />
                         </StackLayout>
                         <ScrollView>
                             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                                 <!--<controls:BindableRadioGroup x:Name="bindableRadioGroupFechas" ></controls:BindableRadioGroup>-->
-                                <ms:CustomPicker HorizontalOptions="FillAndExpand"
-                                                 WidthRequest="250"
-                                                 SelectedIndexChanged="PickerFechas_SelectedIndexChanged"
-                                                 Image="ic_arrow_drop_down.png"
-                                                 Title="Seleccione..." x:Name="PickerFechas" />
-
+                                <ms:CustomPicker HorizontalOptions="FillAndExpand" WidthRequest="250" SelectedIndexChanged="PickerFechas_SelectedIndexChanged" Image="ic_arrow_drop_down.png" Title="Seleccione..." x:Name="PickerFechas" />
                             </StackLayout>
                         </ScrollView>
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                            <Button Text="Cancelar" FontSize="Large" VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="Center" Clicked="OnCancelFechaButtonClicked" />
-                            <Button Text="Aceptar" FontSize="Large" VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="Center" Command="{Binding SeleccionarFecha}" />
+                            <Button Text="Cancelar" FontSize="Large" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Clicked="OnCancelFechaButtonClicked" />
+                            <Button Text="Aceptar" FontSize="Large" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Command="{Binding SeleccionarFecha}" />
                         </StackLayout>
                     </StackLayout>
                 </Frame>
             </ContentView>
-
             <!-- Overlay Mensaje de Confirmación-->
-            <ContentView x:Name="overlayConfirmacion"
-                         AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
-                         AbsoluteLayout.LayoutFlags="All"
-                         IsVisible="False"
-                         BackgroundColor="#C0808080"
-                         Padding="10, 0">
-
-                <StackLayout Orientation="Vertical"
-                             BackgroundColor="White"
-                             HeightRequest="280"
-                             WidthRequest="300"
-                             HorizontalOptions="Center"
-                             VerticalOptions="Start"
-                             Margin="0,30,0,0">
-
-                    <Label BackgroundColor="{StaticResource Primary}" FontSize="18" TextColor="White"
-                           HorizontalOptions="Fill" Text="Notificación Solicitud Transporte" />
+            <ContentView x:Name="overlayConfirmacion" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" IsVisible="False" BackgroundColor="#C0808080" Padding="10, 0">
+                <StackLayout Orientation="Vertical" BackgroundColor="White" HeightRequest="280" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,30,0,0">
+                    <Label BackgroundColor="{StaticResource Primary}" FontSize="18" TextColor="White" HorizontalOptions="Fill" Text="Notificación Solicitud Transporte" />
                     <ScrollView>
                         <!-- Start: Need to center justify here -->
                         <StackLayout HorizontalOptions="FillAndExpand" Padding="0, 25, 0, 50" Spacing="0">
                             <!--<Label Text="Trouble logging in?" TextColor="#1e3c66" FontAttributes="Bold" XAlign="Center"/>-->
-                            <Label FontSize="Small"
-                                   Text="Su solicitud se ha enviado satisfactoriamente. Durante el transcurso del día, recibirá una comunicación al correo institucional (sgs.edu.co), en la que se informará si su solicitud fue aprobada. Es importante recordar que cuando se trata de cambios de ruta, la aprobación de la solicitud está sujeta a la disponibilidad de cupo en la ruta correspondiente."
-                                   TextColor="#81838c" LineBreakMode="WordWrap" XAlign="Center" />
+                            <Label FontSize="Small" Text="Su solicitud se ha enviado satisfactoriamente. Durante el transcurso del día, recibirá una comunicación al correo institucional (sgs.edu.co), en la que se informará si su solicitud fue aprobada. Es importante recordar que cuando se trata de cambios de ruta, la aprobación de la solicitud está sujeta a la disponibilidad de cupo en la ruta correspondiente." TextColor="#81838c" LineBreakMode="WordWrap" XAlign="Center" />
                         </StackLayout>
                         <!-- End: Need to center justify here -->
                     </ScrollView>
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                        <Button Text="Cerrar" FontSize="Large" VerticalOptions="CenterAndExpand"
-                                HorizontalOptions="Center" Clicked="OnCancelConfirmacionButtonClicked" />
+                        <Button Text="Cerrar" FontSize="Large" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Clicked="OnCancelConfirmacionButtonClicked" />
                     </StackLayout>
                 </StackLayout>
             </ContentView>

@@ -393,8 +393,8 @@ namespace SGSApp.Views.Acumen
             };
             resultadoTransporte = await objTransporte.GuardarSolicitudTransporte(solicitudTranspote);
         }
-
-        private async Task GuardarBtn_Clicked(object sender, EventArgs e)
+       
+        public async Task GuardarBtn_Clicked(object sender, EventArgs e)
         {
             if (await validarFormulario())
             {
