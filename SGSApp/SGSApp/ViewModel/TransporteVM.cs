@@ -259,6 +259,7 @@ namespace SGSApp.ViewModel
 
         public async Task<int> GuardarSolicitudTransporte(SolicitudTransporteApp solicitudTranspote)
         {
+
             try
             {
                 var rt = string.Empty;

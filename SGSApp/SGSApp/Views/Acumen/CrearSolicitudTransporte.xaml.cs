@@ -6,6 +6,7 @@ using SGSApp.Helper;
 using SGSApp.Interfaces;
 using SGSApp.Models;
 using SGSApp.ViewModel;
+using SGSApp.Views.Master;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -61,9 +62,32 @@ namespace SGSApp.Views.Acumen
         private int resultadoTransporte;
         private string TipoIdentCompanero;
 
+        public bool? FechaMultipleHabilitada;
+        public bool? CampoHoraHabilitada;
+        public bool? CampoDireccionHabilitado;
+        public bool? BotonDireccionHabilitado;
+        public bool? CampoCompaneroHabilitado;
+        public bool? CampoNombrePHabilitado;
+        public bool? CampoIdentPHabilitado;
+        public bool? CampoTelefonoHabilitado;
+        public bool? CampoObsHabilitado;
+
+        private TransporteVM ViewModel => BindingContext as TransporteVM;
+
         public CrearSolicitudTransporte(TipoSolicitudTransporte tp, Estudiante est)
         {
             InitializeComponent();
+
+            FechaMultipleHabilitada = tp.FechaMultipleHabilitada;
+            CampoHoraHabilitada = tp.CampoHoraHabilitado;
+            CampoDireccionHabilitado = tp.CampoDireccionHabilitado;
+            BotonDireccionHabilitado = tp.BotonDireccionHabilitado;
+            CampoCompaneroHabilitado = tp.CampoCompaneroHabilitado;
+            CampoNombrePHabilitado = tp.CampoNombrePHabilitado;
+            CampoIdentPHabilitado = tp.CampoIdentPHabilitado;
+            CampoTelefonoHabilitado = tp.CampoTelefonoHabilitado;
+            CampoObsHabilitado = tp.CampoObsHabilitado;
+
             SwitchDireccion.IsToggled = true;
             autocompleteCompañero.IsEnabled = false;
 
@@ -203,7 +227,7 @@ namespace SGSApp.Views.Acumen
                 {
                     FechasSeleccionadas[inc] = item.Data;
                     //FechasSeleccionadasEntry.Text = "2018-01-29, 2018-02-01,";
-                    FechasSeleccionadasEntry.Text =   string.Concat(FechasSeleccionadasEntry.Text, item.Data, ",");
+                    FechasSeleccionadasEntry.Text = string.Concat(FechasSeleccionadasEntry.Text, item.Data, ",");
                     FechasSeleccionadasEntry.Text = FechasSeleccionadasEntry.Text.TrimEnd(',');
                     inc++;
                 }
@@ -334,7 +358,7 @@ namespace SGSApp.Views.Acumen
         private async void OnCancelConfirmacionButtonClicked(object sender, EventArgs e)
         {
             overlayConfirmacion.IsVisible = false;
-            await Navigation.PushModalAsync(new DashboardConsultaTransporte());
+            await Navigation.PopModalAsync();
         }
 
         private void Button_Clicked_1(object sender, EventArgs e)
@@ -365,33 +389,41 @@ namespace SGSApp.Views.Acumen
 
         private async Task GuardarSolicitud()
         {
-            var solicitudTranspote = new SolicitudTransporteApp
+            try
             {
-                IdTipoSolicitudTransporte = IdTipoSolicitudTransporte,
-                TipoIdentSolicitante = TipoIdentSolicitante,
-                IdentificacionSolicitante = IdentificacionSolicitante,
-                Temporal = Temporal,
-                Permanente = Permanente,
-                Hora = Hora,
-                IdDireccion = dir.IdDireccion,
-                IdentificacionCompanero = null,
-                TipoIdentCompanero = null,
-                NombreAutorizado = NombrePersonaAutorizadaEntry.Text,
-                IdentificacionAutorizado = IdentificacionPersonaAutorizadaEntry.Text,
-                Telefono = Convert.ToInt32(TelefonoContactoEntry.Text),
-                JornadaMananaHabilitada = JornadaMananaHabilitada,
-                JornadaTardeHabilitada = JornadaTardeHabilitada,
-                JornadaExtraHabilitada = JornadaExtraHabilitada,
-                JornadaExtenHabilitada = JornadaExtenHabilitada,
-                Observaciones = MotivoEntry.Text,
-                EstadoSolicitud = EstadoSolicitud,
-                UsuarioLog = UsuarioLog,
-                FechaSolicitud = DateTime.Now,
-                PeriodoLectivo = 13,
-                fechas = FechasSeleccionadasEntry.Text = FechasSeleccionadasEntry.Text.TrimEnd(','),
-                rol = 6
-            };
-            resultadoTransporte = await objTransporte.GuardarSolicitudTransporte(solicitudTranspote);
+                var solicitudTranspote = new SolicitudTransporteApp
+                {
+                    IdTipoSolicitudTransporte = IdTipoSolicitudTransporte,
+                    TipoIdentSolicitante = TipoIdentSolicitante,
+                    IdentificacionSolicitante = IdentificacionSolicitante,
+                    Temporal = Temporal,
+                    Permanente = Permanente,
+                    Hora = Hora,
+                    IdDireccion = (dir != null) ? dir.IdDireccion  : 0,
+                    IdentificacionCompanero = null,
+                    TipoIdentCompanero = null,
+                    NombreAutorizado = NombrePersonaAutorizadaEntry.Text,
+                    IdentificacionAutorizado = IdentificacionPersonaAutorizadaEntry.Text,
+                    Telefono = Convert.ToInt32(TelefonoContactoEntry.Text),
+                    JornadaMananaHabilitada = JornadaMananaHabilitada,
+                    JornadaTardeHabilitada = JornadaTardeHabilitada,
+                    JornadaExtraHabilitada = JornadaExtraHabilitada,
+                    JornadaExtenHabilitada = JornadaExtenHabilitada,
+                    Observaciones = MotivoEntry.Text,
+                    EstadoSolicitud = EstadoSolicitud,
+                    UsuarioLog = UsuarioLog,
+                    FechaSolicitud = DateTime.Now,
+                    PeriodoLectivo = 13,
+                    fechas = FechasSeleccionadasEntry.Text = FechasSeleccionadasEntry.Text.TrimEnd(','),
+                    rol = 6
+                };
+                resultadoTransporte = await objTransporte.GuardarSolicitudTransporte(solicitudTranspote);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
         }
 
         private async Task GuardarBtn_Clicked(object sender, EventArgs e)
@@ -399,6 +431,7 @@ namespace SGSApp.Views.Acumen
             if (await validarFormulario())
             {
                 await GuardarSolicitud();
+                
                 if (resultadoTransporte == 1)
                     overlayConfirmacion.IsVisible = true;
             }
@@ -412,29 +445,52 @@ namespace SGSApp.Views.Acumen
                 await this.DisplayAlert("Información incompleta.", "Los campos señalados con asterisco (*) son obligatorios.", "OK");
                 return false;
             }
-            if (String.IsNullOrWhiteSpace(TimePickerHora.Time.ToString()) && Temporal == true)
+            if (String.IsNullOrWhiteSpace(TimePickerHora.Time.ToString()) && Temporal == true && LblHora.IsVisible == true)
+            {
+                await this.DisplayAlert("Información incompleta.", "Los campos señalados con asterisco (*) son obligatorios.", "OK");
+                return false;
+
+            }
+            else
+            {
+                if ((Convert.ToInt32(TimePickerHora.Time.ToString().Substring(0, 2)) < 7 || Convert.ToInt32(TimePickerHora.Time.ToString().Substring(0, 2)) > 19) && Temporal == true && LblHora.IsVisible)
+                {
+                    await this.DisplayAlert("Información incompleta.", "La hora permitida es de las 07:00 a.m hasta las 07:00 p.m", "OK");
+                    return false;
+                }
+                else if (Convert.ToInt32(TimePickerHora.Time.ToString().Substring(0, 2)) == 19 && Convert.ToInt32(TimePickerHora.Time.ToString().Substring(3, 2)) >= 01 && LblHora.IsVisible)
+                {
+                    await this.DisplayAlert("Información incompleta.", "La hora permitida es de las 07:00 a.m hasta las 07:00 p.m", "OK");
+                    return false;
+                }
+            }
+
+            if ((String.IsNullOrWhiteSpace(NombrePersonaAutorizadaEntry.Text) && Temporal == true && CampoNombrePHabilitado == true))
             {
                 await this.DisplayAlert("Información incompleta.", "Los campos señalados con asterisco (*) son obligatorios.", "OK");
                 return false;
             }
-            if ((Convert.ToInt32(TimePickerHora.Time.ToString().Substring(0, 2)) < 7 || Convert.ToInt32(TimePickerHora.Time.ToString().Substring(0, 2)) > 19) && Temporal == true)
-            {
-                await this.DisplayAlert("Información incompleta.", "La hora permitida es de las 07:00 a.m hasta las 07:00 p.m", "OK");
-                return false;
-            } else if (Convert.ToInt32(TimePickerHora.Time.ToString().Substring(0, 2)) == 19 && Convert.ToInt32(TimePickerHora.Time.ToString().Substring(3, 2)) >= 01)
-            {
-                await this.DisplayAlert("Información incompleta.", "La hora permitida es de las 07:00 a.m hasta las 07:00 p.m", "OK");
-                return false;
-            } 
-            if ((String.IsNullOrWhiteSpace(NombrePersonaAutorizadaEntry.Text) || String.IsNullOrWhiteSpace(IdentificacionPersonaAutorizadaEntry.Text) )&& Temporal == true)
+            if ((String.IsNullOrWhiteSpace(IdentificacionPersonaAutorizadaEntry.Text)) && Temporal == true && CampoIdentPHabilitado == true)
             {
                 await this.DisplayAlert("Información incompleta.", "Los campos señalados con asterisco (*) son obligatorios.", "OK");
                 return false;
             }
-            if ((String.IsNullOrWhiteSpace(MotivoEntry.Text)))
+            if ((String.IsNullOrWhiteSpace(MotivoEntry.Text)) && CampoObsHabilitado == true)
             {
                 await this.DisplayAlert("Información incompleta.", "Los campos señalados con asterisco (*) son obligatorios.", "OK");
                 return false;
+            }
+            if ((String.IsNullOrWhiteSpace(TelefonoContactoEntry.Text)) && CampoTelefonoHabilitado == true)
+            {
+                await this.DisplayAlert("Información incompleta.", "Los campos señalados con asterisco (*) son obligatorios.", "OK");
+                return false;
+            }
+            if (dir != null) {
+                if ((String.IsNullOrWhiteSpace(dir.DireccionGrupo)) && CampoDireccionHabilitado == true)
+                {
+                    await this.DisplayAlert("Información incompleta.", "Los campos señalados con asterisco (*) son obligatorios.", "OK");
+                    return false;
+                }
             }
             return true;
         }
