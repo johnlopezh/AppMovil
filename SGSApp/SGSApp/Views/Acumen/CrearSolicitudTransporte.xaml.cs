@@ -425,8 +425,8 @@ namespace SGSApp.Views.Acumen
             }
 
         }
-
-        private async Task GuardarBtn_Clicked(object sender, EventArgs e)
+       
+        public async Task GuardarBtn_Clicked(object sender, EventArgs e)
         {
             if (await validarFormulario())
             {
