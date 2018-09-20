@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System.ComponentModel;
+using System.IO;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using SGSApp.Helper;
 using SGSApp.ViewModel;
@@ -15,12 +17,14 @@ namespace SGSApp.Views.Master
         private readonly UserVM obj = new UserVM();
         private readonly ZXingBarcodeImageView barcode;
         private string numeroIdentificacion;
+
         public ImageSource ImageURL { get; set; }
-        public byte[] ImagenURL2 { get; set; }
         public CarnetVirtual()
         {
             InitializeComponent();
             nombreUsuario.Text = GlobalVariables.Usuario;
+            ImageURL = ImageSource.FromStream(() => { return new MemoryStream(GlobalVariables.imagenUsuario); });
+            BindingContext = new CarnetViewModel();
             barcode = new ZXingBarcodeImageView
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -28,20 +32,42 @@ namespace SGSApp.Views.Master
                 AutomationId = "zxingBarcodeImageView"
             };
             barcode.BarcodeFormat = BarcodeFormat.QR_CODE;
-            barcode.BarcodeOptions.Width = 500;
-            barcode.BarcodeOptions.Height = 500;
+            barcode.BarcodeOptions.Width = 250;
+            barcode.BarcodeOptions.Height = 250;
             barcode.BarcodeOptions.Margin = 0;
             ConsultarInfoUsuario();
-            barcode.BarcodeValue = "1022347504";
+            barcode.BarcodeValue = numeroIdentificacion;
             //this.Content = barcode;
             qrcode.Children.Add(barcode);
+        }
+        private class CarnetViewModel : INotifyPropertyChanged
+        {
+
+            public CarnetViewModel()
+            {
+                ImageURL = ImageSource.FromStream(() => { return new MemoryStream(GlobalVariables.imagenUsuario); });
+
+            }
+
+            public ImageSource ImageURL { get; }
+            #region INotifyPropertyChanged Implementation
+
+            public event PropertyChangedEventHandler PropertyChanged;
+
+            private void OnPropertyChanged([CallerMemberName] string propertyName = "")
+            {
+                if (PropertyChanged == null)
+                    return;
+
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            }
+
+            #endregion
         }
 
         public async Task ConsultarInfoUsuario()
         {
             numeroIdentificacion = await obj.ConsultarInfoUsuario(GlobalVariables.Email);
-            ImagenURL2 = GlobalVariables.imagenUsuario;
-            ImageURL = ImageSource.FromStream(() => { return new MemoryStream(GlobalVariables.imagenUsuario); });
-         }
+        }
     }
 }

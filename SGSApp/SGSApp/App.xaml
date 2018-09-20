@@ -14,6 +14,7 @@
             <Color x:Key="LightBackgroundColor">#FAFAFA</Color>
             <Color x:Key="DarkBackgroundColor">#C0C0C0</Color>
             <Color x:Key="Green">#5cb85c</Color>
+            <Color x:Key="GrayBackground">#f1f3f4</Color>
             <!--Colores Fuentes-->
             <Color x:Key="Light">#FFFFFF</Color>
             <Color x:Key="LightTextColor">#999999</Color>
