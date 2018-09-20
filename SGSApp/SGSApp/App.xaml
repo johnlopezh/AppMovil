@@ -24,7 +24,7 @@
             <Color x:Key="DarkGray">#555555</Color>
             <Color x:Key="GrayFont">#999999</Color>
             <!--Multiplataforma-->
-            <OnPlatform x:Key="GeneralButtonFont" x:TypeArguments="Font" iOS="12" Android="12" WinPhone="12" />
+            <OnPlatform x:Key="GeneralButtonFont" x:TypeArguments="Font" iOS="10" Android="10" WinPhone="10" />
             <!--Botones-->
             <!--Boton btnSuccessful-->
             <Style TargetType="Button">
@@ -35,14 +35,13 @@
                     <Setter Property="TextColor" Value="White" />
                     <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
                     <Setter Property="TextColor" Value="White" />
-                    <Setter Property="FontSize" Value="12" />
                 </Style.Setters>
             </Style>
             <Style TargetType="Button" x:Key="btnCancel">
                 <Style.Setters>
                     <Setter Property="Font" Value="{StaticResource GeneralButtonFont}" />
                     <Setter Property="BorderRadius" Value="5" />
-                    <Setter Property="HeightRequest" Value="35" />
+                    <Setter Property="HeightRequest" Value="30" />
                     <Setter Property="TextColor" Value="White" />
                     <Setter Property="BackgroundColor" Value="{StaticResource Red}" />
                     <Setter Property="TextColor" Value="White" />
@@ -51,8 +50,8 @@
             <Style TargetType="Button" x:Key="btnSuccessful">
                 <Style.Setters>
                     <Setter Property="Font" Value="{StaticResource GeneralButtonFont}" />
-                    <Setter Property="BorderRadius" Value="10" />
-                    <Setter Property="HeightRequest" Value="40" />
+                    <Setter Property="BorderRadius" Value="5" />
+                    <Setter Property="HeightRequest" Value="30" />
                     <Setter Property="TextColor" Value="White" />
                     <Setter Property="BackgroundColor" Value="{StaticResource Green}" />
                     <Setter Property="TextColor" Value="White" />
