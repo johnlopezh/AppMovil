@@ -1,8 +1,12 @@
 ﻿using Foundation;
+using ImageCircle.Forms.Plugin.iOS;
 using UIKit;
+using UXDivers.Gorilla;
+using UXDivers.Gorilla.iOS;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using XamForms.Controls.iOS;
+using XLabs.Forms.Controls;
 using Platform = ZXing.Net.Mobile.Forms.iOS.Platform;
 
 namespace SGSApp.iOS
@@ -25,8 +29,9 @@ namespace SGSApp.iOS
             Platform.Init();
             Forms.Init();
             Calendar.Init();
-
-            LoadApplication(new App());
+            ImageCircleRenderer.Init();
+            //LoadApplication(new App());
+            //LoadApplication(Player.CreateApplication(new Config("Good Gorilla").RegisterAssemblyFromType<CircleImage>()));
 
             return base.FinishedLaunching(app, options);
         }

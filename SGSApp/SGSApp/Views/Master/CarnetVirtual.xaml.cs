@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.IO;
+using System.Threading.Tasks;
 using SGSApp.Helper;
 using SGSApp.ViewModel;
 using Xamarin.Forms;
@@ -15,6 +16,7 @@ namespace SGSApp.Views.Master
         private readonly ZXingBarcodeImageView barcode;
         private string numeroIdentificacion;
         public ImageSource ImageURL { get; set; }
+        public byte[] ImagenURL2 { get; set; }
         public CarnetVirtual()
         {
             InitializeComponent();
@@ -28,10 +30,9 @@ namespace SGSApp.Views.Master
             barcode.BarcodeFormat = BarcodeFormat.QR_CODE;
             barcode.BarcodeOptions.Width = 500;
             barcode.BarcodeOptions.Height = 500;
-            barcode.BarcodeOptions.Margin = 2;
+            barcode.BarcodeOptions.Margin = 0;
             ConsultarInfoUsuario();
-            barcode.BarcodeValue = numeroIdentificacion;
-
+            barcode.BarcodeValue = "1022347504";
             //this.Content = barcode;
             qrcode.Children.Add(barcode);
         }
@@ -39,6 +40,8 @@ namespace SGSApp.Views.Master
         public async Task ConsultarInfoUsuario()
         {
             numeroIdentificacion = await obj.ConsultarInfoUsuario(GlobalVariables.Email);
-        }
+            ImagenURL2 = GlobalVariables.imagenUsuario;
+            ImageURL = ImageSource.FromStream(() => { return new MemoryStream(GlobalVariables.imagenUsuario); });
+         }
     }
 }

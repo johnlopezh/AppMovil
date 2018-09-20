@@ -7,10 +7,8 @@
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
             <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
-                <Image
-                    x:Name="ic_escudosgscolor_fondo_transparente"
-                    HeightRequest="150"
-                    Source="ic_escudosgscolor_fondo_transparente"
+                <Image HeightRequest="150"
+                    Source="ic_escudosgscolor_fondo_transparente.png"
                     WidthRequest="150" />
                 <Grid HorizontalOptions="Center" Padding="10">
                     <Grid.ColumnDefinitions>

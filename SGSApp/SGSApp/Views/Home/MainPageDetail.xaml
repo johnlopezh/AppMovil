@@ -1,18 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SGSApp.Views.Home.MainPageDetail"
-             Title="Inicio"
-             BindingContext="{Binding Menu, Source={StaticResource Locator}}">
+             Title="Inicio"             
+             >
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="ic_notification.png" Command="{Binding GoToCommand}" CommandParameter="Notificaciones" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <ScrollView>
+        <Grid>
+            <Image Source="FondoHome.png" Aspect="AspectFill" />
             <Grid>
-                <Image Source="FondoHome.png" />
-                <StackLayout Spacing="0" Padding="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="170"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="20"></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0">
                     <Grid BackgroundColor="Black" Padding="0" HeightRequest="200">
                         <Image Source="FondoSaludoNombre.png" Aspect="AspectFill" Opacity="0.5" />
                         <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand">
@@ -27,87 +31,91 @@
                                    FontSize="20" />
                         </StackLayout>
                     </Grid>
-                    <StackLayout>
-                        <Grid Padding="3">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="80" />
-                                <RowDefinition Height="80" />
-                                <RowDefinition Height="80" />
-                                <RowDefinition Height="80" />
-                            </Grid.RowDefinitions>
-                            <Image Source="ic_news.png" Grid.Column="0" Grid.Row="0" HorizontalOptions="Center">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer
+                </StackLayout>
+                <StackLayout Spacing="0" Padding="0" Grid.Row="1">
+
+                    <Grid Padding="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="80" />
+                            <RowDefinition Height="80" />
+                            <RowDefinition Height="80" />
+                            <RowDefinition Height="80" />
+                        </Grid.RowDefinitions>
+                        <Image Source="ic_news.png" Grid.Column="0" Grid.Row="0" HorizontalOptions="Center">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer
                                         Command="{Binding GoToCommand}"
                                         CommandParameter="Noticias" />
 
-                                </Image.GestureRecognizers>
-                            </Image>
-                            <Label VerticalOptions="End" HorizontalOptions="Center" Text="Noticias" FontSize="10"
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label VerticalOptions="End" HorizontalOptions="Center" Text="Noticias" FontSize="10"
                                    TextColor="Black" Grid.Row="0" Grid.Column="0" />
 
-                            <Image Source="ic_calendario.png" Grid.Column="1" Grid.Row="0" HorizontalOptions="Center">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer
+                        <Image Source="ic_calendario.png" Grid.Column="1" Grid.Row="0" HorizontalOptions="Center">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer
                                         Command="{Binding GoToCommand}" CommandParameter="Calendario" />
-                                </Image.GestureRecognizers>
-                            </Image>
-                            <Label VerticalOptions="End" HorizontalOptions="Center" Text="Calendario" FontSize="10"
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label VerticalOptions="End" HorizontalOptions="Center" Text="Calendario" FontSize="10"
                                    TextColor="Black" Grid.Row="0" Grid.Column="1" />
 
-                            <Image Source="ic_transporte.png" Grid.Column="2" Grid.Row="0" HorizontalOptions="Center">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer
+                        <Image Source="ic_transporte.png" Grid.Column="2" Grid.Row="0" HorizontalOptions="Center">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer
                                         Command="{Binding GoToCommand}" CommandParameter="Transporte" />
-                                </Image.GestureRecognizers>
-                            </Image>
-                            <Label VerticalOptions="End" HorizontalOptions="Center" Text="Transporte" FontSize="10"
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label VerticalOptions="End" HorizontalOptions="Center" Text="Transporte" FontSize="10"
                                    TextColor="Black" Grid.Row="0" Grid.Column="2" />
 
-                            <Image Source="ic_phonebook.png" Grid.Column="0" Grid.Row="1" HorizontalOptions="Center">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer
+                        <Image Source="ic_phonebook.png" Grid.Column="0" Grid.Row="1" HorizontalOptions="Center">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer
                                         Command="{Binding GoToCommand}" CommandParameter="Extensiones" />
-                                </Image.GestureRecognizers>
-                            </Image>
-                            <Label VerticalOptions="End" HorizontalOptions="Center" Text="Extensiones Telefonicas"
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label VerticalOptions="End" HorizontalOptions="Center" Text="Extensiones Telefonicas"
                                    FontSize="10" TextColor="Black" Grid.Row="1" Grid.Column="0" />
 
-                            <Image Source="ic_intranet.png" Grid.Column="1" Grid.Row="1" HorizontalOptions="Center">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer
+                        <Image Source="ic_intranet.png" Grid.Column="1" Grid.Row="1" HorizontalOptions="Center">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer
                                         Command="{Binding GoToCommand}" CommandParameter="SGSMembers" />
-                                </Image.GestureRecognizers>
-                            </Image>
-                            <Label VerticalOptions="End" HorizontalOptions="Center" Text="SGS Members" FontSize="10"
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label VerticalOptions="End" HorizontalOptions="Center" Text="SGS Members" FontSize="10"
                                    TextColor="Black" Grid.Row="1" Grid.Column="1" />
 
-                            <Image Source="ic_dial.png" Grid.Column="2" Grid.Row="1" HorizontalOptions="Center">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer
+                        <Image Source="ic_dial.png" Grid.Column="2" Grid.Row="1" HorizontalOptions="Center">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer
                                         Command="{Binding GoToCommand}" CommandParameter="Llamar" />
-                                </Image.GestureRecognizers>
-                            </Image>
-                            <Label VerticalOptions="End" HorizontalOptions="Center" Text="Llamar" FontSize="10"
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label VerticalOptions="End" HorizontalOptions="Center" Text="Llamar" FontSize="10"
                                    TextColor="Black" Grid.Row="1" Grid.Column="2" />
 
-                            <Image Source="ic_mail.png" Grid.Column="0" Grid.Row="2" HorizontalOptions="Center">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer
+                        <Image Source="ic_mail.png" Grid.Column="0" Grid.Row="2" HorizontalOptions="Center">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer
                                         Command="{Binding GoToCommand}" CommandParameter="EMail" />
-                                </Image.GestureRecognizers>
-                            </Image>
-                            <Label VerticalOptions="End" HorizontalOptions="Center" Text="E-mail" FontSize="10"
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label VerticalOptions="End" HorizontalOptions="Center" Text="E-mail" FontSize="10"
                                    TextColor="Black" Grid.Row="2" Grid.Column="0" />
-                        </Grid>
-                    </StackLayout>
+                    </Grid>
+                </StackLayout>
+                <StackLayout Grid.Row="2" BackgroundColor="{StaticResource Orange}">
+                    <Label Text="Teléfono :(+0571) 4324000 " HorizontalOptions="Center" TextColor="{StaticResource Light}" FontSize="12"></Label>
                 </StackLayout>
             </Grid>
-        </ScrollView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

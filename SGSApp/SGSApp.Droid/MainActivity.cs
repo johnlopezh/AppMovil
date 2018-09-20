@@ -5,10 +5,17 @@ using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Firebase.Iid;
+using ImageCircle.Forms.Plugin.Droid;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.WindowsAzure.MobileServices;
+using RoundedCornerViewDemo.ControlsToolkit.Custom;
+using UXDivers.Gorilla;
+using UXDivers.Gorilla.Droid;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+using XLabs.Forms.Controls;
+using ZXing.Net.Mobile.Forms;
+using CircleImage = ImageCircle.Forms.Plugin.Abstractions.CircleImage;
 using Platform = ZXing.Net.Mobile.Forms.Android.Platform;
 
 namespace SGSApp.Droid
@@ -35,8 +42,10 @@ namespace SGSApp.Droid
             try
             {
                 Forms.Init(this, bundle);
+                ImageCircleRenderer.Init();
                 //XamForms.Controls.Droid.Calendar.Init();
                 LoadApplication(new App());
+                // LoadApplication(Player.CreateApplication(this, new Config("Good Gorilla").RegisterAssembliesFromTypes<CircleImage, RoundedCornerView, ZXingBarcodeImageView>()));
 
 
                 // Force refresh of the token. If we redeploy the app, no new token will be sent but the old one will

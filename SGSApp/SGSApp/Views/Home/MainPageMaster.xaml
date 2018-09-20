@@ -4,23 +4,28 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SGSApp.Views.Home.MainPageMaster"
              BackgroundImage="FondoHome.png"
-             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              Title="Master"
              >
 
-<ContentPage.Content>
-    <StackLayout Spacing="0">
-        <ListView x:Name="MenuItemsListView"
-                  SeparatorVisibility="Default"
-                  HasUnevenRows="true"         
-                  BackgroundColor="#fafafa"
-                  ItemsSource="{Binding MenuItems}">
-                <ListView.Header>
-                    <Grid HeightRequest="180">
+    <ContentPage.Content>
+        <Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="175"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" Spacing="0">
+                    <Grid>
                         <Image Aspect="AspectFill"  Source="MenuFondo.png"/>
-                        <StackLayout Spacing="0"
-                                 Padding="20">
-                            <controls:CircleImage Source="{Binding ImageURL}" Aspect="AspectFit">
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="85"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <!--<Image Grid.Row="0" Source="ImagenTest.jpg" HeightRequest="85" WidthRequest="85" />-->
+                            <controls:CircleImage  Grid.Row="0" Source="{Binding ImageURL}" Aspect="AspectFit">
                                 <controls:CircleImage.WidthRequest>
                                     <OnPlatform x:TypeArguments="x:Double">
                                         <On Platform="Android">85</On>
@@ -36,36 +41,44 @@
                                     </OnPlatform>
                                 </controls:CircleImage.HeightRequest>
                             </controls:CircleImage>
-                            <!--<Image Source="{Binding ImageURL}" HeightRequest="85" WidthRequest="85" />-->
-                            <Label x:Name="LblUsername" VerticalOptions="CenterAndExpand" Text="{Binding ImageURL}"
+
+                            <Label x:Name="LblUsername" Grid.Row="1" VerticalOptions="CenterAndExpand" Text="John Lopez"
                                HorizontalOptions="Center" TextColor="{StaticResource Light}" FontSize="18" />
-                        </StackLayout>
+                        </Grid>
                     </Grid>
-                </ListView.Header>
-                <ListView.ItemTemplate >  
-                <DataTemplate>
-                    <ViewCell>
-                            <Grid>
-                            <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions >
-                                    <RowDefinition Height="40" />
-                                </Grid.RowDefinitions>
-                                <Image WidthRequest="30" HeightRequest="30" Source="{Binding Icon}"
+                </StackLayout>
+                <StackLayout Spacing="0" Grid.Row="1">
+                    <ListView x:Name="MenuItemsListView"
+                  SeparatorVisibility="Default"
+                  HasUnevenRows="true"         
+                  BackgroundColor="#fafafa"
+                  ItemsSource="{Binding MenuItems}">
+                        <ListView.ItemTemplate >
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions >
+                                            <RowDefinition Height="40" />
+                                        </Grid.RowDefinitions>
+                                        <Image WidthRequest="30" HeightRequest="30" Source="{Binding Icon}"
                                        VerticalOptions="Center" />
-                                <StackLayout Grid.Column="1" VerticalOptions="Center" Spacing="4">
-                                <Label VerticalTextAlignment="Center" Text="{Binding Title}" FontSize="16" />
-                                </StackLayout>
-                            </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-            <ListView.Footer>
-                   <Label VerticalOptions="End"  HorizontalOptions="Center" Text="Versión 1.0.0" />
-            </ListView.Footer>
-        </ListView>
-    </StackLayout>
+                                        <StackLayout Grid.Column="1" VerticalOptions="Center" Spacing="4">
+                                            <Label VerticalTextAlignment="Center" Text="{Binding Title}" FontSize="16" />
+                                        </StackLayout>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+                <StackLayout Grid.Row="2" BackgroundColor="{StaticResource LightGray}">
+                    <Label VerticalOptions="CenterAndExpand"  HorizontalOptions="Center" Text="Versión 1.0.0" />
+                </StackLayout>
+            </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
