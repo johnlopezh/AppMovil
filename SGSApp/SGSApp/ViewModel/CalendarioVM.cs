@@ -129,7 +129,7 @@ namespace SGSApp.ViewModel
         }
 
 
-        public async Task<CalendarioAcademico[]> ConsultarFechasHabilesCalendario()
+        public async Task<CalendarioAcademico[]> ConsultarFechasHabilesCalendario(long IdTipoSolicitudTransporte)
         {
             try
             {
@@ -141,7 +141,7 @@ namespace SGSApp.ViewModel
                 client.DefaultRequestHeaders.Accept.Add(contentType);
                 client.DefaultRequestHeaders.Authorization =
                     new AuthenticationHeaderValue("FedAuth", GlobalVariables.TokenAcumen);
-                var response = client.GetAsync("/api/calendario").Result;
+                var response = client.GetAsync("/api/calendario?IdTipoSolicitudTransporte="+ IdTipoSolicitudTransporte).Result;
                 var stringData = response.Content.ReadAsStringAsync().Result;
 
                 var data = JsonConvert.DeserializeObject<List<CalendarioAcademico>>(

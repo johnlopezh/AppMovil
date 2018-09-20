@@ -84,6 +84,7 @@ namespace SGSApp.Views.Acumen
             //return;
             //ViewModel.ConsultarTiposSolicitud("EstudiantePadre");
             ViewModel.LoadItemsCommand.Execute(null);
+
         }
 
         private void listEstudiantes_ItemSelected(object sender, SelectedItemChangedEventArgs e)

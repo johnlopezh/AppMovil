@@ -239,7 +239,7 @@ namespace SGSApp.Views.Acumen
         private async Task EjecutaTareaAsincrona1()
         {
             //bindableRadioGroupFechas.CheckedChanged += BindableRadioGroupFechas_CheckedChanged;
-            fechasCalendario = await obj.ConsultarFechasHabilesCalendario();
+            fechasCalendario = await obj.ConsultarFechasHabilesCalendario(IdTipoSolicitudTransporte);
             arrFechas = new string[fechasCalendario.Length];
             foreach (var item in fechasCalendario)
             {
@@ -539,5 +539,7 @@ namespace SGSApp.Views.Acumen
             TelefonoContactoEntry.Text = "";
             
         }
+
+       
     }
 }
