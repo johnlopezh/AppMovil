@@ -18,12 +18,10 @@ namespace SGSApp.Views.Master
         private readonly ZXingBarcodeImageView barcode;
         private string numeroIdentificacion;
 
-        public ImageSource ImageURL { get; set; }
         public CarnetVirtual()
         {
             InitializeComponent();
             nombreUsuario.Text = GlobalVariables.Usuario;
-            ImageURL = ImageSource.FromStream(() => { return new MemoryStream(GlobalVariables.imagenUsuario); });
             BindingContext = new CarnetViewModel();
             barcode = new ZXingBarcodeImageView
             {

@@ -45,7 +45,7 @@
                                     <Label x:Name="nombreUsuario" Text="John" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" TextColor="{StaticResource GrayFont}" FontSize="20" />
                                 </StackLayout>
                             </StackLayout>
-                            <StackLayout  x:Name="qrcode"></StackLayout>
+                            <StackLayout HeightRequest="250" WidthRequest="250" x:Name="qrcode"></StackLayout>
                         </StackLayout>
                     </Grid>
                 </Grid>
