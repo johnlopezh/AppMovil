@@ -30,7 +30,7 @@ namespace SGSApp.iOS
             Forms.Init();
             Calendar.Init();
             ImageCircleRenderer.Init();
-            //LoadApplication(new App());
+            LoadApplication(new App());
             //LoadApplication(Player.CreateApplication(new Config("Good Gorilla").RegisterAssemblyFromType<CircleImage>()));
 
             return base.FinishedLaunching(app, options);
