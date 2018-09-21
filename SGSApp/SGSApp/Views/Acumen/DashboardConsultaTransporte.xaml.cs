@@ -76,15 +76,13 @@ namespace SGSApp.Views.Acumen
         {
             base.OnAppearing();
             if (ViewModel == null || ViewModel.IsBusy || ViewModel.EstudianteItems.Count > 0)
-                //mensajeNoK = true;
                 return;
-            //else
-            //if(ViewModel.Error = true)
-            //   this.ShowMessage(MessageSource.messageNoticias, MessageSource.titleGeneral, MessageSource.buttonTextOk, async () => { });
-            //return;
-            //ViewModel.ConsultarTiposSolicitud("EstudiantePadre");
+       
             ViewModel.LoadItemsCommand.Execute(null);
-
+            if(ViewModel.EstudianteItems.Count == 0)
+            {
+                LblSinPersonas.IsVisible = true;
+            }
         }
 
         private void listEstudiantes_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -105,14 +103,10 @@ namespace SGSApp.Views.Acumen
 
             overlay.IsVisible = true;
 
-
-            // Navigation.PushAsync(new NavigationPage(new TipoSolicitudTransporte()));
         }
-
 
         private async Task EjecutaTareaAsincrona1(string tipoPaciente)
         {
-            //bindableRadioGroupPaises.CheckedChanged += BindableRadioGroupPaises_CheckedChanged;
             TiposSol = await obj.ConsultarTiposSolicitud(tipoPaciente);
             arr4 = new string[TiposSol.Length];
 
@@ -131,24 +125,6 @@ namespace SGSApp.Views.Acumen
         {
         }
 
-        //private void BindableRadioGroupPaises_CheckedChanged(object sender, int e)
-        //{
-        //    var radio = sender as CustomRadioButton;
-
-        //    if (radio == null || radio.Id == -1)
-        //    {
-        //        return;
-        //    }
-        //    foreach (var item in TiposSol)
-        //    {
-        //        if (item.NombreTipo == radio.Text)
-        //        {
-        //            slt = item;
-        //            /*Mertodo que navega a la pagina de tipo de solicitud que se ha solcitada*/
-        //        }
-        //    }
-
-        //}
 
 
         /// <summary>

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using SGSApp.Controls;
@@ -6,6 +8,7 @@ using SGSApp.Helper;
 using SGSApp.Interfaces;
 using SGSApp.Models;
 using SGSApp.ViewModel;
+using SGSApp.Views.Home;
 using SGSApp.Views.Master;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -73,6 +76,15 @@ namespace SGSApp.Views.Acumen
         public bool? CampoObsHabilitado;
 
         private TransporteVM ViewModel => BindingContext as TransporteVM;
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private string _pokemonName;
+
+        public string PokemonName
+        {
+            get { return _pokemonName; }
+            set { _pokemonName = value; RaiseOnPropertyChange(); /* RaiseOnPropertyChange("PokemonName") */ }
+        }
 
         public CrearSolicitudTransporte(TipoSolicitudTransporte tp, Estudiante est)
         {
@@ -227,11 +239,12 @@ namespace SGSApp.Views.Acumen
                     FechasSeleccionadas[inc] = item.Data;
                     //FechasSeleccionadasEntry.Text = "2018-01-29, 2018-02-01,";
                     FechasSeleccionadasEntry.Text = string.Concat(FechasSeleccionadasEntry.Text, item.Data, ",");
-                    FechasSeleccionadasEntry.Text = FechasSeleccionadasEntry.Text.TrimEnd(',');
+                    
                     inc++;
                 }
+               
             }
-
+            FechasSeleccionadasEntry.Text = FechasSeleccionadasEntry.Text.TrimEnd(',');
             overlayFechaM.IsVisible = false;
         }
 
@@ -351,13 +364,15 @@ namespace SGSApp.Views.Acumen
 
         private void OnCancelFechaMButtonClicked(object sender, EventArgs e)
         {
+            this.OnRemoveSelected();
             overlayFechaM.IsVisible = false;
         }
 
         private async void OnCancelConfirmacionButtonClicked(object sender, EventArgs e)
         {
             overlayConfirmacion.IsVisible = false;
-            await Navigation.PopModalAsync();
+            await Navigation.PushAsync(new MainPageDetail());
+            //await Navigation.PopModalAsync();
         }
 
         private void Button_Clicked_1(object sender, EventArgs e)
@@ -538,7 +553,20 @@ namespace SGSApp.Views.Acumen
             TelefonoContactoEntry.Text = "";
             
         }
-
        
+        public void RaiseOnPropertyChange([CallerMemberName] string propertyName = null)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
+
     }
 }
