@@ -95,8 +95,8 @@
                                 </ViewCell>
                             </TableSection>
                             <TableSection x:Name="TableSectionPersonaAutorizada">
-                                <EntryCell x:Name="NombrePersonaAutorizadaEntry" Placeholder="Ingrese persona autorizada" Label="(*) Nombre"></EntryCell>
-                                <EntryCell x:Name="IdentificacionPersonaAutorizadaEntry" Placeholder="Número Identificación" Label="(*) Identificación No."></EntryCell>
+                                <EntryCell x:Name="NombrePersonaAutorizadaEntry"  Label="(*) Nombre"></EntryCell>
+                                <EntryCell x:Name="IdentificacionPersonaAutorizadaEntry"  Label="(*) Identificación No."></EntryCell>
                             </TableSection>
                             <TableSection  x:Name="TableSectionInformacion">
                                 <EntryCell x:Name="TelefonoContactoEntry" Keyboard="Telephone" ></EntryCell>
