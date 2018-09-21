@@ -46,7 +46,7 @@ namespace SGSApp.Droid
                 //XamForms.Controls.Droid.Calendar.Init();
                 // LoadApplication(new App());
                 LoadApplication(new App());
-                // LoadApplication(Player.CreateApplication(this, new Config("Good Gorilla").RegisterAssembliesFromTypes<CircleImage, RoundedCornerView, ZXingBarcodeImageView>()));
+                //LoadApplication(Player.CreateApplication(this, new Config("Good Gorilla").RegisterAssembliesFromTypes<CircleImage, RoundedCornerView, ZXingBarcodeImageView>()));
 
 
                 // Force refresh of the token. If we redeploy the app, no new token will be sent but the old one will

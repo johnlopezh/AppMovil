@@ -6,6 +6,7 @@
              xmlns:ms="clr-namespace:SGSApp.Controls"
              x:Class="SGSApp.Views.Acumen.CrearSolicitudTransporte"
              xmlns:autocomplete="clr-namespace:Syncfusion.SfAutoComplete.XForms;assembly=Syncfusion.SfAutoComplete.XForms"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Creación Solicitud Transporte">
     <ContentPage.Content>
@@ -13,24 +14,24 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <StackLayout Grid.Row="0" Padding="10, 0, 10, 0" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="50"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                    </Grid.RowDefinitions>
-                </Grid>
-                <StackLayout Grid.Row="0">
-                    <StackLayout HeightRequest="10" Padding="10"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                        <Label x:Name="LblNombreSolicitud" FontSize="16" TextColor="Black" HorizontalOptions="CenterAndExpand" Text="Creación Solicitud Transporte" />
+            <StackLayout Grid.Row="0" BackgroundColor="Transparent" >
+                <StackLayout  BackgroundColor="{StaticResource GrayBackground}" Padding="10">
+                    <Label x:Name="LblNombreSolicitud" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="16" TextColor="Black" Text="Creación Solicitud Transporte" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Padding="10, 0">
+                    <StackLayout HorizontalOptions="Start">
+                        <Image x:Name="FotoEstudiante" HeightRequest="65" WidthRequest="65" ></Image>
+
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="StartAndExpand" Padding="10">
+                        <Label x:Name="NombreEstudiante" Text="John Alberto Lopez" HorizontalOptions="Start"></Label>
+                        <Label x:Name="CursoEstudiante" Text="Kinder B" HorizontalOptions="Start"></Label>
                     </StackLayout>
                 </StackLayout>
-                <StackLayout Grid.Row="1" VerticalOptions="FillAndExpand">
+                <StackLayout  VerticalOptions="FillAndExpand" Padding="10">
                     <TableView Intent="Form" x:Name="FormularioSolicitud" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  >
                         <TableRoot Title="Creación de una Solicitud" >
-                            <TableSection x:Name="TableSec" >
-                                <TextCell x:Name="NombreEstudiante"></TextCell>
+                            <TableSection x:Name="TableSec" Title="Diligencie la siguiente información:" >
                                 <ViewCell>
                                     <StackLayout Orientation="Horizontal">
                                         <Label x:Name="FechaM" VerticalOptions="Center" />
@@ -110,116 +111,146 @@
                     </StackLayout>
                 </StackLayout>
             </StackLayout>
-            <StackLayout  IsVisible="{Binding IsBusy}" BackgroundColor="#80000000" Padding="12"
+            <StackLayout IsVisible="False" BackgroundColor="#80000000" Padding="12"
                          AbsoluteLayout.LayoutFlags="PositionProportional"
                          AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
                 <ActivityIndicator IsRunning="{Binding IsBusy}" Color="White" />
                 <Label Text="Guardando..." HorizontalOptions="Center" TextColor="White" />
             </StackLayout>
-            <ContentView x:Name="overlayFechaM" BackgroundColor="#C0808080" Padding="10, 0" IsVisible="False" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
-                <Frame BackgroundColor="White" HeightRequest="310" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,30,0,0" Padding="0">
-                    <StackLayout Orientation="Vertical"
+            <ContentView x:Name="overlayFechaM" BackgroundColor="#C0808080"  Padding="10, 0" IsVisible="False" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout Orientation="Vertical"
                                  BackgroundColor="White"
-                                 HeightRequest="310"
+                                 HeightRequest="350"
                                  WidthRequest="300"
                                  HorizontalOptions="Center"
-                                 VerticalOptions="Start"
-                                 Margin="0,23,0,0">
-                        <Label WidthRequest="300" BackgroundColor="{StaticResource Primary}" FontSize="18"
-                               TextColor="White" HorizontalOptions="CenterAndExpand" Text="Calendario Académico" />
-                        <StackLayout Orientation="Horizontal">
-                            <Label FontSize="15" TextColor="Black" HorizontalOptions="Fill"
+                                 VerticalOptions="Center"
+                                 >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <StackLayout Grid.Row="0" HeightRequest="10" Padding="10"  BackgroundColor="{StaticResource Primary}">
+                            <Label HorizontalOptions="CenterAndExpand" FontSize="18" TextColor="White" Text="Calendario Académico" />
+                        </StackLayout>
+                        <Grid Grid.Row="1" Padding="10" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <StackLayout Grid.Row="0">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label FontSize="15" TextColor="Black" HorizontalOptions="Fill"
                                    Text="Seleccione las fechas que necesite:" />
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                            <ListView ItemsSource="{Binding Items}" ms:MultiSelectListView.IsMultiSelect="True"
-                                      Grid.Row="1" Grid.ColumnSpan="1">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <ms:SelectableViewCell>
-                                            <!--set the selected indicator (optional)-->
-                                            <ms:SelectableViewCell.CheckView>
-                                                <BoxView Color="GreenYellow" WidthRequest="12" HeightRequest="12" />
-                                            </ms:SelectableViewCell.CheckView>
-                                            <!--set the content (optional)-->
-                                            <ms:SelectableViewCell.DataView>
-                                                <Label Text="{Binding}" />
-                                            </ms:SelectableViewCell.DataView>
-                                        </ms:SelectableViewCell>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
-                        </StackLayout>
+                                </StackLayout>
+                                <StackLayout  Orientation="Horizontal" HorizontalOptions="Center">
 
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                            <Button Text="Cancelar" VerticalOptions="CenterAndExpand" 
+                                    <ListView ItemsSource="{Binding Items}" ms:MultiSelectListView.IsMultiSelect="True"
+                                      Grid.Row="1" Grid.ColumnSpan="1">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ms:SelectableViewCell>
+                                                    <!--set the selected indicator (optional)-->
+                                                    <ms:SelectableViewCell.CheckView>
+                                                        <BoxView Color="GreenYellow" WidthRequest="12" HeightRequest="12" />
+                                                    </ms:SelectableViewCell.CheckView>
+                                                    <!--set the content (optional)-->
+                                                    <ms:SelectableViewCell.DataView>
+                                                        <Label Text="{Binding}" />
+                                                    </ms:SelectableViewCell.DataView>
+                                                </ms:SelectableViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </StackLayout>
+                            </StackLayout>
+                            <StackLayout Grid.Row="1"  Orientation="Horizontal" HorizontalOptions="Center">
+                                <Button Text="Cancelar"   Style="{DynamicResource btnCancel}"
                                     HorizontalOptions="Center"  Clicked="OnCancelFechaMButtonClicked" />
-                            <Button Text="Aceptar"  VerticalOptions="CenterAndExpand"
+                                <Button Text="Aceptar"   Style="{DynamicResource btnSuccessful}"
                                     HorizontalOptions="Center" Command="{Binding RemoveSelectedCommand}" />
-                        </StackLayout>
-                    </StackLayout>
-                </Frame>
+                            </StackLayout>
+                        </Grid>
+                    </Grid>
+                </StackLayout>
             </ContentView>
-            <ContentView x:Name="overlayFecha" BackgroundColor="#C0808080" Padding="10, 0" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
-                <Frame BackgroundColor="White" HeightRequest="240" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,30,0,0" Padding="0">
-                    <StackLayout Orientation="Vertical"
+            <ContentView x:Name="overlayFecha" BackgroundColor="#C0808080" Padding="10, 0" IsVisible="False" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout Orientation="Vertical"
                                  BackgroundColor="White"
                                  HeightRequest="240"
                                  WidthRequest="300"
                                  HorizontalOptions="Center"
-                                 VerticalOptions="Start"
-                                 Margin="0,30,0,0">
-                        <Label WidthRequest="300" BackgroundColor="{StaticResource Primary}" FontSize="18"
-                               TextColor="White" HorizontalOptions="CenterAndExpand" Text="Calendario Académico" />
-                        <StackLayout Orientation="Horizontal">
-                            <Label FontSize="15" TextColor="Black" HorizontalOptions="Fill"
-                                   Text="Seleccione la fecha desde que desea realizar el cambio:" />
+                                 VerticalOptions="Center"
+                                 >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <StackLayout Grid.Row="0" HeightRequest="10" Padding="10"  BackgroundColor="{StaticResource Primary}">
+                            <Label HorizontalOptions="CenterAndExpand"  FontSize="18" TextColor="White"  Text="Calendario Académico" />
                         </StackLayout>
-                        <ScrollView>
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                                <ms:CustomPicker HorizontalOptions="FillAndExpand"
-                                                 WidthRequest="250"
-                                                 SelectedIndexChanged="PickerFechas_SelectedIndexChanged"
-                                                 Image="ic_arrow_drop_down.png"
-                                                 Title="Seleccione..." x:Name="PickerFechas" />
+                        <Grid Grid.Row="1" Padding="10" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <StackLayout Grid.Row="0">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label FontSize="15" TextColor="Black" HorizontalOptions="Fill"
+                                       Text="Seleccione la fecha desde que desea realizar el cambio:" />
+                                </StackLayout>
+                                <ScrollView>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                                        <ms:CustomPicker HorizontalOptions="FillAndExpand"
+                                                     WidthRequest="250"
+                                                     SelectedIndexChanged="PickerFechas_SelectedIndexChanged"
+                                                     Image="ic_arrow_drop_down.png"
+                                                     Title="Seleccione..." x:Name="PickerFechas" />
 
+                                    </StackLayout>
+                                </ScrollView>
                             </StackLayout>
-                        </ScrollView>
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                            <Button Text="Cancelar" FontSize="Large" VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="Center" Clicked="OnCancelFechaButtonClicked" />
-                            <Button Text="Aceptar" FontSize="Large" VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="Center" Command="{Binding SeleccionarFecha}" />
-                        </StackLayout>
-                    </StackLayout>
-                </Frame>
+                            <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Center">
+                                <Button Text="Cancelar"  VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="Center" Clicked="OnCancelFechaButtonClicked" Style="{DynamicResource btnCancel}" />
+                                <Button Text="Aceptar"  VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="Center" Command="{Binding SeleccionarFecha}" Style="{DynamicResource btnSuccessful}"/>
+                            </StackLayout>
+                        </Grid>
+                    </Grid>
+                </StackLayout>
             </ContentView>
-            <ContentView x:Name="overlayConfirmacion" BackgroundColor="#C0808080" Padding="10, 0" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
-
+            <ContentView x:Name="overlayConfirmacion" BackgroundColor="#C0808080" Padding="10, 0" IsVisible="False" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
                 <StackLayout Orientation="Vertical"
                              BackgroundColor="White"
-                             HeightRequest="280"
+                             HeightRequest="350"
                              WidthRequest="300"
                              HorizontalOptions="Center"
-                             VerticalOptions="Start"
-                             Margin="0,30,0,0">
-
-                    <Label BackgroundColor="{StaticResource Primary}" FontSize="18" TextColor="White"
+                             VerticalOptions="Center">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <StackLayout Grid.Row="0" HeightRequest="10" Padding="10"  BackgroundColor="{StaticResource Primary}">
+                            <Label BackgroundColor="{StaticResource Primary}" FontSize="18" TextColor="White"
                            HorizontalOptions="Fill" Text="Notificación Solicitud Transporte" />
-                    <ScrollView>
-                        <!-- Start: Need to center justify here -->
-                        <StackLayout HorizontalOptions="FillAndExpand" Padding="0, 25, 0, 50" Spacing="0">
-                            <!--<Label Text="Trouble logging in?" TextColor="#1e3c66" FontAttributes="Bold" XAlign="Center"/>-->
-                            <Label FontSize="Small"
+                        </StackLayout>
+                        <StackLayout Grid.Row="1" Padding="10">
+                            <ScrollView>
+                                <StackLayout HorizontalOptions="FillAndExpand" Padding="0, 25, 0, 50" Spacing="0">
+                                    <Label FontSize="Small"
                                    Text="Su solicitud se ha enviado satisfactoriamente. Durante el transcurso del día, recibirá una comunicación al correo institucional (sgs.edu.co), en la que se informará si su solicitud fue aprobada. Es importante recordar que cuando se trata de cambios de ruta, la aprobación de la solicitud está sujeta a la disponibilidad de cupo en la ruta correspondiente."
                                    TextColor="#81838c" LineBreakMode="WordWrap" XAlign="Center" />
-                        </StackLayout>
-                        <!-- End: Need to center justify here -->
-                    </ScrollView>
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                        <Button Text="Cerrar" FontSize="Large" VerticalOptions="CenterAndExpand"
+                                </StackLayout>
+                            </ScrollView>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                                <Button Text="Cerrar" VerticalOptions="CenterAndExpand"
                                 HorizontalOptions="Center" Clicked="OnCancelConfirmacionButtonClicked" />
-                    </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
                 </StackLayout>
             </ContentView>
 

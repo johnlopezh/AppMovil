@@ -120,7 +120,9 @@ namespace SGSApp.Views.Acumen
             //LblnombreTipoSolicitud.Text = tp.NombreTipo;
             //TblSectituloSol.Title = tp.NombreTipo;
             NombreEstudiante.Text = "Nombre: " + est.NombreCompleto;
-            NombreEstudiante.Detail = "Curso: " + est.NombreCurso;
+            CursoEstudiante.Text = "Nombre: " + est.NombreCurso;
+            FotoEstudiante.Source = est.UrlFoto;
+            // NombreEstudiante.Detail = "Curso: " + est.NombreCurso;
 
             if (tp.FechaMultipleHabilitada == true)
             {
