@@ -97,7 +97,8 @@ namespace SGSApp.Views.Master
             if (userName.Contains(" "))
             {
                 var partes = userName.Split(' ');
-                nombreUsuario = partes[0];
+                nombreUsuario = data.UserInfo.GivenName;
+                //partes[0];
             }
             else
             {

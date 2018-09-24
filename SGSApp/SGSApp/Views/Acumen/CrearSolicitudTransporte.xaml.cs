@@ -377,7 +377,6 @@ namespace SGSApp.Views.Acumen
 
         private void Button_Clicked_1(object sender, EventArgs e)
         {
-            //this.EjecutaTareaAsincrona1();
             overlayFecha.IsVisible = true;
         }
 
@@ -422,7 +421,7 @@ namespace SGSApp.Views.Acumen
                     TipoIdentCompanero = null,
                     NombreAutorizado = NombrePersonaAutorizadaEntry.Text,
                     IdentificacionAutorizado = IdentificacionPersonaAutorizadaEntry.Text,
-                    Telefono = Convert.ToInt32(TelefonoContactoEntry.Text),
+                    Telefono = Convert.ToInt64(TelefonoContactoEntry.Text),
                     JornadaMananaHabilitada = JornadaMananaHabilitada,
                     JornadaTardeHabilitada = JornadaTardeHabilitada,
                     JornadaExtraHabilitada = JornadaExtraHabilitada,

@@ -11,12 +11,12 @@ namespace SGSApp.Models
         public bool? Temporal { get; set; }
         public bool? Permanente { get; set; }
         public TimeSpan? Hora { get; set; }
-        public int? IdDireccion { get; set; }
+        public Int64? IdDireccion { get; set; }
         public string IdentificacionCompanero { get; set; }
         public string TipoIdentCompanero { get; set; }
         public string NombreAutorizado { get; set; }
         public string IdentificacionAutorizado { get; set; }
-        public long? Telefono { get; set; }
+        public Int64? Telefono { get; set; }
         public bool? JornadaMananaHabilitada { get; set; }
         public bool? JornadaTardeHabilitada { get; set; }
         public bool? JornadaExtraHabilitada { get; set; }
