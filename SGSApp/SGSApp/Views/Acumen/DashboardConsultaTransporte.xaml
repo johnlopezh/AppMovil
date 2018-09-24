@@ -41,11 +41,11 @@
                 <StackLayout BackgroundColor="White" HeightRequest="230" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="FillAndExpand">
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="2.0*" />
+                            <RowDefinition Height="2.5*" />
                             <RowDefinition Height="8.0*" />
                         </Grid.RowDefinitions>
                         <StackLayout Grid.Row="0" Padding="20" BackgroundColor="{StaticResource Primary}">
-                            <Label FontSize="18" TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center" Text="Registro de solicitud de transporte" />
+                            <Label FontSize="16" TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center" Text="Registro de solicitud de transporte" />
                         </StackLayout>
                         <StackLayout Grid.Row="1">
                             <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
@@ -57,12 +57,11 @@
                             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                                 <Label Text="Seleccione un tipo de solicitud" TextColor="Red" IsVisible="False" x:Name="ErrorTiposSol" />
                             </StackLayout>
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                                <Button x:Key="btnCancel" Text="Cancelar" FontSize="Large" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Clicked="OnCancelButtonClicked" />
-                                <Button Text="Registrar" FontSize="Large" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Clicked="OnRegistrarButtonClicked" />
-                            </StackLayout>
                         </StackLayout>
                     </Grid>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                        <Button Style="{DynamicResource btnSuccessful}"  Text="Registrar" HorizontalOptions="FillAndExpand" Clicked="OnRegistrarButtonClicked" />
+                    </StackLayout>
                 </StackLayout>
             </Frame>
         </ContentView>

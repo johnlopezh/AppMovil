@@ -132,7 +132,9 @@ namespace SGSApp.Views.Acumen
             //LblnombreTipoSolicitud.Text = tp.NombreTipo;
             //TblSectituloSol.Title = tp.NombreTipo;
             NombreEstudiante.Text = "Nombre: " + est.NombreCompleto;
-            NombreCurso.Text = "Curso: " + est.NombreCurso;
+            CursoEstudiante.Text = "Nombre: " + est.NombreCurso;
+            FotoEstudiante.Source = est.UrlFoto;
+            // NombreEstudiante.Detail = "Curso: " + est.NombreCurso;
 
             if (tp.FechaMultipleHabilitada == true)
             {
@@ -162,14 +164,12 @@ namespace SGSApp.Views.Acumen
 
             if (tp.CampoTelefonoHabilitado == true)
             {
-                TelefonoContactoLbl.IsVisible = true;
-                TelefonoContactoLbl.Text = tp.CampoTelefono + " (*):";
+                TelefonoContactoEntry.Label = tp.CampoTelefono + " (*):";
             }
 
             if (tp.CampoObsHabilitado == true)
             {
-                MotivoLbl.IsVisible = true;
-                MotivoLbl.Text = tp.CampoObservaciones + " (*):";
+                MotivoEntry.Label = tp.CampoObservaciones + " (*):";
             }
 
             if (tp.BotonDireccionHabilitado == true)
@@ -188,14 +188,13 @@ namespace SGSApp.Views.Acumen
             }
             else
             {
-                TableSectionPersonaAutorizada.Remove(NombrePersonaAutorizada);
-                TableSectionPersonaAutorizada.Remove(IdentificacionPersonaAutorizada);
+                FormularioSolicitud.Root.Remove(TableSectionPersonaAutorizada);
             }
 
             if (tp.CampoObsHabilitado == true)
                 TableSectionInformacion.Title = "Información";
             else
-                TableSectionInformacion.Remove(TelefonoViewCell);
+                FormularioSolicitud.Root.Remove(TableSectionInformacion);
 
             EjecutaTareaAsincrona1();
             ConsultarDireccionesGrupo();
@@ -372,8 +371,7 @@ namespace SGSApp.Views.Acumen
         private async void OnCancelConfirmacionButtonClicked(object sender, EventArgs e)
         {
             overlayConfirmacion.IsVisible = false;
-            await Navigation.PushAsync(new MainPageDetail());
-            //await Navigation.PopModalAsync();
+            await Navigation.PushModalAsync(new MainPage());
         }
 
         private void Button_Clicked_1(object sender, EventArgs e)
@@ -434,7 +432,7 @@ namespace SGSApp.Views.Acumen
                 };
                 resultadoTransporte = await objTransporte.GuardarSolicitudTransporte(solicitudTranspote);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }

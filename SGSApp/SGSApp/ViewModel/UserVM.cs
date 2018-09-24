@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -44,6 +45,7 @@ namespace SGSApp.ViewModel
                 if (response.StatusCode == HttpStatusCode.OK)
 
                     numeroIdentificacion = data;
+
             }
             catch (Exception ex)
             {

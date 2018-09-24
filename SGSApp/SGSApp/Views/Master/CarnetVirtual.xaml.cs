@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -17,12 +18,12 @@ namespace SGSApp.Views.Master
         private readonly UserVM obj = new UserVM();
         private readonly ZXingBarcodeImageView barcode;
         private string numeroIdentificacion;
+        public string imagenURL; 
 
         public CarnetVirtual()
         {
             InitializeComponent();
             nombreUsuario.Text = GlobalVariables.Usuario;
-            BindingContext = new CarnetViewModel();
             barcode = new ZXingBarcodeImageView
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -37,35 +38,18 @@ namespace SGSApp.Views.Master
             barcode.BarcodeValue = numeroIdentificacion;
             //this.Content = barcode;
             qrcode.Children.Add(barcode);
+        
         }
-        private class CarnetViewModel : INotifyPropertyChanged
-        {
 
-            public CarnetViewModel()
-            {
-                ImageURL = ImageSource.FromStream(() => { return new MemoryStream(GlobalVariables.imagenUsuario); });
-
-            }
-
-            public ImageSource ImageURL { get; }
-            #region INotifyPropertyChanged Implementation
-
-            public event PropertyChangedEventHandler PropertyChanged;
-
-            private void OnPropertyChanged([CallerMemberName] string propertyName = "")
-            {
-                if (PropertyChanged == null)
-                    return;
-
-                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            }
-
-            #endregion
-        }
 
         public async Task ConsultarInfoUsuario()
         {
             numeroIdentificacion = await obj.ConsultarInfoUsuario(GlobalVariables.Email);
+            imagenURL = GlobalVariables.BlobStorageUrl + numeroIdentificacion+".jpg";
+            imagenCarnet.Source = imagenURL;
+            imagenCarnet.Aspect = Aspect.AspectFill;
+            imagenCarnet.HorizontalOptions = LayoutOptions.Center;
+            ;
         }
     }
 }
