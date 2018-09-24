@@ -49,13 +49,6 @@ namespace SGSApp.Views.Acumen
 
         private async void BtnGuardarDireccion_Clicked(object sender, EventArgs e)
         {
-            //if (string.IsNullOrEmpty(ciudad.Valor.ToString()))
-            //{
-            //    this.ShowMessage("Ingrese una ciudad",
-            //         "Campo requerido",
-            //         "Aceptar", async () => { });
-            //    return;
-            //}
 
             if (string.IsNullOrEmpty(EntDireccion.Text))
             {

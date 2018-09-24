@@ -175,6 +175,7 @@ namespace SGSApp.Views.Acumen
             if (tp.BotonDireccionHabilitado == true)
             {
                 TableSectionEntregaEstudiante.Title = tp.CampoDestino;
+                TableSectionEntregaEstudiante.Remove(LugarEntregarCompañero);
             }
             else
             {
@@ -197,7 +198,7 @@ namespace SGSApp.Views.Acumen
                 FormularioSolicitud.Root.Remove(TableSectionInformacion);
 
             EjecutaTareaAsincrona1();
-            ConsultarDireccionesGrupo();
+            ConsultarDireccionesGrupo(null);
             EjecutaTareaAsincronaEstudiantes();
 
             //TimePickerHora.SetBinding(TimePicker.TimeProperty, new Binding("StartDate", BindingMode.TwoWay));
@@ -385,7 +386,7 @@ namespace SGSApp.Views.Acumen
             overlayFechaM.IsVisible = true;
         }
 
-        private async Task ConsultarDireccionesGrupo()
+        private async Task ConsultarDireccionesGrupo(string creada)
         {
             PickerDireccion.ItemsSource = pp;
             direccionesGrupoFamiliar = await objDireccion.ConsultarDireccionesGrupo(codigoFamiliar);
@@ -398,6 +399,10 @@ namespace SGSApp.Views.Acumen
             }
 
             PickerDireccion.ItemsSource = arrDirecciones;
+            if (creada == "OK")
+            {
+                PickerDireccion.SelectedIndex = direccionesGrupoFamiliar.Length;
+            }
         }
 
         private async Task GuardarSolicitud()
@@ -526,7 +531,7 @@ namespace SGSApp.Views.Acumen
 
         private void PickerDireccion_Focused(object sender, FocusEventArgs e)
         {
-            ConsultarDireccionesGrupo();
+            ConsultarDireccionesGrupo(null);
             EjecutaTareaAsincronaEstudiantes();
         }
 
@@ -561,9 +566,9 @@ namespace SGSApp.Views.Acumen
             }
         }
 
-
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
+            this.ConsultarDireccionesGrupo("OK");
             base.OnAppearing();
         }
 
