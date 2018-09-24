@@ -371,8 +371,7 @@ namespace SGSApp.Views.Acumen
         private async void OnCancelConfirmacionButtonClicked(object sender, EventArgs e)
         {
             overlayConfirmacion.IsVisible = false;
-            await Navigation.PushAsync(new MainPageDetail());
-            //await Navigation.PopModalAsync();
+            await Navigation.PushModalAsync(new MainPage());
         }
 
         private void Button_Clicked_1(object sender, EventArgs e)

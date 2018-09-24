@@ -7,6 +7,12 @@ namespace SGSApp.Views.Home
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : MasterDetailPage
     {
+        public MainPage()
+        {
+            InitializeComponent();
+            MasterPage.ListView.ItemSelected += ListView_ItemSelected;
+        }
+
         public MainPage(string Username)
         {
             InitializeComponent();

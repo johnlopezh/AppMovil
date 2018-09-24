@@ -24,13 +24,12 @@
             <Color x:Key="DarkGray">#555555</Color>
             <Color x:Key="GrayFont">#999999</Color>
             <!--Multiplataforma-->
-            <OnPlatform x:Key="GeneralButtonFont" x:TypeArguments="Font" iOS="10" Android="10" WinPhone="10" />
+            <OnPlatform x:Key="GeneralButtonFont" x:TypeArguments="Font" iOS="12" Android="12" WinPhone="12" />
             <!--Botones-->
             <!--Boton btnSuccessful-->
             <Style TargetType="Button">
                 <Style.Setters>
                     <Setter Property="Font" Value="{StaticResource GeneralButtonFont}" />
-                    <Setter Property="BorderRadius" Value="5" />
                     <Setter Property="HeightRequest" Value="35" />
                     <Setter Property="TextColor" Value="White" />
                     <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
@@ -40,7 +39,6 @@
             <Style TargetType="Button" x:Key="btnCancel">
                 <Style.Setters>
                     <Setter Property="Font" Value="{StaticResource GeneralButtonFont}" />
-                    <Setter Property="BorderRadius" Value="5" />
                     <Setter Property="HeightRequest" Value="40" />
                     <Setter Property="TextColor" Value="White" />
                     <Setter Property="BackgroundColor" Value="{StaticResource Red}" />
@@ -50,7 +48,6 @@
             <Style TargetType="Button" x:Key="btnSuccessful">
                 <Style.Setters>
                     <Setter Property="Font" Value="{StaticResource GeneralButtonFont}" />
-                    <Setter Property="BorderRadius" Value="5" />
                     <Setter Property="HeightRequest" Value="40" />
                     <Setter Property="TextColor" Value="White" />
                     <Setter Property="BackgroundColor" Value="{StaticResource Green}" />
