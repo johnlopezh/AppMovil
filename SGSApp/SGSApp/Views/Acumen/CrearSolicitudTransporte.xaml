@@ -31,7 +31,7 @@
                 <StackLayout  VerticalOptions="FillAndExpand" Padding="10">
                     <TableView Intent="Form" x:Name="FormularioSolicitud" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  >
                         <TableRoot Title="Creación de una Solicitud" >
-                            <TableSection x:Name="TableSec" Title="Diligencie la siguiente información:" >
+                            <TableSection x:Name="TableSec" Title="Diligencie la siguiente información:"  >
                                 <ViewCell>
                                     <StackLayout Orientation="Horizontal">
                                         <Label x:Name="FechaM" VerticalOptions="Center" />
@@ -48,9 +48,9 @@
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
-                                            <StackLayout Orientation="Horizontal">
-                                                <Button  Grid.Column="0" x:Name="FechaMultiple" Text="Seleccionar" Clicked="Button_Clicked"
-                                                    HorizontalOptions="End" />
+                                            <StackLayout Grid.Column="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                                <Button   x:Name="FechaMultiple" Text="Seleccionar" Clicked="Button_Clicked"
+                                                    HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
                                                 <Button x:Name="Fecha" Text="Seleccionar" Clicked="Button_Clicked_1"
                                                     HorizontalOptions="End" />
                                             </StackLayout>
@@ -104,11 +104,9 @@
                             </TableSection>
                         </TableRoot>
                     </TableView>
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                        <Button Style="{DynamicResource btnSuccessful}" x:Name="GuardarBtn" Text="Guardar" Clicked="GuardarBtn_Clicked" HorizontalOptions="Center"  />
-                        <Button x:Name="LimpiarBtn" Text="Limpiar" HorizontalOptions="Center" Clicked="LimpiarBtn_Clicked"/>
-                        <Button Style="{DynamicResource btnCancel}" x:Name="VolverBtn" Text="Volver" HorizontalOptions="Center"/>
-                    </StackLayout>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                    <Button  Style="{DynamicResource btnSuccessful}" x:Name="GuardarBtn" HorizontalOptions="FillAndExpand" Text="Guardar" Clicked="GuardarBtn_Clicked"  />
                 </StackLayout>
             </StackLayout>
             <StackLayout IsVisible="False" BackgroundColor="#80000000" Padding="12"
@@ -136,7 +134,7 @@
                         <Grid Grid.Row="1" Padding="10" >
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"></RowDefinition>
-                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition Height="80"></RowDefinition>
                             </Grid.RowDefinitions>
                             <StackLayout Grid.Row="0">
                                 <StackLayout Orientation="Horizontal">
@@ -164,11 +162,11 @@
                                     </ListView>
                                 </StackLayout>
                             </StackLayout>
-                            <StackLayout Grid.Row="1"  Orientation="Horizontal" HorizontalOptions="Center">
-                                <Button Text="Cancelar"   Style="{DynamicResource btnCancel}"
-                                    HorizontalOptions="Center"  Clicked="OnCancelFechaMButtonClicked" />
-                                <Button Text="Aceptar"   Style="{DynamicResource btnSuccessful}"
-                                    HorizontalOptions="Center" Command="{Binding RemoveSelectedCommand}" />
+                            <StackLayout Grid.Row="1"  HorizontalOptions="FillAndExpand" Spacing="1">
+                                <Button Text="Aceptar"   Style="{DynamicResource btnSuccessful}" HorizontalOptions="FillAndExpand"
+                                        Command="{Binding RemoveSelectedCommand}" />
+                                <Button Text="Cancelar"   Style="{DynamicResource btnCancel}" HorizontalOptions="FillAndExpand"
+                                     Clicked="OnCancelFechaMButtonClicked" />
                             </StackLayout>
                         </Grid>
                     </Grid>
@@ -177,7 +175,7 @@
             <ContentView x:Name="overlayFecha" BackgroundColor="#C0808080" Padding="10, 0" IsVisible="False" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
                 <StackLayout Orientation="Vertical"
                                  BackgroundColor="White"
-                                 HeightRequest="240"
+                                 HeightRequest="300"
                                  WidthRequest="300"
                                  HorizontalOptions="Center"
                                  VerticalOptions="Center"
@@ -193,7 +191,7 @@
                         <Grid Grid.Row="1" Padding="10" >
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"></RowDefinition>
-                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
                             </Grid.RowDefinitions>
                             <StackLayout Grid.Row="0">
                                 <StackLayout Orientation="Horizontal">
@@ -211,11 +209,9 @@
                                     </StackLayout>
                                 </ScrollView>
                             </StackLayout>
-                            <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Center">
-                                <Button Text="Cancelar"  VerticalOptions="CenterAndExpand"
-                                        HorizontalOptions="Center" Clicked="OnCancelFechaButtonClicked" Style="{DynamicResource btnCancel}" />
-                                <Button Text="Aceptar"  VerticalOptions="CenterAndExpand"
-                                        HorizontalOptions="Center" Command="{Binding SeleccionarFecha}" Style="{DynamicResource btnSuccessful}"/>
+                            <StackLayout Grid.Row="1"  HorizontalOptions="FillAndExpand" Spacing="1" VerticalOptions="EndAndExpand">
+                                <Button Text="Aceptar"  HorizontalOptions="FillAndExpand" Command="{Binding SeleccionarFecha}" Style="{DynamicResource btnSuccessful}"/>
+                                <Button Text="Cancelar" HorizontalOptions="FillAndExpand" Clicked="OnCancelFechaButtonClicked" Style="{DynamicResource btnCancel}" />
                             </StackLayout>
                         </Grid>
                     </Grid>

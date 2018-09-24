@@ -57,12 +57,11 @@
                             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                                 <Label Text="Seleccione un tipo de solicitud" TextColor="Red" IsVisible="False" x:Name="ErrorTiposSol" />
                             </StackLayout>
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" HeightRequest="40">
-                                <Button Style="{DynamicResource btnCancel}" Text="Cancelar"  HorizontalOptions="Center" Clicked="OnCancelButtonClicked" />
-                                <Button Style="{DynamicResource btnSuccessful}"  Text="Registrar" HorizontalOptions="Center" Clicked="OnRegistrarButtonClicked" />
-                            </StackLayout>
                         </StackLayout>
                     </Grid>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                        <Button Style="{DynamicResource btnSuccessful}"  Text="Registrar" HorizontalOptions="FillAndExpand" Clicked="OnRegistrarButtonClicked" />
+                    </StackLayout>
                 </StackLayout>
             </Frame>
         </ContentView>

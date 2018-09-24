@@ -112,8 +112,8 @@
                                    TextColor="Black" Grid.Row="2" Grid.Column="0" />
                     </Grid>
                 </StackLayout>
-                <StackLayout Grid.Row="2" BackgroundColor="{StaticResource Orange}">
-                    <Label Text="Teléfono :(+0571) 4324000 " HorizontalOptions="Center" TextColor="{StaticResource Light}" FontSize="12"></Label>
+                <StackLayout Grid.Row="2" BackgroundColor="{StaticResource GrayBackground}">
+                    <Label Text="Teléfono :(+0571) 4324000 " HorizontalOptions="Center" TextColor="{StaticResource GrayFont}" FontSize="12"></Label>
                 </StackLayout>
             </Grid>
         </Grid>
