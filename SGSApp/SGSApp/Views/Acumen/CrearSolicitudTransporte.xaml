@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -233,9 +233,9 @@
                                    TextColor="#81838c" LineBreakMode="WordWrap" XAlign="Center" />
                                 </StackLayout>
                             </ScrollView>
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                                 <Button Text="Cerrar" VerticalOptions="CenterAndExpand"
-                                HorizontalOptions="Center" Clicked="OnCancelConfirmacionButtonClicked" />
+                                HorizontalOptions="CenterAndExpand" Clicked="OnCancelConfirmacionButtonClicked" />
                             </StackLayout>
                         </StackLayout>
                     </Grid>

@@ -50,7 +50,7 @@ namespace SGSApp.Views.Home
                     },
                     new MainPageMenuItem
                     {
-                        Id = 5, Icon = "Resources/ic_carnet_virtual.png", Title = "Carnet Virtual",
+                        Id = 5, Icon = "ic_carnet_virtual.png", Title = "Carnet DragonMarket",
                         TargetType = typeof(CarnetVirtual)
                     },
                     new MainPageMenuItem

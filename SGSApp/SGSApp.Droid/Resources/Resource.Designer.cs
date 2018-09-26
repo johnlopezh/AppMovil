@@ -5550,32 +5550,11 @@ namespace SGSApp.Droid
 			// aapt resource value: 0x7f070003
 			public const int day_name_format = 2131165187;
 			
-			// aapt resource value: 0x7f07005a
-			public const int default_web_client_id = 2131165274;
-			
 			// aapt resource value: 0x7f070018
 			public const int fcm_fallback_notification_channel_label = 2131165208;
 			
-			// aapt resource value: 0x7f07005b
-			public const int firebase_database_url = 2131165275;
-			
 			// aapt resource value: 0x7f070006
 			public const int full_date_format = 2131165190;
-			
-			// aapt resource value: 0x7f070058
-			public const int gcm_defaultSenderId = 2131165272;
-			
-			// aapt resource value: 0x7f07005c
-			public const int google_api_key = 2131165276;
-			
-			// aapt resource value: 0x7f070059
-			public const int google_app_id = 2131165273;
-			
-			// aapt resource value: 0x7f07005d
-			public const int google_crash_reporting_api_key = 2131165277;
-			
-			// aapt resource value: 0x7f07005e
-			public const int google_storage_bucket = 2131165278;
 			
 			// aapt resource value: 0x7f070004
 			public const int invalid_date = 2131165188;
