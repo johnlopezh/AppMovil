@@ -100,8 +100,8 @@ namespace SGSApp.Views.Acumen
             CampoTelefonoHabilitado = tp.CampoTelefonoHabilitado;
             CampoObsHabilitado = tp.CampoObsHabilitado;
 
-            SwitchDireccion.IsToggled = true;
-            autocompleteCompañero.IsEnabled = false;
+            //SwitchDireccion.IsToggled = true;
+            //autocompleteCompañero.IsEnabled = false;
 
             codigoFamiliar = Convert.ToInt16(est.IdFamilia);
             IdTipoSolicitudTransporte = tp.IdTipoSolicitudTransporte;
@@ -175,12 +175,13 @@ namespace SGSApp.Views.Acumen
             if (tp.BotonDireccionHabilitado == true)
             {
                 TableSectionEntregaEstudiante.Title = tp.CampoDestino;
-                TableSectionEntregaEstudiante.Remove(LugarEntregarCompañero);
+               // TableSectionEntregaEstudiante.Remove(LugarEntregarCompañero);
             }
             else
             {
+                FormularioSolicitud.Root.Remove(TableSectionEntregaEstudiante);
                 TableSectionEntregaEstudiante.Remove(LugarEntregarDireccion);
-                TableSectionEntregaEstudiante.Remove(LugarEntregarCompañero);
+                //TableSectionEntregaEstudiante.Remove(LugarEntregarCompañero);
             }
 
             if (tp.CampoNombrePHabilitado == true)
@@ -296,12 +297,12 @@ namespace SGSApp.Views.Acumen
             var DirreccionHabilitada = e.Value;
             if (DirreccionHabilitada)
             {
-                SwitchCompañero.IsToggled = false;
+                //SwitchCompañero.IsToggled = false;
                 PickerDireccion.IsEnabled = true;
             }
             else
             {
-                SwitchCompañero.IsToggled = true;
+                //SwitchCompañero.IsToggled = true;
                 PickerDireccion.IsEnabled = false;
             }
         }
@@ -311,13 +312,13 @@ namespace SGSApp.Views.Acumen
             var CompaneroHabilitada = e.Value;
             if (CompaneroHabilitada)
             {
-                SwitchDireccion.IsToggled = false;
-                autocompleteCompañero.IsEnabled = true;
+                //SwitchDireccion.IsToggled = false;
+                //autocompleteCompañero.IsEnabled = true;
             }
             else
             {
-                SwitchDireccion.IsToggled = true;
-                autocompleteCompañero.IsEnabled = false;
+                //SwitchDireccion.IsToggled = true;
+                //autocompleteCompañero.IsEnabled = false;
             }
         }
 

@@ -3,7 +3,6 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SGSApp.Views.Sharepoint.ListaNoticias"
-             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
              NavigationPage.HasNavigationBar="True"
              Title="Noticias SGS"
              IsBusy="{Binding IsBusy}"
@@ -30,7 +29,7 @@
                   ItemSelected="listNoticias_ItemSelected"
                   ItemsSource="{Binding FeedItems}"
                   HasUnevenRows="True"
-                  SeparatorVisibility="None"
+                  SeparatorVisibility="Default"
                   IsPullToRefreshEnabled="True"
                   IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                   RefreshCommand="{Binding LoadItemsCommand}"
@@ -39,24 +38,20 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <ContentView Padding="3">
-                            <Frame OutlineColor="White" Padding="5">
-                                <Grid BackgroundColor="White">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="80" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <StackLayout
+                        <Grid BackgroundColor="White" Padding="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackLayout
                                         Grid.Column="1"
                                         VerticalOptions="Center">
-                                        <Label Text="{Binding TituloNoticia}" TextColor="#25357a" FontSize="Small"
+                                <Label Text="{Binding TituloNoticia}" TextColor="#25357a" FontSize="Small"
                                                LineBreakMode="WordWrap" />
-                                        <Label Text="{Binding Resumen}" FontSize="Small" LineBreakMode="WordWrap" />
-                                    </StackLayout>
-                                    <Image Source="{Binding ImageURL}" />
-                                </Grid>
-                            </Frame>
-                        </ContentView>
+                                <Label Text="{Binding Resumen}" FontSize="Small" LineBreakMode="WordWrap" />
+                            </StackLayout>
+                            <Image Source="{Binding ImageURL}" />
+                         </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

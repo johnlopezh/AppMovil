@@ -6,10 +6,12 @@
              Title="Dirección grupo familiar"
              xmlns:ms="clr-namespace:SGSApp.Controls">
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout
-                Padding="10">
-                <Grid>
+        <StackLayout Spacing="0">
+            <StackLayout VerticalOptions="StartAndExpand">
+                <StackLayout  BackgroundColor="{StaticResource GrayBackground}" Padding="10">
+                    <Label x:Name="LblNombreSolicitud" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="16" TextColor="Black" Text="Registar Nueva Dirección" />
+                </StackLayout>
+                <Grid Padding="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="2*" />
@@ -72,19 +74,20 @@
 
                 </Grid>
                 <ActivityIndicator
-                    IsRunning="{Binding IsRunning, Mode=TwoWay}"
-                    VerticalOptions="CenterAndExpand" />
+                        IsRunning="{Binding IsRunning, Mode=TwoWay}"
+                        VerticalOptions="CenterAndExpand" />
+            </StackLayout>
+            <StackLayout Spacing="0" BackgroundColor="Blue" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
                 <Button x:Name="BtnGuardarDireccion"
-                        BackgroundColor="Navy"
-                        BorderRadius="23"
-                        FontAttributes="Bold"
-                        HeightRequest="46"
-                        Margin="50,0"
-                        Text="Guardar"
+                        Style="{DynamicResource btnSuccessful}"
+                        
+                        Text="Guardar Dirección"
                         TextColor="White"
-                        VerticalOptions="EndAndExpand"
+                        
                         Clicked="BtnGuardarDireccion_Clicked" />
             </StackLayout>
-        </ScrollView>
+
+        </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>

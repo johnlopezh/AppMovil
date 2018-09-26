@@ -33,6 +33,7 @@ namespace SGSApp.Droid
 
             Platform.Init();
             ImageCircleRenderer.Init();
+            ZXing.Net.Mobile.Forms.Android.Platform.Init();
 
             // Initialization for Azure Mobile Apps
             CurrentPlatform.Init();
@@ -70,6 +71,10 @@ namespace SGSApp.Droid
             base.OnActivityResult(requestCode, resultCode, data);
             AuthenticationAgentContinuationHelper.SetAuthenticationAgentContinuationEventArgs(requestCode, resultCode,
                 data);
+        }
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
+        {
+            global::ZXing.Net.Mobile.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 }

@@ -34,6 +34,7 @@ namespace SGSApp.Views.Master
             barcode.BarcodeOptions.Width = 250;
             barcode.BarcodeOptions.Height = 250;
             barcode.BarcodeOptions.Margin = 0;
+            barcode.BarcodeOptions.PureBarcode = true;
             ConsultarInfoUsuario();
             barcode.BarcodeValue = numeroIdentificacion;
             //this.Content = barcode;
@@ -47,7 +48,7 @@ namespace SGSApp.Views.Master
             numeroIdentificacion = await obj.ConsultarInfoUsuario(GlobalVariables.Email);
             imagenURL = GlobalVariables.BlobStorageUrl + numeroIdentificacion+".jpg";
             imagenCarnet.Source = imagenURL;
-            imagenCarnet.Aspect = Aspect.AspectFill;
+            imagenCarnet.Aspect = Aspect.AspectFit;
             imagenCarnet.HorizontalOptions = LayoutOptions.Center;
             ;
         }

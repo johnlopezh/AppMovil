@@ -1,21 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SGSApp.Views.Acumen.DashboardConsultaTransporte" NavigationPage.HasNavigationBar="True" Title="Solicitud de Transporte" IsBusy="{Binding IsBusy}" xmlns:ms="clr-namespace:SGSApp.Controls">
-    <AbsoluteLayout VerticalOptions="FillAndExpand">
-        <StackLayout>
-            <Label HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="Large" x:Name="LblTitleCreacion" Text="Creación Solicitud Transporte" />
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackLayout Grid.Row="0">
+            <StackLayout  BackgroundColor="{StaticResource GrayBackground}" Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="16" TextColor="Black" x:Name="LblTitleCreacion" Text="Seleccione un estudiante:" />
+            </StackLayout>
             <Label HorizontalTextAlignment="Center" FontAttributes="Bold" x:Name="LblSinPersonas" IsVisible="False" Text="No se encontraron personas asociadas a la familia." />
-            <ListView x:Name="listView" CachingStrategy="RecycleElement" ItemsSource="{Binding EstudianteItems}" ItemSelected="listEstudiantes_ItemSelected" HasUnevenRows="True" RowHeight="175" RefreshCommand="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+            <ListView x:Name="listView" 
+                      CachingStrategy="RecycleElement" 
+                      ItemsSource="{Binding EstudianteItems}"
+                      ItemSelected="listEstudiantes_ItemSelected" 
+                      HasUnevenRows="True" 
+                      SeparatorVisibility="Default"
+                      SeparatorColor="{StaticResource GrayBackground}"
+                      RefreshCommand="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=OneWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid Padding="10">
+                            <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="80" />
+                                    <ColumnDefinition Width="50" />
                                     <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="5" />
                                 </Grid.ColumnDefinitions>
-                                <Image Grid.Column="0" Source="{Binding UrlFoto}" />
-                                <StackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
+                                <StackLayout Grid.Column="0" Padding="5" BackgroundColor="{StaticResource WhiteBackgroundColor}" >
+                                    <Image  Source="{Binding UrlFoto}"  HorizontalOptions="FillAndExpand" HeightRequest="60" BackgroundColor="{StaticResource WhiteBackgroundColor}" />
+                                </StackLayout>  
+                                
+                                <StackLayout Grid.Column="1"  VerticalOptions="Center">
                                     <Label Text="{Binding NombreCompleto}" Style="{StaticResource LabelGenerales}" LineBreakMode="WordWrap" />
                                     <Label Text="{Binding NombreCurso}" TextColor="#25357a" FontSize="Small" LineBreakMode="WordWrap" />
                                     <Label Text="{Binding CodigoEstudiante}" TextColor="#25357a" FontSize="Micro" LineBreakMode="WordWrap" />
@@ -30,22 +45,33 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
-        <StackLayout />
         <StackLayout IsVisible="{Binding IsBusy}" BackgroundColor="#80000000" Padding="12" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
             <ActivityIndicator IsRunning="{Binding IsBusy}" Color="White" />
             <Label Text="Cargando..." HorizontalOptions="Center" TextColor="White" />
         </StackLayout>
         <!-- Overlay -->
-        <ContentView x:Name="overlay" AbsoluteLayout.LayoutBounds="0, 0, 1, 70" AbsoluteLayout.LayoutFlags="All" IsVisible="False" BackgroundColor="#808080" Padding="10, 0">
-            <Frame BackgroundColor="White" HeightRequest="230" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,23,0,0" Padding="0">
+        <ContentView 
+            x:Name="overlay" 
+            AbsoluteLayout.LayoutBounds="0, 0, 1, 70" 
+            AbsoluteLayout.LayoutFlags="All" 
+            IsVisible="False" BackgroundColor="#808080" 
+            Padding="10,0"
+            >
+            <Frame 
+                BackgroundColor="White" 
+                HeightRequest="300" 
+                WidthRequest="300" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Start" 
+                Margin="0,23,0,0" Padding="0">
                 <StackLayout BackgroundColor="White" HeightRequest="230" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="FillAndExpand">
-                    <Grid>
+                    <Grid Padding="0">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="2.5*" />
+                            <RowDefinition Height="2.7*" />
                             <RowDefinition Height="8.0*" />
                         </Grid.RowDefinitions>
-                        <StackLayout Grid.Row="0" Padding="20" BackgroundColor="{StaticResource Primary}">
-                            <Label FontSize="16" TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center" Text="Registro de solicitud de transporte" />
+                        <StackLayout Grid.Row="0" BackgroundColor="{StaticResource Primary}">
+                            <Label FontSize="16" TextColor="White" VerticalOptions="CenterAndExpand"   HorizontalOptions="Center"  Text="Registro de solicitud de transporte" />
                         </StackLayout>
                         <StackLayout Grid.Row="1">
                             <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
@@ -59,11 +85,13 @@
                             </StackLayout>
                         </StackLayout>
                     </Grid>
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                    <StackLayout HorizontalOptions="FillAndExpand" Padding="15" >
                         <Button Style="{DynamicResource btnSuccessful}"  Text="Registrar" HorizontalOptions="FillAndExpand" Clicked="OnRegistrarButtonClicked" />
+                        <Button Style="{DynamicResource btnCancel}" x:Key="btnCancel" Text="Cancelar"  HorizontalOptions="FillAndExpand" Clicked="OnCancelButtonClicked" />
                     </StackLayout>
                 </StackLayout>
             </Frame>
         </ContentView>
-    </AbsoluteLayout>
+    </Grid>
+
 </ContentPage>

@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using SGSApp.Models;
 using SGSApp.ViewModel;
+using SGSApp.Views.Home;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -70,5 +71,6 @@ namespace SGSApp.Views.Sharepoint
 
             ViewModel.LoadItemsCommand.Execute(null);
         }
+
     }
 }

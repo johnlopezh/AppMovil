@@ -34,7 +34,7 @@ namespace SGSApp.ViewModel
                     App.Navigator.PushAsync(new Calendario());
                     break;
                 case "Transporte":
-                    /* App.Navigator.PushAsync(new DashboardConsultaTransporte());*/
+                    App.Navigator.PushAsync(new DashboardConsultaTransporte());
                     break;
                 case "Extensiones":
                     App.Navigator.PushAsync(new ListaExtensiones());

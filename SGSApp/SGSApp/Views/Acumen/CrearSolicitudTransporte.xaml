@@ -29,7 +29,7 @@
                     </StackLayout>
                 </StackLayout>
                 <StackLayout  VerticalOptions="FillAndExpand" Padding="10">
-                    <TableView Intent="Form" x:Name="FormularioSolicitud" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  >
+                    <TableView Intent="Form" x:Name="FormularioSolicitud" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HasUnevenRows="True" >
                         <TableRoot Title="Creación de una Solicitud" >
                             <TableSection x:Name="TableSec" Title="Diligencie la siguiente información:"  >
                                 <ViewCell>
@@ -65,32 +65,24 @@
                                 </ViewCell>
                             </TableSection>
                             <TableSection Title="Información Entrega Estudiante" x:Name="TableSectionEntregaEstudiante">
-                                <ViewCell x:Name="LugarEntregarDireccion">
-                                    <StackLayout Orientation="Horizontal">
-                                        <Switch HorizontalOptions="LayoutOptions.Center"
-                                                VerticalOptions="LayoutOptions.CenterAndExpand"
-                                                Toggled="SwitchToggledDireccion" x:Name="SwitchDireccion" />
-                                        <Label Text="Dirección (*): " x:Name="LblDireccion"
-                                               HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
-                                        <ms:CustomPicker ItemsSource="{Binding Direcciones}"
+                                <ViewCell x:Name="LugarEntregarDireccion"  >
+                                    <StackLayout Padding="5" Orientation="Vertical"  BackgroundColor="{StaticResource GrayBackground}">
+                                        <StackLayout>
+                                        <Label Text="Administración Direcciones: " x:Name="LblDireccion"
+                                               HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                                        </StackLayout>
+                                        <StackLayout HorizontalOptions="Center" >
+                                            <Label HorizontalTextAlignment="Center" FontSize="10" Text="Por favor seleccione una dirección existente o agregue una nueva"></Label>
+                                            <ms:CustomPicker ItemsSource="{Binding Direcciones}"
                                                          HorizontalOptions="FillAndExpand"
                                                          HeightRequest="50"
                                                          Image="ic_arrow_drop_down.png"
-                                                         Title="Seleccione..." x:Name="PickerDireccion"
+                                                         
+                                                         Title="Seleccione una dirección existente" x:Name="PickerDireccion"
                                                          SelectedIndexChanged="PickerDirecciones_SelectedIndexChanged"/>
-                                        <Button x:Name="AgregarDireccion" Text="Otra"
-                                                Command="{Binding NavigateCommand}" HorizontalOptions="End" />
-                                    </StackLayout>
-                                </ViewCell>
-                                <ViewCell x:Name="LugarEntregarCompañero">
-                                    <StackLayout Orientation="Horizontal">
-                                        <Switch HorizontalOptions="LayoutOptions.Center"
-                                                Toggled="SwitchToggledCompanero" x:Name="SwitchCompañero" />
-                                        <Label Text="Compañero (*): " x:Name="LblCompañero"
-                                               HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
-                                        <autocomplete:SfAutoComplete HeightRequest="30" WidthRequest="120"
-                                                                     x:Name="autocompleteCompañero"
-                                                                     SuggestionMode="Contains" />
+                                        <Button x:Name="AgregarDireccion" Text="Agregar Nueva Dirección"
+                                                Command="{Binding NavigateCommand}" HorizontalOptions="FillAndExpand" />
+                                       </StackLayout>
                                     </StackLayout>
                                 </ViewCell>
                             </TableSection>

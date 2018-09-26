@@ -30,6 +30,7 @@ namespace SGSApp.iOS
             Forms.Init();
             Calendar.Init();
             ImageCircleRenderer.Init();
+            ZXing.Net.Mobile.Forms.iOS.Platform.Init();
             LoadApplication(new App());
             //LoadApplication(Player.CreateApplication(new Config("Good Gorilla").RegisterAssemblyFromType<CircleImage>()));
 

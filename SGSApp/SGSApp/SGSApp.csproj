@@ -181,6 +181,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="DesignTimeData.json" />
     <None Include="GettingStarted.Xamarin" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -294,17 +295,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="escudo_sgs.png" />
     <Content Include="ic_escudosgscolor_fondo_transparente.png" />
     <Content Include="ImagenTest.jpg" />
+    <Content Include="LogoSGSBlanco.png" />
     <Content Include="MenuFondo.png" />
+    <Content Include="Resources\ic_carnet_virtual.png" />
+    <Content Include="Resources\LogoSGSBlanco.png" />
     <EmbeddedResource Include="icons_news.png" />
-    <Content Include="Images\IMG_2821_jpg.jpg" />
-    <Content Include="Images\IMG_3147_jpg.jpg" />
-    <Content Include="Images\IMG_3280_jpg.jpg" />
-    <Content Include="Images\IMG_3358_jpg.jpg" />
-    <Content Include="Images\IMG_3449_jpg.jpg" />
-    <Content Include="Images\IMG_3492_jpg.jpg" />
-    <Content Include="login.PNG" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Master\Welcome.xaml">

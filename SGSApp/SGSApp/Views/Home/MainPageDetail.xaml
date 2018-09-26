@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SGSApp.Views.Home.MainPageDetail"
              Title="Inicio"             
+             BindingContext="{Binding Menu, Source={StaticResource Locator}}"
              >
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="ic_notification.png" Command="{Binding GoToCommand}" CommandParameter="Notificaciones" />
