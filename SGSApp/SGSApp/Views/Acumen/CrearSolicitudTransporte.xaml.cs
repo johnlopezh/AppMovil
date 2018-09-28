@@ -260,8 +260,6 @@ namespace SGSApp.Views.Acumen
                 armarFechasHabiles(item.FechaCalendario);
                 Task.Delay(5000);
             }
-
-            //pruebas23.CheckedText = arr4;
             //lvDetails.ItemsSource = TiposSol;
             PickerFechas.ItemsSource = arrFechas;
             //lvDetails.ItemsSource = arr4;

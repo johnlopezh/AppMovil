@@ -35,31 +35,35 @@ namespace SGSApp.Views.Home
                 MenuItems = new ObservableCollection<MainPageMenuItem>(new[]
                 {
                     new MainPageMenuItem
-                        {Id = 0, Icon = "ic_news.png", Title = "Noticias", TargetType = typeof(ListaNoticias)},
+                        {Id = 0, Icon = "ic_news.png", Title = "Noticias",
+                            TargetType = typeof(ListaNoticias)},
+
                     new MainPageMenuItem
-                        {Id = 2, Icon = "ic_calendario.png", Title = "Calendario", TargetType = typeof(Calendario)},
+                        {Id = 1, Icon = "ic_calendario.png", Title = "Calendario",
+                            TargetType = typeof(Calendario)},
+
                     new MainPageMenuItem
                     {
-                        Id = 3, Icon = "ic_transporte.png", Title = "Transporte",
+                        Id = 2, Icon = "ic_transporte.png", Title = "Transporte",
                         TargetType = typeof(DashboardConsultaTransporte)
                     },
                     new MainPageMenuItem
                     {
-                        Id = 4, Icon = "ic_phonebook.png", Title = "Listado Teléfonico",
+                        Id = 3, Icon = "ic_phonebook.png", Title = "Listado Teléfonico",
                         TargetType = typeof(ListaExtensiones)
                     },
                     new MainPageMenuItem
                     {
-                        Id = 5, Icon = "ic_carnet_virtual.png", Title = "Carnet DragonMarket",
+                        Id = 4, Icon = "ic_carnet_virtual.png", Title = "Carnet DragonMarket",
                         TargetType = typeof(CarnetVirtual)
                     },
                     new MainPageMenuItem
-                        {Id = 5, Icon = "ic_intranet.png", Title = "SGS Members", TargetType = typeof(Intranet)},
-                    /* new MainPageMenuItem
-                        {Id = 6, Icon = "ic_intranet.png", Title = "Notificaciones", TargetType = typeof(Prueba)}, */
-                    //new MainPageMenuItem { Id = 7, Icon = "ic_intranet.png", Title = "Notificaciones-bd" , TargetType =  typeof(ListaNotificacionesView) },
+                        {Id = 5, Icon = "ic_intranet.png", Title = "SGS Members",
+                            TargetType = typeof(Intranet)},
+
                     new MainPageMenuItem
-                        {Id = 8, Icon = "ic_vpn_key.png", Title = "Cerrar Sesión", TargetType = typeof(logout)}
+                        {Id = 6, Icon = "ic_vpn_key.png", Title = "Cerrar Sesión",
+                            TargetType = typeof(logout)}
                 });
 
                 ImageURL = ImageSource.FromStream(() => { return new MemoryStream(GlobalVariables.imagenUsuario); });
