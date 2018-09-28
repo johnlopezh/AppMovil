@@ -24,6 +24,7 @@ namespace SGSApp.ViewModel
         {
             Navigation = navigation;
             HomeCommand = new Command(async () => await NavigateToNotificacionView());
+
         }
 
         public Command HomeCommand { get; set; }

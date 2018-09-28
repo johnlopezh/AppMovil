@@ -5,34 +5,10 @@
              x:Class="SGSApp.Views.Sharepoint.ListaExtensiones"
              NavigationPage.HasNavigationBar="True"
              Title="Extensiones" IsBusy="{Binding IsBusy}"
-             BindingContext="{Binding Menu, Source={StaticResource Locator}}">
+             >
 
 
     <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-        <!--<ListView ItemsSource="{Binding Items}" HasUnevenRows="True">
-                <ListView.ItemTemplate>
-                    <DataTemplate >
-                        <ViewCell>
-                            <Grid>
-                                <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding NavigateCommand}"></TapGestureRecognizer>
-                                </Grid.GestureRecognizers>
-                                <Grid.RowDefinitions>o  
-                                    <RowDefinition Height="80" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Grid.Row="0" Text="{Binding nombreExtension}"></Label>
-                                <Label Grid.Column="1" Grid.Row="0" Text="{Binding extension}"></Label>
-                                <Label Grid.Column="1" Grid.Row="0" Text="{Binding responsable}"></Label>
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>-->
         <ListView x:Name="listView" ItemsSource="{Binding ExtensionesItems}" HasUnevenRows="True" RowHeight="175"
                   RefreshCommand="{Binding LoadItemsCommand}" AbsoluteLayout.LayoutFlags="All"
                   AbsoluteLayout.LayoutBounds="0,0,1,1">
@@ -42,16 +18,16 @@
                         <Grid Padding="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <StackLayout Grid.Column="0" Spacing="4" VerticalOptions="Center">
                                 <Label Text="{Binding nombreExtension}" TextColor="#25357a" FontSize="Small"
                                        LineBreakMode="WordWrap" />
-                                <Label Text="{Binding extension}" FontSize="Small" LineBreakMode="WordWrap" />
                                 <Label Text="{Binding responsable}" FontSize="Small" LineBreakMode="WordWrap" />
                             </StackLayout>
-                            <StackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
-                                <Button Text="Llamar" Clicked="LlamarExtension" Style="{StaticResource btnSuccessful}" />
+                            <StackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center" Orientation="Horizontal">
+                                <Label VerticalOptions="CenterAndExpand"  Text="Llamar a la extensión" FontSize="10" ></Label>
+                                <Button Text="{Binding extension}" BorderRadius="5" Clicked="LlamarExtension" />
                             </StackLayout>
                         </Grid>
                     </ViewCell>

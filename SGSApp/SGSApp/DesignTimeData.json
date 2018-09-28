@@ -1,14 +1,9 @@
 ﻿{
-  "DashboardConsultaTransporte.xaml": [
+  "ListaExtensiones.xaml": [
     {
-      "Name": "John Lopez",
-      "Curso": "Noveno C",
-      "Image": "https://amarillo.blob.core.windows.net/foto/27037.jpg"
-    },
-    {
-      "Name": "John Lopez",
-      "Curso": "Noveno C",
-      "Image": "https://amarillo.blob.core.windows.net/foto/27037.jpg"
+      "nombreExtension": "Admisiones",
+      "extension": "119",
+      "responsable": "Zoraya Rarimez"
     }
   ]
 }

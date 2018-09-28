@@ -57,11 +57,13 @@ namespace SGSApp.Views.Sharepoint
             ViewModel.LoadItemsCommand.Execute(null);
         }
 
-        private void LlamarExtension(object sender, EventArgs e)
+        private void LlamarExtension(Object sender, EventArgs e)
         {
-            var extension = 172;
+
+            var prueba = (Button) sender;     
+
             var phoneCallTask = CrossMessaging.Current.PhoneDialer;
-            if (phoneCallTask.CanMakePhoneCall) phoneCallTask.MakePhoneCall("0314324000," + extension, "PBX SGS");
+            if (phoneCallTask.CanMakePhoneCall) phoneCallTask.MakePhoneCall("0314324000," + prueba.Text, "PBX SGS");
         }
     }
 }

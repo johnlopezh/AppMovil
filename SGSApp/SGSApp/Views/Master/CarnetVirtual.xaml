@@ -9,7 +9,7 @@
     x:Class="SGSApp.Views.Master.CarnetVirtual" BackgroundColor="{StaticResource Gray}" 
     BindingContext="{Binding Menu}">
     <ContentPage.Content>
-        <StackLayout Padding="20,30">
+        <ScrollView Padding="20,30">
             <custom:RoundedCornerView Padding="0" VerticalOptions="FillAndExpand" RoundedCornerRadius="10">
                 <Grid Padding="0" RowSpacing="0" >
                     <Grid.RowDefinitions>
@@ -49,13 +49,13 @@
                             <custom:RoundedCornerView Padding="15" RoundedCornerRadius="10" HeightRequest="200" WidthRequest="200" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                 <StackLayout BackgroundColor="{StaticResource WhiteBackgroundColor}" HeightRequest="200" WidthRequest="200" x:Name="qrcode"></StackLayout>
                             </custom:RoundedCornerView>
-                            <StackLayout VerticalOptions="End">
-                                <Label FontSize="10" Text="Carnet solo valido para compras"></Label>
+                            <StackLayout VerticalOptions="End" Padding="5">
+                                <Label FontSize="10" Text="Carnet solo válido para compras" HorizontalOptions="Center"></Label>
                             </StackLayout>
                         </StackLayout>
                     </Grid>
                 </Grid>
             </custom:RoundedCornerView>
-        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
