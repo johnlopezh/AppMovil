@@ -8,7 +8,7 @@
         public static string TokenAcumen = "";
         public static byte[] imagenUsuario;
         public static string Email = "";
-        public static string AcumenUrl = "http://naranjaweb.cloudapp.net/";
+        public static string AcumenUrl = "http://amarilloweb.cloudapp.net/";
         public static string BlobStorageUrl = "https://amarillo.blob.core.windows.net/foto/";
 
         public static void grabarUsuario(string username, string email)
