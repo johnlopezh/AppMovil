@@ -414,7 +414,7 @@ namespace SGSApp.Views.Acumen
                     IdentificacionSolicitante = IdentificacionSolicitante,
                     Temporal = Temporal,
                     Permanente = Permanente,
-                    Hora = Hora,
+                    Hora = TimePickerHora.Time,
                     IdDireccion = (dir != null) ? dir.IdDireccion  : 0,
                     IdentificacionCompanero = null,
                     TipoIdentCompanero = null,

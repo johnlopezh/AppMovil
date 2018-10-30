@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using SGSApp.Views.Master;
@@ -23,9 +24,11 @@ namespace SGSApp.Views.Logout
             //AuthenticationContext _authenticationContext;
             //_authenticationContext = new AuthenticationContext(requestUrl, false);
             //_authenticationContext.TokenCache.Clear();
+            var authContext = new AuthenticationContext(App.tenanturl);
+            authContext =  new AuthenticationContext(authContext.TokenCache.ReadItems().FirstOrDefault().Authority);
 
             AuthenticationContext _authenticationContext1;
-            _authenticationContext1 = new AuthenticationContext(authority, false);
+            _authenticationContext1 = new AuthenticationContext(authContext.Authority);
             _authenticationContext1.TokenCache.Clear();
             //AuthenticationContext authContext =   new AuthenticationContext("Authority", false, null);
             //authContext.TokenCache.Clear();
@@ -41,6 +44,8 @@ namespace SGSApp.Views.Logout
             var request = new HttpRequestMessage(HttpMethod.Get, requestUrl);
             var response = await client.SendAsync(request);
             Task.Delay(5000).Wait();
+
+
             await Navigation.PushModalAsync(new Welcome());
         }
     }

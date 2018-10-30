@@ -87,7 +87,7 @@
                     </Grid>
                     <StackLayout HorizontalOptions="FillAndExpand" Padding="15" >
                         <Button Style="{DynamicResource btnSuccessful}"  Text="Registrar" HorizontalOptions="FillAndExpand" Clicked="OnRegistrarButtonClicked" />
-                        <Button Style="{DynamicResource btnCancel}" x:Key="btnCancel" Text="Cancelar"  HorizontalOptions="FillAndExpand" Clicked="OnCancelButtonClicked" />
+                        <Button Style="{DynamicResource btnCancel}" x:Uid="btnCancel" Text="Cancelar"  HorizontalOptions="FillAndExpand" Clicked="OnCancelButtonClicked" />
                     </StackLayout>
                 </StackLayout>
             </Frame>
