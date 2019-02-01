@@ -121,7 +121,7 @@ namespace SGSApp.Views.Acumen
             JornadaExtraHabilitada = tp.JornadaExtraHabilitada;
             JornadaExtenHabilitada = tp.JornadaExtenHabilitada;
             Observaciones = MotivoEntry.Text;
-            EstadoSolicitud = "P";
+            EstadoSolicitud = (tp.RequiereAutorizacion == true) ? "C" : "P";
             UsuarioLog = GlobalVariables.Email;
             FechaSolicitud = FechaSolicitud;
             PeriodoLectivo = PeriodoLectivo;
