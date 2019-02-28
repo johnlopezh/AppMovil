@@ -5,7 +5,8 @@
              x:Class="SGSApp.Views.Home.MainPageMaster"
              BackgroundImage="FondoHome.png"
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
-             Title="Master"
+             Title="Menu Principal"
+             BindingContext ="{Binding Menu, Source={StaticResource Locator}}"
              >
 
     <ContentPage.Content>
@@ -53,7 +54,7 @@
                               SeparatorColor="{StaticResource GrayBackground}"
                   SeparatorVisibility="Default"
                   HasUnevenRows="true"         
-                  ItemsSource="{Binding MenuItems}">
+                  ItemsSource="{Binding Menu}">
                         <ListView.ItemTemplate >
                             <DataTemplate>
                                 <ViewCell>
@@ -77,7 +78,7 @@
                     </ListView>
                 </StackLayout>
                 <StackLayout Grid.Row="2" BackgroundColor="{StaticResource GrayBackground}">
-                    <Label VerticalOptions="CenterAndExpand"  HorizontalOptions="Center" Text="Versión 1.0.7" />
+                    <Label VerticalOptions="CenterAndExpand"  HorizontalOptions="Center" Text="Versión 1.0.10" />
                 </StackLayout>
             </Grid>
         </Grid>

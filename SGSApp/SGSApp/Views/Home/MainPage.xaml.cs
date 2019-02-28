@@ -24,12 +24,10 @@ namespace SGSApp.Views.Home
             var item = e.SelectedItem as MainPageMenuItem;
             if (item == null)
                 return;
-
             var page = (Page) Activator.CreateInstance(item.TargetType);
             page.Title = item.Title;
             Detail = new NavigationPage(page);
             IsPresented = false;
-
             MasterPage.ListView.SelectedItem = null;
         }
 
@@ -37,6 +35,7 @@ namespace SGSApp.Views.Home
         {
             base.OnAppearing();
             App.Master = this;
+            // a la derecha Navigator de la página. En la izquierda navigator en la app  principal.
             App.Navigator = Navigator;
         }
     }

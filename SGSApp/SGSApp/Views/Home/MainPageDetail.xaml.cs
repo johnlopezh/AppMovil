@@ -1,4 +1,5 @@
-﻿using SGSApp.Helper;
+﻿using System;
+using SGSApp.Helper;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,5 +13,6 @@ namespace SGSApp.Views.Home
             InitializeComponent();
             LblUsername.Text = GlobalVariables.Usuario;
         }
+
     }
 }

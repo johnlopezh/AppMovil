@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Plugin.Messaging;
 using SGSApp.ViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -60,8 +59,6 @@ namespace SGSApp.Views.Sharepoint
         private void LlamarExtension(Object sender, EventArgs e)
         {
             var extension = (Button) sender;     
-            var phoneCallTask = CrossMessaging.Current.PhoneDialer;
-            if (phoneCallTask.CanMakePhoneCall) phoneCallTask.MakePhoneCall("0314324000," + extension.Text, "PBX SGS");
         }
     }
 }

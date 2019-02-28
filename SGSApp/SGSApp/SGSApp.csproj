@@ -52,7 +52,6 @@
     <Compile Include="Controls\SelectableItem.cs" />
     <Compile Include="Controls\SelectableObservableCollection.cs" />
     <Compile Include="Controls\SelectableViewCell.cs" />
-    <Compile Include="Data\SGSDatabase.cs" />
     <Compile Include="EstudianteJson.cs" />
     <Compile Include="ExtensionesJson.cs" />
     <Compile Include="Extensions\BindableObjectExtensions.cs" />
@@ -96,7 +95,6 @@
     <Compile Include="ViewModel\ComunVM.cs" />
     <Compile Include="ViewModel\DireccionVM.cs" />
     <Compile Include="ViewModel\ExtensionesVM.cs" />
-    <Compile Include="ViewModel\MainVM.cs" />
     <Compile Include="ViewModel\MenuOpcionesViewModel.cs" />
     <Compile Include="Sharepoint.cs" />
     <Compile Include="ViewModel\NoticiaViewModel.cs" />
@@ -214,12 +212,6 @@
     </Reference>
     <Reference Include="Plugin.Connectivity.Abstractions, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xam.Plugin.Connectivity.3.1.1\lib\netstandard1.0\Plugin.Connectivity.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Plugin.Messaging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xam.Plugins.Messaging.5.1.0\lib\netstandard1.0\Plugin.Messaging.dll</HintPath>
-    </Reference>
-    <Reference Include="Plugin.Messaging.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xam.Plugins.Messaging.5.1.0\lib\netstandard1.0\Plugin.Messaging.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="PSC.Xam.Controls.BindableRadioButton, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\PSC.Xam.Controls.BindableRadioButton.1.0.0\lib\portable45-net45+win8+wp8+wpa81\PSC.Xam.Controls.BindableRadioButton.dll</HintPath>

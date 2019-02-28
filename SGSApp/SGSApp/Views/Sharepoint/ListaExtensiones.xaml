@@ -26,8 +26,7 @@
                                 <Label Text="{Binding responsable}" FontSize="Small" LineBreakMode="WordWrap" />
                             </StackLayout>
                             <StackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center" Orientation="Horizontal">
-                                <Label VerticalOptions="CenterAndExpand"  Text="Llamar a la extensión" FontSize="10" ></Label>
-                                <Button Text="{Binding extension}" BorderRadius="5" Clicked="LlamarExtension" />
+                                <Label Text="{Binding extension}" TextColor="{StaticResource Primary}"></Label>
                             </StackLayout>
                         </Grid>
                     </ViewCell>
