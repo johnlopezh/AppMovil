@@ -6,7 +6,7 @@
              BindingContext="{Binding Menu, Source={StaticResource Locator}}"
              >
     <ContentPage.ToolbarItems>
-        <ToolbarItem Icon="ic_notification.png" Command="{Binding GoToCommand}" CommandParameter="Notificaciones" />
+        <!--<ToolbarItem Icon="ic_notification.png" Command="{Binding GoToCommand}" CommandParameter="Home" />-->
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid>
@@ -94,23 +94,23 @@
                         <Label VerticalOptions="End" HorizontalOptions="Center" Text="SGS Members" FontSize="10"
                                    TextColor="Black" Grid.Row="1" Grid.Column="1" />
 
-                        <Image Source="ic_dial.png" Grid.Column="2" Grid.Row="1" HorizontalOptions="Center">
+                        <!--<Image Source="ic_dial.png" Grid.Column="2" Grid.Row="1" HorizontalOptions="Center">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer
-                                        Command="{Binding GoToCommand}" CommandParameter="Llamar" />
+                                        Command="{Binding OnAlertSimpleClicked}" />
                             </Image.GestureRecognizers>
                         </Image>
                         <Label VerticalOptions="End" HorizontalOptions="Center" Text="Llamar" FontSize="10"
-                                   TextColor="Black" Grid.Row="1" Grid.Column="2" />
+                                   TextColor="Black" Grid.Row="1" Grid.Column="2" />-->
 
-                        <Image Source="ic_mail.png" Grid.Column="0" Grid.Row="2" HorizontalOptions="Center">
+                        <Image Source="ic_mail.png" Grid.Column="2" Grid.Row="1" HorizontalOptions="Center">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer
                                         Command="{Binding GoToCommand}" CommandParameter="EMail" />
                             </Image.GestureRecognizers>
                         </Image>
                         <Label VerticalOptions="End" HorizontalOptions="Center" Text="E-mail" FontSize="10"
-                                   TextColor="Black" Grid.Row="2" Grid.Column="0" />
+                                   TextColor="Black" Grid.Row="1" Grid.Column="2" />
                     </Grid>
                 </StackLayout>
                 <StackLayout Grid.Row="2" BackgroundColor="{StaticResource GrayBackground}">

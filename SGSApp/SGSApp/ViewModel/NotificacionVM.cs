@@ -10,7 +10,6 @@ namespace SGSApp.ViewModel
 
         public async Task GuardarNotificacion()
         {
-            await App.Database.SaveItemAsync(NewNotificacion);
             await Navigation.PopAsync();
         }
 

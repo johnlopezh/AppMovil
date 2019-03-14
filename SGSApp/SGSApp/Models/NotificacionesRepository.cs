@@ -8,10 +8,6 @@ namespace SGSApp.Models
 {
     public class NotificacionesRepository
     {
-        public NotificacionesRepository()
-        {
-            Task.Run(async () => NotificacionesP = await App.Database.GetItemsAsync()).Wait();
-        }
 
         public IList<NotificacionesPush> NotificacionesP { get; set; }
 

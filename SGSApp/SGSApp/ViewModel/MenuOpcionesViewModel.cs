@@ -1,29 +1,48 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
-using Plugin.Messaging;
+using SGSApp.Helper;
 using SGSApp.Views.Acumen;
+using SGSApp.Views.Home;
+using SGSApp.Views.Logout;
 using SGSApp.Views.Master;
 using SGSApp.Views.Sharepoint;
+using Xamarin.Forms;
 using MainPage = SGSApp.Views.Home.MainPage;
 
 namespace SGSApp.ViewModel
 {
     public class MenuOpcionesViewModel : INotifyPropertyChanged
     {
+        #region Atributos
+
+        public ObservableCollection<MainPageMenuItem> Menu { get; set;  }
+        public ImageSource ImageURL { get; }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        #endregion
+
         #region Commands
 
         public ICommand GoToCommand => new RelayCommand<string>(GoTo);
 
         #endregion
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
         #region Metodos
+
+        public MenuOpcionesViewModel()
+        {
+            cargarMenu();
+            ImageURL = ImageSource.FromStream(() => { return new MemoryStream(GlobalVariables.imagenUsuario); });
+        }
 
         private void GoTo(string PageName)
         {
+            App.Master.IsPresented = false;
             string username = null;
             switch (PageName)
             {
@@ -50,8 +69,6 @@ namespace SGSApp.ViewModel
                     App.Navigator.PushAsync(new CarnetVirtual());
                     break;
                 case "Llamar":
-                    var phoneCallTask = CrossMessaging.Current.PhoneDialer;
-                    if (phoneCallTask.CanMakePhoneCall) phoneCallTask.MakePhoneCall("0314324000", "PBX SGS");
                     break;
                 case "EMail":
                     App.Navigator.PushAsync(new Email());
@@ -59,7 +76,42 @@ namespace SGSApp.ViewModel
             }
         }
 
-        #endregion
+        private void cargarMenu()
+        {
+            Menu = new ObservableCollection<MainPageMenuItem>(new[]
+            {
+                new MainPageMenuItem
+                {Id = 0, Icon = "ic_news.png", Title = "Noticias",
+                    TargetType = typeof(ListaNoticias)},
+
+                new MainPageMenuItem
+                {Id = 1, Icon = "ic_calendario.png", Title = "Calendario",
+                    TargetType = typeof(Calendario)},
+
+                new MainPageMenuItem
+                {
+                    Id = 2, Icon = "ic_transporte.png", Title = "Transporte",
+                    TargetType = typeof(DashboardConsultaTransporte)
+                },
+                new MainPageMenuItem
+                {
+                    Id = 3, Icon = "ic_phonebook.png", Title = "Listado Teléfonico",
+                    TargetType = typeof(ListaExtensiones)
+                },
+                new MainPageMenuItem
+                {
+                    Id = 4, Icon = "ic_carnet_virtual.png", Title = "Carnet DragonMarket",
+                    TargetType = typeof(CarnetVirtual)
+                },
+                new MainPageMenuItem
+                {Id = 5, Icon = "ic_intranet.png", Title = "SGS Members",
+                    TargetType = typeof(Intranet)},
+
+                new MainPageMenuItem
+                {Id = 6, Icon = "ic_vpn_key.png", Title = "Cerrar Sesión",
+                    TargetType = typeof(logout)}
+            });
+        }      
 
         private void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
@@ -68,5 +120,8 @@ namespace SGSApp.ViewModel
 
             PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+
+        #endregion
     }
 }

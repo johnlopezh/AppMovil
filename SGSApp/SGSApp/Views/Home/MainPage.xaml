@@ -1,17 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Se añade Unfocused namespace para poder ver las clases ver mismo contexto, clr-namespace-->
 
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                   x:Class="SGSApp.Views.Home.MainPage"
-                  xmlns:pages="clr-namespace:SGSApp.Views.Home">
+                  xmlns:home="clr-namespace:SGSApp.Views.Home;assembly=SGSApp">
 
     <MasterDetailPage.Master>
-        <pages:MainPageMaster x:Name="MasterPage" />
+        <home:MainPageMaster x:Name="MasterPage" />
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>
+        <!--Se estable un nombre para poder extraer esta instancia y dejarla en contexto publico.-->
         <NavigationPage x:Name="Navigator">
             <x:Arguments>
-                <pages:MainPageDetail />
+                <home:MainPageDetail />
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Detail>
