@@ -90,7 +90,7 @@ namespace SGSApp.ViewModel
                 client.DefaultRequestHeaders.Accept.Add(mediaType);
 
                 var result = await client.GetAsync(
-                    "https://sgsedu.sharepoint.com/sites/intranet/_api/web/lists/GetByTitle('Calendario%20SGS')/items?$orderby=EventDate%20desc&$filter=EventDate%20ge%20'" +
+                    "https://sgsedu.sharepoint.com/sites/Intranetsgs/_api/web/lists/GetByTitle('Días%20Academicos')/items?$orderby=EventDate%20desc&$filter=EventDate%20ge%20'" +
                     todayStart + "'and%20EventDate%20le%20'" + todayEnd + "'");
 
                 var data = JsonConvert.DeserializeObject<ListEventsCalendar>(await result.Content.ReadAsStringAsync());

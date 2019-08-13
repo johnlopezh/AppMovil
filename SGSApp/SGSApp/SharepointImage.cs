@@ -13,13 +13,14 @@ namespace SGSApp
 
     public class I
     {
-        [JsonProperty("__metadata")] public ListItemImage Results { get; set; }
+        //[JsonProperty("__metadata")] public ListItemImage Results { get; set; }
 
-        [JsonProperty("PublishingPageImage")] public string PublishingPageImage { get; set; }
+        [JsonProperty("id")] public string id { get; set; }
     }
 
     public class ListItemModelsImage
     {
-        [JsonProperty("d")] public I D { get; set; }
+        [JsonProperty("id")] public string id { get; set; }
+        [JsonProperty("serverProcessedContent")] public ServerProcessedContent serverProcessedContent { get; set; }
     }
 }

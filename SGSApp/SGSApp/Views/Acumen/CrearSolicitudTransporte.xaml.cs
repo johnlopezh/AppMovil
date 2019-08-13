@@ -175,7 +175,7 @@ namespace SGSApp.Views.Acumen
             if (tp.BotonDireccionHabilitado == true)
             {
                 TableSectionEntregaEstudiante.Title = tp.CampoDestino;
-               // TableSectionEntregaEstudiante.Remove(LugarEntregarCompañero);
+                // TableSectionEntregaEstudiante.Remove(LugarEntregarCompañero);
             }
             else
             {
@@ -241,10 +241,10 @@ namespace SGSApp.Views.Acumen
                     FechasSeleccionadas[inc] = item.Data;
                     //FechasSeleccionadasEntry.Text = "2018-01-29, 2018-02-01,";
                     FechasSeleccionadasEntry.Text = string.Concat(FechasSeleccionadasEntry.Text, item.Data, ",");
-                    
+
                     inc++;
                 }
-               
+
             }
             FechasSeleccionadasEntry.Text = FechasSeleccionadasEntry.Text.TrimEnd(',');
             overlayFechaM.IsVisible = false;
@@ -403,7 +403,7 @@ namespace SGSApp.Views.Acumen
             }
         }
 
-        private async Task GuardarSolicitud()
+        public async Task GuardarSolicitud()
         {
             try
             {
@@ -415,12 +415,12 @@ namespace SGSApp.Views.Acumen
                     Temporal = Temporal,
                     Permanente = Permanente,
                     Hora = TimePickerHora.Time,
-                    IdDireccion = (dir != null) ? dir.IdDireccion  : 0,
+                    IdDireccion = (dir != null) ? dir.IdDireccion : 0,
                     IdentificacionCompanero = null,
                     TipoIdentCompanero = null,
                     NombreAutorizado = NombrePersonaAutorizadaEntry.Text,
                     IdentificacionAutorizado = IdentificacionPersonaAutorizadaEntry.Text,
-                    Telefono = Convert.ToInt64(TelefonoContactoEntry.Text),
+                    TelefonoSolicitud = TelefonoContactoEntry.Text,
                     JornadaMananaHabilitada = JornadaMananaHabilitada,
                     JornadaTardeHabilitada = JornadaTardeHabilitada,
                     JornadaExtraHabilitada = JornadaExtraHabilitada,
@@ -441,8 +441,8 @@ namespace SGSApp.Views.Acumen
             }
 
         }
-       
-        public async Task GuardarBtn_Clicked(object sender, EventArgs e)
+
+        public async void GuardarBtn_Clicked(object sender, EventArgs e)
         {
             if (await validarFormulario())
             {

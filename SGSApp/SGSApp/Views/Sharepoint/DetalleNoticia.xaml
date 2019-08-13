@@ -15,7 +15,7 @@
                            LineBreakMode="WordWrap"
                            VerticalOptions="Start" />
                     <Image x:Name="Imagen"
-                           HorizontalOptions="FillAndExpand" />
+                           HorizontalOptions="FillAndExpand" WidthRequest="420" HeightRequest="220"/>
 
                     <WebView VerticalOptions="FillAndExpand">
                         <WebView.Source>

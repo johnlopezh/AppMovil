@@ -46,17 +46,17 @@ namespace SGSApp.Models
                                                   "?$select=PublishingPageImage");
                         var not = JsonConvert.DeserializeObject<ListItemModelsImage>(
                             await resultNot.Content.ReadAsStringAsync());
-                        var let = not.D.PublishingPageImage;
+                        //var let = not.D.PublishingPageImage;
                         char[] separadores = {' '};
                         char[] separadoresq = {'/'};
-                        var palabras = let.Split(separadores);
-                        var er = palabras[2].Replace("src=", " ");
-                        var pp = er.Substring(0, er.Length - 1);
-                        var er2 = pp.Split(separadoresq);
+                        //var palabras = let.Split(separadores);
+                        //var er = palabras[2].Replace("src=", " ");
+                       // var pp = er.Substring(0, er.Length - 1);
+                       // var er2 = pp.Split(separadoresq);
 
-                        var resultNot1 = await client.GetAsync(
-                            "https://sgsedu.sharepoint.com/sites/intranet/_api/web/GetFolderByServerRelativeUrl('PublishingImages')/Files('" +
-                            er2[4] + "')/$value");
+                        //var resultNot1 = await client.GetAsync(
+                        //    "https://sgsedu.sharepoint.com/sites/intranet/_api/web/GetFolderByServerRelativeUrl('PublishingImages')/Files('" +
+                        //    er2[4] + "')/$value");
 
                         var ent = new Noticias();
                         var image = new Image();
@@ -64,24 +64,24 @@ namespace SGSApp.Models
                         var webImage = new Image {Aspect = Aspect.AspectFit};
 
 
-                        using (var sourceStream = await resultNot1.Content.ReadAsStreamAsync())
-                        {
-                            using (var newStream = new MemoryStream())
-                            {
-                                sourceStream.CopyTo(newStream);
-                                var bytes = newStream.ToArray();
-                                img = "data:image/png;base64, " + Convert.ToBase64String(bytes);
-                                //webImage.Source = UriImageSource.FromUri(new Uri(img));
-                                ent.ImageURL = ImageSource.FromStream(() => { return new MemoryStream(bytes); });
-                            }
-                        }
+                        //using (var sourceStream = await resultNot1.Content.ReadAsStreamAsync())
+                        //{
+                        //    using (var newStream = new MemoryStream())
+                        //    {
+                        //        sourceStream.CopyTo(newStream);
+                        //        var bytes = newStream.ToArray();
+                        //        img = "data:image/png;base64, " + Convert.ToBase64String(bytes);
+                        //        //webImage.Source = UriImageSource.FromUri(new Uri(img));
+                        //        ent.ImageURL = ImageSource.FromStream(() => { return new MemoryStream(bytes); });
+                        //    }
+                        //}
 
 
                         var s = data.D.Results[i].PublishingPageContent;
                         s = s.Replace("/sites/intranet/", "https://sgsedu.sharepoint.com/sites/intranet/");
                         ent.TituloNoticia = data.D.Results[i].Title;
-                        ent.Resumen = data.D.Results[i].OData__Comments;
-                        ent.Descripcion = s;
+                        ent.Resumen = data.D.Results[i].Description;
+                        ent.Descripcion = data.D.Results[i].CanvasContent1;
                         ent.TargetType = typeof(ListaNoticias);
                         ListaNoticias.Add(ent);
                     }

@@ -16,7 +16,7 @@ namespace SGSApp.Models
         public string TipoIdentCompanero { get; set; }
         public string NombreAutorizado { get; set; }
         public string IdentificacionAutorizado { get; set; }
-        public Int64? Telefono { get; set; }
+        public string TelefonoSolicitud { get; set; }
         public bool? JornadaMananaHabilitada { get; set; }
         public bool? JornadaTardeHabilitada { get; set; }
         public bool? JornadaExtraHabilitada { get; set; }

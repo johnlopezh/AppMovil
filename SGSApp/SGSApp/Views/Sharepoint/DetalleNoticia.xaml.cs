@@ -18,7 +18,7 @@ namespace SGSApp.Views.Sharepoint
 
             InitializeComponent();
 
-            Descrip.Html = Descripcion;
+            Descrip.Html = htmlText;
             //Descrip = Descripcion;
             Titulo.Text = TituloNoticia;
             Imagen.Source = ImageURL;

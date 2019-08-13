@@ -18,11 +18,34 @@ namespace SGSApp
         [JsonProperty("uri")] public string Uri { get; set; }
     }
 
+    public class imageSources
+    {
+        [JsonProperty("imageSource")] public string imageSource { get; set; }
+    }
+
+    public class ServerProcessedContent
+    {
+        [JsonProperty("imageSources")] public imageSources imageSources { get; set; }
+    }
+
     public class FieldValuesAsHtml
     {
         [JsonProperty("__deferred")] public Deferred6 Deferred { get; set; }
     }
 
+    public class dataImage
+    {
+        [JsonProperty("id")] public string id { get; set; }
+        [JsonProperty("instanceId")] public string instanceId { get; set; }
+        [JsonProperty("title")] public string title { get; set; }
+        [JsonProperty("description")] public string description { get; set; }
+
+    }
+
+    public class resile
+    {
+        [JsonProperty("LayoutWebpartsContent")] public dataImage[] dataImage1 { get; set; }
+    }
 
     public class ListItem
     {
@@ -32,6 +55,8 @@ namespace SGSApp
 
         [JsonProperty("FileSystemObjectType")] public int FileSystemObjectType { get; set; }
 
+        [JsonProperty("LayoutWebpartsContent")] public string layoutWebpartsContent { get; set; }
+
         [JsonProperty("Id")] public int Id { get; set; }
 
         [JsonProperty("ID")] public int ID { get; set; }
@@ -40,12 +65,12 @@ namespace SGSApp
 
         [JsonProperty("Title")] public string Title { get; set; }
 
-        [JsonProperty("OData__Comments")] public string OData__Comments { get; set; }
+        [JsonProperty("Description")] public string Description { get; set; }
 
         [JsonProperty("PublishingPageContent")]
         public string PublishingPageContent { get; set; }
 
-        [JsonProperty("Summary")] public string Summary { get; set; }
+        [JsonProperty("CanvasContent1")] public string CanvasContent1 { get; set; }
 
         [JsonProperty("Modified")] public string Modified { get; set; }
 
@@ -86,5 +111,11 @@ namespace SGSApp
     public class ListItemModels
     {
         [JsonProperty("d")] public D D { get; set; }
+    }
+
+    public class ListItemDescripcion
+    {
+        [JsonProperty("id")] public string id { get; set; }
+        [JsonProperty("innerHTML")] public string innerHTML { get; set; }
     }
 }
