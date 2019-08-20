@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:controls="clr-namespace:SGSApp.Controls"
+             x:Class="SGSApp.Views.Sharepoint.XamGridViewFormsPage">
+    <ContentPage.Content>
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+            <controls:XamGridView x:Name="GrdView" RowSpacing="5" ColumnSpacing="5"  
+                               ItemsSource="{Binding XamMockDataList}"
+                               NoOfColumns="2">
+                <controls:XamGridView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ffimageloading:CachedImage x:Name="Image" HorizontalOptions="Center" VerticalOptions="Center" 
+								LoadingPlaceholder="placeholder.png" ErrorPlaceholder="placeholder.png" DownsampleToViewSize="true" Aspect="AspectFill"
+								Source="{Binding ImageUrl}">
+                            </ffimageloading:CachedImage>
+                        </ViewCell>
+                    </DataTemplate>
+                </controls:XamGridView.ItemTemplate>
+            </controls:XamGridView>
+        
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
