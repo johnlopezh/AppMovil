@@ -30,7 +30,7 @@ namespace SGSApp.Models
 
 
                 var result = await client.GetAsync(
-                    "https://sgsedu.sharepoint.com/sites/intranet/_api/web/lists/GetByTitle('Calendario%20SGS')/items?$orderby=EventDate%20desc&$filter=EventDate%20ge%20'" +
+                    "https://sgsedu.sharepoint.com/sites/Intranetsgs/_api/web/lists/GetByTitle('Días%20Academicos')/items?$orderby=EventDate%20desc&$filter=EventDate%20ge%20'" +
                     fechaInicio + "'and%20EventDate%20le%20'" + fechaFin + "'");
                 var data = JsonConvert.DeserializeObject<ListEventsCalendar>(await result.Content.ReadAsStringAsync());
 

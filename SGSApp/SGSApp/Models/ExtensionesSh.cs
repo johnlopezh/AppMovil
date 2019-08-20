@@ -31,7 +31,7 @@ namespace SGSApp.Models
 
                 var result =
                     await client.GetAsync(
-                        "https://sgsedu.sharepoint.com/sites/intranet/_api/web/lists/GetByTitle('Extensiones')/items?");
+                        "https://sgsedu.sharepoint.com/sites/Intranetsgs/_api/web/lists/GetByTitle('Extensiones%20Telefonicas')/items?$orderby=Title%20asc");
                 var data = JsonConvert.DeserializeObject<ListExtensiones>(await result.Content.ReadAsStringAsync());
 
                 if (result.StatusCode == HttpStatusCode.OK)
@@ -40,7 +40,7 @@ namespace SGSApp.Models
                     {
                         var ent = new ExtensionesSh();
                         ent.nombreExtension = data.E.Results[i].Title;
-                        ent.extension = data.E.Results[i].Extensi_x00f3_n;
+                        ent.extension = data.E.Results[i].Extension;
                         ent.responsable = data.E.Results[i].ResponsableId;
 
                         ListaEventos.Add(ent);

@@ -26,5 +26,6 @@ namespace SGSApp.Views.Sharepoint
         }
 
         public string Html { get; set; }
+       
     }
 }

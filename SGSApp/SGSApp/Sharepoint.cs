@@ -33,12 +33,22 @@ namespace SGSApp
         [JsonProperty("__deferred")] public Deferred6 Deferred { get; set; }
     }
 
+    public class webPartData
+    {
+        [JsonProperty("serverProcessedContent")] public serverProcessedContent serverProcessedContent { get; set; }
+    }
+
+    public class serverProcessedContent
+    {
+        [JsonProperty("imageSources")] public dataImage[] imageSources { get; set; }
+    }
+
     public class dataImage
     {
-        [JsonProperty("id")] public string id { get; set; }
-        [JsonProperty("instanceId")] public string instanceId { get; set; }
-        [JsonProperty("title")] public string title { get; set; }
-        [JsonProperty("description")] public string description { get; set; }
+        [JsonProperty("images[0].url")] public string id { get; set; }
+        //[JsonProperty("instanceId")] public string instanceId { get; set; }
+        //[JsonProperty("title")] public string title { get; set; }
+        //[JsonProperty("description")] public string description { get; set; }
 
     }
 
@@ -117,5 +127,19 @@ namespace SGSApp
     {
         [JsonProperty("id")] public string id { get; set; }
         [JsonProperty("innerHTML")] public string innerHTML { get; set; }
+        [JsonProperty("reservedHeight")] public string reservedHeight { get; set; }
+        [JsonProperty("position")] public position position { get; set; }
+        // [JsonProperty("webPartData")] public webPartData webPartData { get; set; }
+    }
+
+    public class position
+    {
+        [JsonProperty("zoneIndex")] public string zoneIndex { get; set; }
+    }
+
+        public class ListItemGaleria
+    {
+        [JsonProperty("id")] public string id { get; set; }
+        [JsonProperty("webPartData")] public webPartData webPartData { get; set; }
     }
 }

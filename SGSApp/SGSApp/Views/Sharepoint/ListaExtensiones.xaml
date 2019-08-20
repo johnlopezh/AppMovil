@@ -9,7 +9,6 @@
 
 
     <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-        <Label HorizontalTextAlignment="Center" FontAttributes="Bold" x:Name="LblSinExtensiones" IsVisible="False" Text="No se encontraron fechas." />
         <ListView x:Name="listView" ItemsSource="{Binding ExtensionesItems}" HasUnevenRows="True" RowHeight="175"
                   RefreshCommand="{Binding LoadItemsCommand}" AbsoluteLayout.LayoutFlags="All"
                   AbsoluteLayout.LayoutBounds="0,0,1,1">

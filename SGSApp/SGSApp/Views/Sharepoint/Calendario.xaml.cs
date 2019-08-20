@@ -70,7 +70,7 @@ namespace SGSApp.Views.Sharepoint
             ViewModel.LoadItemsCommand.Execute(null);
             if (ViewModel.CalendarioItems.Count == 0)
             {
-                LblSinFechas.IsVisible = true;
+                LblSinFechas.IsVisible = false;
             }
         }
     }

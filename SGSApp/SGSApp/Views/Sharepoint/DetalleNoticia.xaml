@@ -22,9 +22,9 @@
                             <HtmlWebViewSource x:Name="Descrip" Html="{Binding Html}" />
                         </WebView.Source>
                     </WebView>
+                  
                 </StackLayout>
             </Frame>
-
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

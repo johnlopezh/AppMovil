@@ -52,6 +52,7 @@
     <Compile Include="Controls\SelectableItem.cs" />
     <Compile Include="Controls\SelectableObservableCollection.cs" />
     <Compile Include="Controls\SelectableViewCell.cs" />
+    <Compile Include="Controls\XamGridView.cs" />
     <Compile Include="EstudianteJson.cs" />
     <Compile Include="ExtensionesJson.cs" />
     <Compile Include="Extensions\BindableObjectExtensions.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="Models\SolicitudTransporte.cs" />
     <Compile Include="Models\TipoSolicitudTransporte.cs" />
     <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Models\XamGridModel.cs" />
     <Compile Include="Services\ApiService.cs" />
     <Compile Include="Services\DialogService.cs" />
     <Compile Include="Services\IFileHelper.cs" />
@@ -101,6 +103,7 @@
     <Compile Include="ViewModel\NotificacionVM.cs" />
     <Compile Include="ViewModel\TransporteVM.cs" />
     <Compile Include="ViewModel\UserVM.cs" />
+    <Compile Include="ViewModel\XamGridViewViewModel.cs" />
     <Compile Include="Views\Acumen\AgregarDireccion.xaml.cs">
       <DependentUpon>AgregarDireccion.xaml</DependentUpon>
     </Compile>
@@ -160,6 +163,12 @@
     <Compile Include="Views\Sharepoint\ListaNoticias.xaml.cs">
       <DependentUpon>ListaNoticias.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Sharepoint\XFSlideShowPage.xaml.cs">
+      <DependentUpon>XFSlideShowPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sharepoint\XamGridViewFormsPage.xaml.cs">
+      <DependentUpon>XamGridViewFormsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Textos\TerminosCondiciones.xaml.cs">
       <DependentUpon>TerminosCondiciones.xaml</DependentUpon>
     </Compile>
@@ -186,11 +195,14 @@
     <Reference Include="ExifLib, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\ExifLib.PCL.1.0.1\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
     </Reference>
-    <Reference Include="FFImageLoading, Version=2.4.11.982, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.FFImageLoading.2.4.11.982\lib\portable-win+net45+wp80+win81+wpa81\FFImageLoading.dll</HintPath>
+    <Reference Include="FFImageLoading, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.FFImageLoading.2.2.9\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.dll</HintPath>
     </Reference>
-    <Reference Include="FFImageLoading.Platform, Version=2.4.11.982, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.FFImageLoading.2.4.11.982\lib\portable-win+net45+wp80+win81+wpa81\FFImageLoading.Platform.dll</HintPath>
+    <Reference Include="FFImageLoading.Forms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.FFImageLoading.Forms.2.2.9\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.FFImageLoading.2.2.9\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.Platform.dll</HintPath>
     </Reference>
     <Reference Include="GalaSoft.MvvmLight, Version=5.3.0.19026, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MvvmLightLibs.5.3.0.0\lib\portable-net45+wp8+wpa81+netcore45+monoandroid1+xamarin.ios10\GalaSoft.MvvmLight.dll</HintPath>
@@ -222,6 +234,12 @@
     <Reference Include="PSC.Xam.Controls.BindableRadioButton, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\PSC.Xam.Controls.BindableRadioButton.1.0.0\lib\portable45-net45+win8+wp8+wpa81\PSC.Xam.Controls.BindableRadioButton.dll</HintPath>
     </Reference>
+    <Reference Include="Rg.Plugins.Popup, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Rg.Plugins.Popup.1.0.4\lib\portable-win+net45+wp8+win8+wpa81\Rg.Plugins.Popup.dll</HintPath>
+    </Reference>
+    <Reference Include="Rg.Plugins.Popup.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Rg.Plugins.Popup.1.0.4\lib\portable-win+net45+wp8+win8+wpa81\Rg.Plugins.Popup.Platform.dll</HintPath>
+    </Reference>
     <Reference Include="SQLite-net, Version=1.4.118.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\sqlite-net-pcl.1.4.118\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLite-net.dll</HintPath>
     </Reference>
@@ -248,6 +266,9 @@
     </Reference>
     <Reference Include="UXDivers.Gorilla.SDK, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\UXDivers.GorillaPlayer.SDK.1.2.2\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\UXDivers.Gorilla.SDK.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.CarouselView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.CarouselView.2.3.0-pre2\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.CarouselView.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Forms.3.3.0.912540\lib\netstandard1.0\Xamarin.Forms.Core.dll</HintPath>
@@ -415,6 +436,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Master\CarnetVirtual.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Sharepoint\XamGridViewFormsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Sharepoint\XFSlideShowPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

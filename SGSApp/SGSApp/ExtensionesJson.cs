@@ -18,7 +18,7 @@ namespace SGSApp
     [DataContract]
     public class ListItemExtensiones
     {
-        [JsonProperty("Extensi_x00f3_n")] public string Extensi_x00f3_n { get; set; }
+        [JsonProperty("Extension")] public string Extension { get; set; }
 
         [JsonProperty("ResponsableId")] public string ResponsableId { get; set; }
 

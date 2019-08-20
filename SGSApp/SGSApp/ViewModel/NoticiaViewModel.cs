@@ -136,7 +136,7 @@ namespace SGSApp.ViewModel
                         //ent.ImageURL = not[0].serverProcessedContent.imageSources.imageSource;
                         ent.TituloNoticia = data.D.Results[i].Title;
                         ent.Resumen = data.D.Results[i].Description;
-                        ent.Descripcion = desc[0].innerHTML;
+                        //ent.Descripcion = desc[0].innerHTML;
                         ent.TargetType = typeof(ListaNoticias);
                         //ListaNoticias.Add(ent);
                         FeedItems.Add(ent);
