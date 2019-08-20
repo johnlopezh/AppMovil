@@ -429,7 +429,7 @@ namespace SGSApp.Views.Acumen
                     EstadoSolicitud = EstadoSolicitud,
                     UsuarioLog = UsuarioLog,
                     FechaSolicitud = DateTime.Now,
-                    PeriodoLectivo = 13,
+                    PeriodoLectivo = 14,
                     fechas = FechasSeleccionadasEntry.Text = FechasSeleccionadasEntry.Text.TrimEnd(','),
                     rol = 6
                 };

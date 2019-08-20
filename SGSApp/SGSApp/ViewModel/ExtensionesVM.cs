@@ -94,7 +94,7 @@ namespace SGSApp.ViewModel
 
                 var result =
                     await client.GetAsync(
-                        "https://sgsedu.sharepoint.com/sites/Intranetsgs/_api/web/lists/GetByTitle('Extensiones%20Telefonicas')/items");
+                        "https://sgsedu.sharepoint.com/sites/Intranetsgs/_api/web/lists/GetByTitle('Extensiones%20Telefonicas')/items?");
                 var data = JsonConvert.DeserializeObject<ListExtensiones>(await result.Content.ReadAsStringAsync());
 
                 if (result.StatusCode == HttpStatusCode.OK)
@@ -120,6 +120,8 @@ namespace SGSApp.ViewModel
             }
             catch
             {
+                ExtensionesItems =
+                   new ObservableCollection<Extensiones>(ExtensionesItems.OrderBy(i => i.nombreExtension));
                 error = true;
             }
 

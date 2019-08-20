@@ -129,7 +129,7 @@ namespace SGSApp
         [JsonProperty("innerHTML")] public string innerHTML { get; set; }
         [JsonProperty("reservedHeight")] public string reservedHeight { get; set; }
         [JsonProperty("position")] public position position { get; set; }
-        // [JsonProperty("webPartData")] public webPartData webPartData { get; set; }
+        [JsonProperty("webPartData")] public webPartData webPartData { get; set; }
     }
 
     public class position

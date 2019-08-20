@@ -31,7 +31,7 @@ namespace SGSApp.Models
 
                 var result =
                     await client.GetAsync(
-                        "https://sgsedu.sharepoint.com/sites/Intranetsgs/_api/web/lists/GetByTitle('Extensiones%20Telefonicas')/items?$orderby=Title%20asc");
+                        "https://sgsedu.sharepoint.com/sites/Intranetsgs/_api/web/lists/GetByTitle('Extensiones%20Telefonicas')/items?");
                 var data = JsonConvert.DeserializeObject<ListExtensiones>(await result.Content.ReadAsStringAsync());
 
                 if (result.StatusCode == HttpStatusCode.OK)
