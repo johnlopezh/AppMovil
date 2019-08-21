@@ -135,7 +135,7 @@ namespace SGSApp.ViewModel
                         //s = s.Replace("/sites/intranet/", "https://sgsedu.sharepoint.com/sites/intranet/");
                         //ent.ImageURL = not[0].serverProcessedContent.imageSources.imageSource;
                         ent.TituloNoticia = data.D.Results[i].Title;
-                        ent.Resumen = data.D.Results[i].Description;
+                        ent.Resumen = data.D.Results[i].Description == (null) ? "Para mas información ingresar a <a href='https://www.https://sgsedu.sharepoint.com/sites/Intranetsgs'>Intranet SGS</a>" : data.D.Results[i].Description;
                         ent.Descripcion = desc[0].innerHTML;
                         ent.TargetType = typeof(ListaNoticias);
                         //ListaNoticias.Add(ent);
