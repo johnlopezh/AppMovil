@@ -38,7 +38,7 @@
                                        LineBreakMode="WordWrap" />
                                 <Label Text="{Binding diaEvento, StringFormat='{0:dd/MM/yyyy}'}" FontSize="Small"
                                        LineBreakMode="WordWrap" />
-                                <Label Text="{Binding duracion}" FontSize="Small" LineBreakMode="WordWrap" />
+                                <!--<Label Text="{Binding duracion}" FontSize="Small" LineBreakMode="WordWrap" />-->
                             </StackLayout>
                             <Label FontSize="Medium" Font="Bold,20" HorizontalOptions="Center"
                                    Text="{Binding diaEvento, StringFormat='{0:dd}'}" />
